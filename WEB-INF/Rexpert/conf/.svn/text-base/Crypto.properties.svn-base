@@ -1,0 +1,26 @@
+# ------------------------------------
+# define Web decrypt/encrypt - start
+# editable
+# ------------------------------------
+#rex.crypto.web.factory = Rexpert.DataServer.ETC.UserXecureWebCrypto
+#rex.crypto.web.factory = Rexpert.DataServer.ETC.RexWebCrypto
+#rex.crypto.web.decode = true
+#rex.crypto.web.encode = true
+#rex.crypto.web.encodeperflush = true
+#rex.crypto.web.encodeperflush.separator = |!|
+# ------------------------------------
+# define Web decrypt/encrypt - end
+# ------------------------------------
+
+# -----------------------------------------
+# define DB field decrypt/encrypt - start
+# editable
+# -----------------------------------------
+#rex.crypto.dbfield.encode.factory = RexService.CUserCbCrypto
+#rex.crypto.dbfield.encode.field = CompanyName,City
+
+#rex.crypto.dbfield.decode.factory = test.testDecrypto
+#rex.crypto.dbfield.decode.field = EMPLOYEE_ID,FIRST_NAME
+# -----------------------------------------
+# define DB field decrypt/encrypt - end
+# -----------------------------------------

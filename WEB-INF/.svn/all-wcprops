@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/sgis_intranet/!svn/ver/1325/trunk/WebContent/WEB-INF
+END
+Command.properties
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/sgis_intranet/!svn/ver/1395/trunk/WebContent/WEB-INF/Command.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sgis_intranet/!svn/ver/1423/trunk/WebContent/WEB-INF/log4j.properties
+END
+classes.tar
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sgis_intranet/!svn/ver/3/trunk/WebContent/WEB-INF/classes.tar
+END
+sg.properties
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sgis_intranet/!svn/ver/1325/trunk/WebContent/WEB-INF/sg.properties
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sgis_intranet/!svn/ver/1422/trunk/WebContent/WEB-INF/web.xml
+END

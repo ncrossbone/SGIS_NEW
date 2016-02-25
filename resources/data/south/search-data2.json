@@ -1,0 +1,57 @@
+{
+	success : true,
+		
+	items : [{
+		"id" : "1",
+		"branch_no" : "branch_no_1",
+		"branch_name" : "branch_name_1",
+		"area1" : "area1_1",
+		"area2" : "area2_1",
+		"address" : "address_1",
+		"geo_feature" : "geo_feature_1",
+		"depth" : "depth_1",
+		"depth_depth" : "depth_depth_1"
+	},{
+		"id" : "2",
+		"branch_no" : "branch_no_1",
+		"branch_name" : "branch_name_1",
+		"area1" : "area1_1",
+		"area2" : "area2_1",
+		"address" : "address_1",
+		"geo_feature" : "geo_feature_1",
+		"depth" : "depth_1",
+		"depth_depth" : "depth_depth_1"
+	},{
+		"id" : "3",
+		"branch_no" : "branch_no_1",
+		"branch_name" : "branch_name_1",
+		"area1" : "area1_1",
+		"area2" : "area2_1",
+		"address" : "address_1",
+		"geo_feature" : "geo_feature_1",
+		"depth" : "depth_1",
+		"depth_depth" : "depth_depth_1"
+	},{
+		"id" : "4",
+		"branch_no" : "branch_no_1",
+		"branch_name" : "branch_name_1",
+		"area1" : "area1_1",
+		"area2" : "area2_1",
+		"address" : "address_1",
+		"geo_feature" : "geo_feature_1",
+		"depth" : "depth_1",
+		"depth_depth" : "depth_depth_1"
+	},{
+		"id" : "5",
+		"branch_no" : "branch_no_1",
+		"branch_name" : "branch_name_1",
+		"area1" : "area1_1",
+		"area2" : "area2_1",
+		"address" : "address_1",
+		"geo_feature" : "geo_feature_1",
+		"depth" : "depth_1",
+		"depth_depth" : "depth_depth_1"
+	}],
+	
+	total : 5
+}

@@ -1,0 +1,270 @@
+﻿[{
+	"id" : "p1",
+    "text": "지하수", 
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "1",
+		"layerId" : "1",
+        "text": "지역지하수 오염우려지역",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer1",
+        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3003",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer1.png"
+    },{
+		"id" : "2",
+		"layerId" : "2",
+        "text": "지역지하수 일반지역",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer2",
+        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3004",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer2.png"
+    },{
+		"id" : "3",
+		"layerId" : "3",
+        "text": "국가지하수 배경수질",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer3",
+        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3001",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer3.png"
+    },{
+		"id" : "4",
+		"layerId" : "4",
+        "text": "국가지하수 오염감시",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer4",
+        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3002",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer4.png"
+    },{
+		"id" : "5",
+		"layerId" : "5",
+        "text": "지하수 관정정보",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer5",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer5.png"
+    },{
+		"id" : "7",
+		"layerId" : "7",
+        "text": "자연방사선 실태조사",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer7",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer7.png"
+    },{
+		"id" : "11",
+		"layerId" : "11",
+        "text": "먹는물 공동시설",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer11",
+        "linkNum" : "GwCeBs.do?C=GwCeBs&A=1004",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer11.png"
+    }]
+},{
+	"id" : "p2",
+    "text": "토양",
+    "cls": "folder",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "13",
+		"layerId" : "13",
+        "text": "토양측정망",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer13",
+        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3006",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer13.png"
+    },{
+		"id" : "14",
+		"layerId" : "14",
+        "text": "토양오염실태조사",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer14",
+        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3007",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer14.png"
+    },{
+		"id" : "15",
+		"layerId" : "15",
+        "text": "골프장",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer15",
+        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3008",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer15.png"
+    }]
+},{
+	"id" : "p3",
+    "text": "토양환경지도",
+    "cls": "folder",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "18",
+		"layerId" : "18",
+        "text": "하천수질",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer18",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer18.png"
+    },{
+		"id" : "19",
+		"layerId" : "19",
+        "text": "하천퇴적물",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer19",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer19.png"
+    },{
+		"id" : "20",
+		"layerId" : "20",
+        "text": "토양",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer20",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer20.png"
+    }]
+},{
+	"id" : "p4",
+    "text": "토양오염원", 
+    "expanded": true,
+    "checked": false,
+    "children": [{
+	"id" : "p4_2",
+	    "text": "토양오염관리대상시설",
+	    "cls": "folder",
+	    "expanded": true,
+	    "checked": false,
+	    "children": [{
+			"id" : "23",
+			"layerId" : "23",
+	        "text": "위험물시설",
+	        "leaf": true,
+	        "checked": false,
+	        "iconCls": "layer23",
+	        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3002",
+	        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer23.png"
+	    },{
+			"id" : "24",
+			"layerId" : "24",
+	        "text": "유독물시설",
+	        "leaf": true,
+	        "checked": false,
+	        "iconCls": "layer24",
+	        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3003",
+	        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer24.png"
+	    },{
+			"id" : "25",
+			"layerId" : "25",
+	        "text": "송유관시설",
+	        "leaf": true,
+	        "checked": false,
+	        "iconCls": "layer25",
+	        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3004",
+	        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer25.png"
+	    }]
+	},{
+		"id" : "27",
+		"layerId" : "27",
+        "text": "특정토양오염관리대상시설",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer27",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer27.png"
+    },{
+		"id" : "30",
+		"layerId" : "30",
+        "text": "폐기물처리시설",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer30",
+        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3005",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer30.png"
+    },{
+		"id" : "31",
+		"layerId" : "31",
+        "text": "원광석고철보관소",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer31",
+        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3006",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer31.png"
+    },{
+		"id" : "32",
+		"layerId" : "32",
+        "text": "교통관련시설",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer32",
+        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3007",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer32.png"
+    },{
+		"id" : "33",
+		"layerId" : "33",
+        "text": "철도관련시설",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer33",
+        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3008",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer33.png"
+    },{
+		"id" : "35",
+		"layerId" : "35",
+        "text": "주거지역정밀대상지역",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer35",
+        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3009",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer35.png"
+    },{
+		"id" : "36",
+		"layerId" : "36",
+        "text": "폐기물매립지주변지역",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer36",
+        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3010",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer36.png"
+    },{
+		"id" : "37",
+		"layerId" : "37",
+        "text": "폐금속광산",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer37",
+        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3011",
+        "iconInfo": "resources/images/layerIcon/newIcon/Layer37.png"
+    },{
+		"id" : "38",
+		"layerId" : "38",
+        "text": "폐석면광산",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer38",
+        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3011",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer38.png"
+    },{
+		"id" : "39",
+		"layerId" : "39",
+        "text": "폐석탄광산",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer39",
+        "linkNum" : "GwBeBs.do?C=GwBeBs&A=3011",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer39.png"
+    },{
+		"id" : "40",
+		"layerId" : "40",
+        "text": "산업단지",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer40",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer40zx.png"
+    }]
+}]

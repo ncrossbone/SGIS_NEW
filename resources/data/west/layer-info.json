@@ -1,0 +1,148 @@
+[{
+	"id" : "101",
+	"category" : "지하수",
+	"name" : "지역지하수오염우려지역",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "1년"
+},{
+	"id" : "102",
+	"category" : "지하수",
+	"name" : "지역지하수일반지역",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "1년"
+},{
+	"id" : "103",
+	"category" : "지하수",
+	"name" : "국가지하수배경수질",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "1년"
+},{
+	"id" : "104",
+	"category" : "지하수",
+	"name" : "국가지하수오염감시",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "1년"
+},{
+	"id" : "201",
+	"category" : "토양",
+	"name" : "토양측정망",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "1년"
+},{
+	"id" : "202",
+	"category" : "토양",
+	"name" : "골프장",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "1년"
+},{
+	"id" : "203",
+	"category" : "토양",
+	"name" : "토양실태조사",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "1년"
+},{
+	"id" : "301",
+	"category" : "수문지질도",
+	"name" : "지질단면선",
+	"source" : "GIMS(지하수정보시스템)",
+	"created_year" : "2011",
+	"update_cycle" : "1년"
+},{
+	"id" : "302",
+	"category" : "수문지질도",
+	"name" : "수문지질경계",
+	"source" : "GIMS(지하수정보시스템)",
+	"created_year" : "2011",
+	"update_cycle" : "1년"
+},{
+	"id" : "303",
+	"category" : "수문지질도",
+	"name" : "대수층",
+	"source" : "GIMS(지하수정보시스템)",
+	"created_year" : "2011",
+	"update_cycle" : "1년"
+},{
+	"id" : "304",
+	"category" : "수문지질도",
+	"name" : "지하수등수위선",
+	"source" : "GIMS(지하수정보시스템)",
+	"created_year" : "2011",
+	"update_cycle" : "1년"
+},{
+	"id" : "305",
+	"category" : "수문지질도",
+	"name" : "지하수유동체계규모",
+	"source" : "GIMS(지하수정보시스템)",
+	"created_year" : "2011",
+	"update_cycle" : "1년"
+},{
+	"id" : "306",
+	"category" : "수문지질도",
+	"name" : "유역경계",
+	"source" : "GIMS(지하수정보시스템)",
+	"created_year" : "2011",
+	"update_cycle" : "1년"
+},{
+	"id" : "401",
+	"category" : "지하수오염 취약성도",
+	"name" : "토양도",
+	"source" : "GIMS(지하수정보시스템)",
+	"created_year" : "2011",
+	"update_cycle" : "1년"
+},{
+	"id" : "402",
+	"category" : "지하수오염 취약성도",
+	"name" : "잠재오염원",
+	"source" : "GIMS(지하수정보시스템)",
+	"created_year" : "2011",
+	"update_cycle" : "1년"
+},{
+	"id" : "403",
+	"category" : "지하수오염 취약성도",
+	"name" : "오염취약성",
+	"source" : "GIMS(지하수정보시스템)",
+	"created_year" : "2011",
+	"update_cycle" : "1년"
+},{
+	"id" : "501",
+	"category" : "토양특성",
+	"name" : "배수등급",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "비정기"
+},{
+	"id" : "502",
+	"category" : "토양특성",
+	"name" : "잠재오염원",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "비정기"
+},{
+	"id" : "503",
+	"category" : "토양특성",
+	"name" : "심토의토성",
+	"source" : "환경부",
+	"created_year" : "2007",
+	"update_cycle" : "비정기"
+},{
+	"id" : "504",
+	"category" : "토양특성",
+	"name" : "산림입지토양도",
+	"source" : "산림공간정보포털시스템(1/5,000)",
+	"created_year" : "2011",
+	"update_cycle" : "비정기"
+},{
+	"id" : "601",
+	"category" : "배경도",
+	"name" : "잠재오염원",
+	"source" : "전국통합수치도관리시스템",
+	"created_year" : "2011",
+	"update_cycle" : "비정기"
+}]

@@ -1,0 +1,147 @@
+﻿[{
+	"id" : "b1",
+    "text": "수문지질도", 
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "1",
+		"layerId" : "1",
+        "text": "지질단면선",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "1001",
+        "iconCls": "symbol_1"
+    },{
+		"id" : "2",
+		"layerId" : "2",
+        "text": "지하수등수위선",
+        "leaf": true,
+        "checked": false,
+         "linkNum" : "1002",
+         "iconCls": "symbol_2"
+    },{
+		"id" : "3",
+		"layerId" : "3",
+        "text": "유역경계",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "1003",
+        "iconCls": "symbol_3"
+    }]
+},{
+	"id" : "b2",
+    "text": "지하수오염취약성도",
+    "cls": "folder",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "5",
+		"layerId" : "5",
+        "text": "잠재오염원",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "2001",
+        "iconCls": "symbol_5"
+    },{
+		"id" : "6",
+		"layerId" : "6",
+        "text": "오염취약성",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "2002",
+        "iconCls": "symbol_6"
+    }]
+},{
+	"id" : "b3",
+    "text": "토양특성", 
+    "cls": "folder",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "8",
+		"layerId" : "8",
+        "text": "배수등급",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "3001",
+        "iconCls": "symbol_8"
+    },{
+		"id" : "9",
+		"layerId" : "9",
+        "text": "심토의자갈함량",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "3002",
+        "iconCls": "symbol_9"
+    },{
+		"id" : "10",
+		"layerId" : "10",
+        "text": "심토의토성",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "3003",
+        "iconCls": "symbol_10"
+    },{
+		"id" : "11",
+		"layerId" : "11",
+        "text": "산림입지토양도",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "3004",
+        "iconCls": "symbol_11"
+    }]
+    },{
+	"id" : "b4",
+    "text": "배경도", 
+    "cls": "folder",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "13",
+		"layerId" : "13",
+        "text": "행정경계도",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "3004",
+        "iconCls": "symbol_13"
+    }]
+    },{
+	"id" : "b5",
+    "text": "공통", 
+    "cls": "folder",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "15",
+		"layerId" : "15",
+        "text": "시도",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "3001",
+        "iconCls": "symbol_15"
+    },{
+		"id" : "16",
+		"layerId" : "16",
+        "text": "시군구",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "3001",
+        "iconCls": "symbol_16"
+    },{
+		"id" : "17",
+		"layerId" : "17",
+        "text": "dong",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "3001",
+        "iconCls": "symbol_17"
+    },{
+		"id" : "18",
+		"layerId" : "18",
+        "text": "위성영상",
+        "leaf": true,
+        "checked": false,
+        "linkNum" : "3001",
+        "iconCls": "symbol_18"
+    }]
+}]

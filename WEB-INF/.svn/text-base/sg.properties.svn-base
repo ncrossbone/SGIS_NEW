@@ -1,0 +1,277 @@
+COMMAND_DISPATCHER_URL 		= D:/eGovFrameDev-2.7.0_summary/workspace/newsgis_intranet/WebContent/WEB-INF/command_map.xml
+SGA_COMMAND_DISPATCHER_URL 	= D:/eclipse_project/newsga/WEB-INF/command_map.xml
+
+SG_JDBC_JNDI_NAME 	= SGIIS_INTRA
+SG_DATASOURCE		= SGIIS_INTRA
+#localhost_sgiis
+#test_server_sgiis SGIIS Data Source
+SG_JDBC_JNDI_MYSQL 		= jdbc/ora
+SG_DEFAULT_URI			= /do
+SGA_DEFAULT_URI			= /do
+SG_GW_SIDO_FILE_URI		= /newsgis_intranet/se
+SG_GW_CHG_FILE_URI		= /newsgis_intranet/se
+SG_GW_GG_FILE_URI		= /newsgis_intranet/gg
+SG_SO_FILE_URI			= /newsgis_intranet/soce
+SG_SO_CHG_FILE_URI		= /newsgis_intranet/ssce
+SG_GW_DR_FILE_URI		= /newsgis_intranet/df
+SG_IMG_DIR					= /img/sgis/intra
+SGA_IMG_DIR					= /img/sgis
+SG_CONTEXT_NAME		= /
+SGA_CONTEXT_NAME		= /
+SG_WEB_NAME				= /jsp 
+SG_MIP_NAME			= /mip
+SG_FILE_BASE			= D:/eclipse_project/file/
+SGA_EDITOR_BASE = D:/eclipse_project/sgis/newsga/imageServer
+SG_FILE_LIMIT			= 30
+SG_FILE_EXT			= xls|hwp|txt|cvs|pdf|doc|ppt|zip
+SG_ID_LOCK				= 12
+SG_TITLE					= \ud1a0\uc591\uc9c0\ud558\uc218\uc885\ud569\uc815\ubcf4\uc2dc\uc2a4\ud15c
+SG_TITLE_IO			= \uc9c0\ud558\uc218 \uc218\uc9c8 \uce21\uc815\ub9dd \uc785\ub825\uc2dc\uc2a4\ud15c
+SG_TITLE_GW_IO		= \uc9c0\ud558\uc218\uc218\uc9c8\uac80\uc0ac\uae30\ub85d\uc785\ub825\uc2dc\uc2a4\ud15c
+SG_TITLE_IO_SO		= \ud1a0\uc591\uce21\uc815\ub9dd \uc785\ub825\uc2dc\uc2a4\ud15c
+SG_TITLE_MAP			= \ud1a0\uc591\uc9c0\ud558\uc218\uc9c0\ub3c4\uc11c\ube44\uc2a4
+SG_DOMAIN				= 192.168.0.193:7001
+SG_PORT					= 7001
+#SG_DOMAIN			= 10.101.216.64
+#SG_PORT				= 80
+SG_ROOT_DIR 			= D:/eGovFrameDev-2.7.0_summary/workspace/newsgis_intranet
+SG_ROOT_TEMPLATE	= D:/eclipse_project/file/excel_template/
+SG_ADMIN_PHONE 	= 01043007734-01043007734
+
+
+# \ubc18\ucd9c\uc624\uc5fc\ud1a0\uc591 \uc804\uc0b0\uad00\ub9ac \uc2dc\uc2a4\ud15c \uad00\ub828
+SG_SPRS_WEB = /newsprs/web/sp
+SG_SPRS_DOMAIN = http://sgis.nier.go.kr/newsprs
+SG_SPRS_IMG = /newsprs/web/sp/images
+SG_SPRS_FILE = D:/eclipse_project/file/sp/
+SG_SPRS_FILE_LIMIT = 30
+
+
+MIR_SERVER			= 192.168.0.193:7001
+MIR_PORT				= 4002
+MIR_TOT_SIZE			= 2
+MIR_SINGLE_SIZE			= 20
+
+
+GWMPT_CARD_DIR			= D:/eclipse_project/file/\ud604\ud669\uce74\ub4dc
+SG_PDF_DIR			= D:/eclipse_project/file/PDF/
+GWMPT_LEDGER_DIR		= D:/eGovFrameDev-2.7.0_summary/workspace/newsgis_intranet/images/card
+GWMPT_LEDGER_DIR_TEMP		= D:/eclipse_project/file/card
+
+SGA_MEMBER_LIST_SIZE		= 20
+SGA_MEMBER_BLOCK_SIZE		= 10
+
+SG_File_DIR			= D:/eGovFrameDev-2.7.0_summary/workspace/newsgis_intranet/file/
+
+
+LOG_DIR 			= D:/eclipse_project/sgis/log/sgis
+LOG_WEB 		=	= www
+LOG_DB 	 			= db
+LOG_USER			= user	
+SGA_LOG_DIR 			= D:/eclipse_project/sgis/log/sgis_admin
+SGA_LOG_WEB 			= www
+SGA_LOG_DB 	 		= db
+SGA_LOG_USER			= user
+
+SG_YURYU_OLD_YEAR		= 2001
+
+#\ube14\ub85c\uadf8 \ud504\ub85c\ud544 \uc774\ubbf8\uc9c0 \uc800\uc7a5\uacbd\ub85c
+SG_BLOG_PROFILE_PATH		= D:/eGovFrameDev-2.7.0_summary/workspace/newsgis_intranet/file_blog/admin
+
+#\ube14\ub85c\uadf8 \uc0ac\uc9c4 \uc800\uc7a5\uacbd\ub85c  
+SG_BLOG_PHOTO_PATH		= D:/eGovFrameDev-2.7.0_summary/workspace/newsgis_intranet/file_blog/photo
+
+
+#gis \ud604\ud669\uce74\ub4dc \ud604\uc7a5\uc0ac\uc9c4 \uc774\ubbf8\uc9c0 \uacbd\ub85c
+SG_GIS_PHOTO_PATH		= /newsgis_intranet/images/card
+#gis \ud604\ud669\uce74\ub4dc \ud604\uc7a5 \uc57d\ub3c4 \uc774\ubbf8\uc9c0 \uacbd\ub85c
+SG_GIS_MAP_PHOTO_PATH		= /newsgis_intranet/images/card
+
+#\ud1a0\uc591 \ubc0f \uc9c0\ud558\uc218 \uc18c\uc218\uc810 \uc790\ub9ac \ud45c\ud604
+SG_SO_PRECISION			= 3
+SG_GW_PRECISION			= 3
+SG_PL_PRECISION			= 3
+SG_SO_PER_PRECISION		= 1
+SG_GW_PER_PRECISION		= 1
+SG_PL_PER_PRECISION		= 1
+
+SO_BEFORE = CD,CU,AS_,HG,PB,CR6,ZN,NI,F,YUGI,PCB,CN,PENOL,YURYU,PCE,PH
+SO_AFTER  = CD,CU,AS_,HG,PB,CR6,ZN,NI,F,YUGI,PCB,CN,PENOL,BTEX,TPH,TCE,PCE,PH
+SO_ALL	  =	CD,CU,AS_,HG,PB,CR6,ZN,NI,F,YUGI,PCB,CN,PENOL,YURYU,BTEX,TPH,TCE,PCE,PH
+SO_EXCEL  =	PT_NO,CD,CU,AS_,HG,PB,CR6,ZN,NI,F,YUGI,PCB,CN,PENOL,YURYU,BTEX,TPH,TCE,PCE,PH
+
+GW_CHG_START = 0,4
+GW_SIDO_START = 0,4
+GW_SIDO	=	PT_NO,PH,DAEJANG,NO3N,CL,GERM,CD,AS_,CN,HG,YUGI,PENOL,PB,CR6,TCE,PCE,TCE111,BEN,TOL,ETIL,XLEN
+GW_CHG	=	PT_NO,PH,DAEJANG,NO3N,CL,GERM,CD,AS_,CN,HG,YUGI,PENOL,PB,CR6,TCE,PCE,TCE111,BEN,TOL,ETIL,XLEN
+
+GW_SIDO_2010	=	PT_NO,EC,PH,NO3N,CL,TDAEJANG,CD,AS_,CN,HG,YUGI,PENOL,PB,CR6,TCE,PCE,TCE111,BEN,TOL,ETIL,XLEN
+GW_CHG_2010	=	PT_NO,EC,PH,NO3N,CL,TDAEJANG,CD,AS_,CN,HG,YUGI,PENOL,PB,CR6,TCE,PCE,TCE111,BEN,TOL,ETIL,XLEN
+
+GW_DR	=	GERM,TDAEJANG,DDAEJANG,PB,AS_,F,SEL,HG,CN,CR6,AMNO,NO3N,CD,BO,PENOL,DIA,PA,FEN,CAR,TCE111,TCE,PCE,DIMT,BEN,TOL,ETIL,XLEN,DIET11,CACH,DECH,GRAD,PPC,SMELL,TAST,COPP,CHRO,DETE,PH,ZN,CL,EVRE,FE,MANG,TURB,SO4,ALUM
+GW_LF	=	PH,DAEJANG,NO3N,CL,GERM,CD,AS_,CN,HG,YUGI,PENOL,PB,CR6,TCE,PCE,TCE111,BEN,TOL,ETIL,XLEN
+GW_AG	=	PH,NO3N,CL,CD,AS_,CN,HG,YUGI,PENOL,PB,CR6,TCE,PCE,TCE111
+GW_IN	=	PH,NO3N,CL,CD,AS_,CN,HG,YUGI,PENOL,PB,CR6,TCE,PCE,TCE111
+GW_CARD =	ADMCODE,PT_NO,UNIQUE_NM,PHONE_NUM,ADDR,OWNER,PERMISS_STS,OWNER_GU,MAIN_USE,FOR_DRINK,USE_TERM,TOPOGRAPHY,X,Y,ALTITUDE,JUNGHO_STS,DEVELOP_YEAR,CONSTRUCT_COMP,DEPTH,ROCK_GU,CALIBER,PUMP_POWER,USE_VOLUMN,T_CALIBER,CASING_LEN,SCR_SECTION_S,SCR_SECTION_E,SCR_NAGONG,EQUIP_01,EQUIP_02,EQUIP_03,EQUIP_04,EQUIP_05,EQUIP_06,EQUIP_07,EQUIP_08,EQUIP_GITA,SIDE_POLLUTION_01,SIDE_POLLUTION_02,SIDE_POLLUTION_03,SIDE_POLLUTION_04,SIDE_POLLUTION_05,SIDE_POLLUTION_06,SIDE_POLLUTION_07,SIDE_POLLUTION_08,POLLUTION_GITA,WRITE_DATE,WRITE_GRADE,WRITE_NAME,DIFF_RESULT,CHOICE_REASON,CLOSE_REASON,CLOSE_STS,CLOSE_DATE,CLOSE_MAIN,CLOSE_COMP,CHANGE_SURVEY,CHANGE_ADDR,CHANGE_OWNER,CHANGE_GITA
+SM_DT   =   CD,CU,AS_,HG,PB,CR6,ZN,NI,F,YUGI,PCB,CN,PENOL,BTEX,TPH,TCE,PCE,PH
+
+#excel template
+BLANK_EXCEL			= D:/eclipse_project/file/excel_template/template_blank.xls
+
+#2011-12-13 \ucd94\uac00
+GW_EXCEL 			= D:/eclipse_project/file/excel_template/template_gwmdt_chg.xls
+GW_EXCEL02 			= D:/eclipse_project/file/excel_template/template_gwmdt02.xls
+
+COM_EXCEL			= D:/eclipse_project/file/excel_template/template_excel.xls
+COM_EXCEL02			= D:/eclipse_project/file/excel_template/template_excel02.xls
+COM_EXCEL03			= D:/eclipse_project/file/excel_template/template_excel03.xls
+COM_EXCEL04			= D:/eclipse_project/file/excel_template/template_excel04.xls
+COM_EXCEL05			= D:/eclipse_project/file/excel_template/template_excel05.xls
+
+GW_CHG_EXCEL 			= D:/eclipse_project/file/excel_template/template_gwmdt_chg.xls
+GW_SIDO_EXCEL 			= D:/eclipse_project/file/excel_template/template_gwmdt_sido.xls
+SO_CHG_EXCEL 			= D:/eclipse_project/file/excel_template/template_smdt_chg.xls
+SO_SS_SM01_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sm01.xls
+SO_SS_SM02_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sm02.xls
+SO_SS_SM03_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sm03.xls
+
+SO_SS_MS01_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ms01.xls
+SO_SS_MS02_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ms02.xls
+SO_SS_MS03_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ms03.xls
+SO_SS_MS04_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ms04.xls
+SO_SS_MS05_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ms05.xls
+SO_SS_MS06_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ms06.xls
+
+SO_SS_SB01_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sb01.xls
+SO_SS_SB02_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sb02.xls
+
+SO_SS_BS01_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_bs01.xls
+SO_SS_BS02_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_bs02.xls
+SO_SS_BS03_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_bs03.xls
+SO_SS_BS04_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_bs04.xls
+SO_SS_BS05_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_bs05.xls
+
+SO_SS_SS0101_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ss0101.xls
+SO_SS_SS0102_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ss0102.xls
+SO_SS_SS02_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ss02.xls
+
+SO_SS_SP01_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sp01.xls
+SO_SS_SP02_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sp02.xls
+SO_SS_SP03_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sp03.xls
+SO_SS_SP04_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sp04.xls
+SO_SS_SP05_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_sp05.xls
+
+SO_SS_SI01_EXCEL 		= D:/eclipse_project/file/excel_template/template_so_ss_si01.xls
+SO_SS_SI02_EXCEL		= D:/eclipse_project/file/excel_template/template_so_ss_si02.xls
+
+
+# \uc9c0\ud558\uc218 \ud604\ud669\uce74\ub4dc \ub9ac\uc2a4\ud2b8
+GW_WL_CM01_EXCEL			= D:/eclipse_project/file/excel_template/template_gw_wl_cm01.xls
+
+#GW  \uc9c0\ud558\uc218
+GW_WS_WL0101_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl0101.xls
+GW_WS_WL0102_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl0102.xls
+GW_WS_WL0103_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl0103.xls
+GW_WS_WL0201_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl0201.xls
+GW_WS_WL0202_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl0202.xls
+GW_WS_WL0203_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl0203.xls
+GW_WS_WL03_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl03.xls
+GW_WS_WL04_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl04.xls
+GW_WS_WL05_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl05.xls
+GW_WS_WL06_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_wl06.xls
+
+GW_WS_MC0101_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_mc0101.xls
+GW_WS_MC0102_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_mc0102.xls
+GW_WS_MC02_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_mc02.xls
+GW_WS_MC03_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_mc03.xls
+GW_WS_MC04_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_mc04.xls
+GW_WS_MC05_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_mc05.xls
+
+GW_WS_CI01_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_ci01.xls
+GW_WS_CI02_EXCEL		= D:/eclipse_project/file/excel_template/template_gw_ws_ci02.xls
+GW_WS_CI03_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_ci03.xls
+GW_WS_CI02_EXCEL2010	= D:/eclipse_project/file/excel_template/template_gwmdt_chg2010.xls
+
+##\uc77c\ubc18\uc9c0\uc5ed\ucd94\uac00
+GW_WS_CI04_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_ci04.xls 
+GW_WS_SI01_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_si01.xls
+
+GW_WS_EP01_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_ep01.xls
+GW_WS_EP02_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_ep02.xls
+GW_WS_EP03_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_ws_ep03.xls
+
+GW_WU_LS_EXCEL 			= D:/eclipse_project/file/excel_template/template_gw_wu_ls.xls
+GW_WU_YS01_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_wu_ys01.xls
+GW_WU_YS02_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_wu_ys02.xls
+GW_WU_YS03_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_wu_ys03.xls
+GW_WU_YS04_EXCEL 		= D:/eclipse_project/file/excel_template/template_gw_wu_ys04.xls
+GW_WU_NS_EXCEL 			= D:/eclipse_project/file/excel_template/template_gw_wu_ns.xls
+GW_WL_CM_EXCEL 			= D:/eclipse_project/file/excel_template/template_gw_wl_cm.xls
+
+# \uba39\ub294\ubb3c
+PL_PC01_EXCEL			= D:/eclipse_project/file/excel_template/template_pl_pc01.xls
+PL_PC02_EXCEL			= D:/eclipse_project/file/excel_template/template_pl_pc02.xls
+PL_PC03_EXCEL			= D:/eclipse_project/file/excel_template/template_pl_pc03.xls
+PL_PC04_EXCEL			= D:/eclipse_project/file/excel_template/template_pl_pc04.xls
+PL_PC05_EXCEL			= D:/eclipse_project/file/excel_template/template_pl_pc05.xls
+PL_PC06_EXCEL			= D:/eclipse_project/file/excel_template/template_pl_pc06.xls
+
+# \uace8\ud504\uc7a5 \ub300\ubbfc\uc11c\ube44\uc2a4 \uc5d1\uc140 \uc591\uc2dd
+GP_OD11_EXCEL			= D:/eclipse_project/file/excel_template/template_gp_od11.xls
+GP_OD21_EXCEL			= D:/eclipse_project/file/excel_template/template_gp_od21.xls
+GP_OD31_EXCEL			= D:/eclipse_project/file/excel_template/template_gp_od31.xls
+GP_OD41_EXCEL			= D:/eclipse_project/file/excel_template/template_gp_od41.xls
+
+# \uace8\ud504\uc7a5 \uc785\ub825/\uad00\ub9ac\uc790 \uc5d1\uc140 \ub2e4\uc6b4\ub85c\ub4dc \uc591\uc2dd
+GP_GOPE_EXCEL_DOWN			= D:/eclipse_project/file/excel_template/template_gp_odPe.xls
+GP_GORE_EXCEL_DOWN			= D:/eclipse_project/file/excel_template/template_gp_odRe.xls
+
+# \uace8\ud504\uc7a5 \uc785\ub825/\uad00\ub9ac\uc790 \uc5d1\uc140 \uc5c5\ub85c\ub4dc \uc785\ub825 \uc591\uc2dd
+GP_GOPE_EXCEL_UP			= D:/eclipse_project/file/excel_template/template_Pesticide_temp.xls
+GP_GORE_EXCEL_UP			= D:/eclipse_project/file/excel_template/template_Residue_Temp.xls
+
+
+#\uc9c0\ub3c4 \uc11c\ube44\uc2a4 \ub3c4\uc6c0\ub9d0 \ud30c\uc77c 
+MPU3_HELP_FILE					= D:/eclipse_project/file/excel_template/template_gw_wg_gg01.xls.
+
+#\uc9c0\ud558\uc218 \uc218\uc9c8\uac80\uc0ac \uc5d1\uc140\ud30c\uc77c \ucd9c\ub825 \ud0c0\uc774\ud2c0 \ub9e4\uce6d
+
+WG_GG_EXCEL_TITLE_ENG = geom_sa_mok_jeok:won_su_jeong_su:gu_bun:name:addr:addr2:yong_do:jeop_su:keom_sa:tong_bo:pan_jeong:germ:tdaejang:daejang:ddaejang:dd:pd:f_:as_:sel_:hg:cn:cr6:amno:no3_n:cd:bo:cr:penol:dia:pa:fen:car:tce111:pce:tce:dimt:ben:tol:etil:xlen:diet11:cach:dech:dioxane14:yugi:grad:ppc:smell:tast:copp:chro:dete:ph:zn:cl:evre:fe:mang:turb:so4:alum:bi_go
+WG_GG_EXCEL_TITLE_KOR  = \uac80\uc0ac/\ubaa9\uc801:\uc6d0\uc218/\uc815\uc218\uc5ec\ubd80:\uae30\ud0c0(\uc7ac\uac80\uc0ac\ub4f1):\uc0c1\ud638\ub610\ub294\uba85\uce6d:\uc18c\uc7ac\uc9c0\ub610\ub294\uc8fc\uc18c:\uc704\uce58:\uc6a9\ub3c4:\uc811\uc218:\uac80\uc0ac:\uacb0\uacfc\ud1b5\ubcf4:\ud310\uc815:\uc77c\ubc18\uc138\uade0:\ucd1d\ub300\uc7a5\uade0\uad70:\ub300\uc7a5\uade0\uad70\uc218:\ubd84\uc6d0\uc131\ub300\uc7a5\uade0:\ub300\uc7a5\uade0:\ub0a9:\ubd88\uc18c:\ube44\uc18c:\uc140\ub808\ub284:\uc218\uc740:\uc2dc\uc548:6\uac00\ud06c\ub86c:\uc554\ubaa8\ub2c8\uc544\uc131\uc9c8\uc18c:\uc9c8\uc0b0\uc131\uc9c8\uc18c:\uce74\ub4dc\ubbb4:\ubcf4\ub860:\ud06c\ub86c:\ud398\ub180:\ub2e4\uc774\uc544\uc9c0\ub17c:\ud30c\ub77c\ud2f0\uc628:\ud398\ub2c8\ud2b8\ub85c\ud2f0\uc628:\uce74\ubc14\ub9b4:1,1,1-\ud2b8\ub9ac\ud074\ub85c\ub85c\uc5d0\ud0c4:\ud14c\ud2b8\ub77c\ud074\ub85c\ub85c\uc5d0\ud2f8\ub80c:\ud2b8\ub9ac\ud074\ub85c\ub85c\uc5d0\ud2f8\ub80c:\ub514\ud074\ub85c\ub85c\uba54\ud0c4:\ubca4\uc820:\ud1a8\ub8e8\uc5d4:\uc5d0\ud2f8\ubca4\uc820:\ud06c\uc2e4\ub80c:1,1-\ub514\ud074\ub85c\ub85c\uc5d0\ud2f8\ub80c:\uc0ac\uc5fc\ud654\ud0c4\uc18c:1,2-\ub514\ube0c\ub85c\ubaa8-3-\ud074\ub85c\ub85c\ud504\ub85c\ud310:1,4-\ub2e4\uc774\uc625\uc0b0:\uc720\uae30\uc778:\uacbd\ub3c4:\uacfc\ub9dd\uac04\uc0b0\uce7c\ub968\uc18c\ube44\ub7c9:\ub0c4\uc0c8:\ub9db:\ub3d9:\uc0c9\ub3c4:\uc138\uc81c:\uc218\uc18c\uc774\uc628\ub18d\ub3c4:\uc544\uc5f0:\uc5fc\uc18c\uc774\uc628:\uc99d\ubc1c\uc794\ub958\ubb3c:\ucca0:\ub9dd\uac04:\ud0c1\ub3c4:\ud669\uc0b0\uc774\uc628:\uc54c\ub8e8\ubbf8\ub284:\ube44\uace0 
+
+
+#WG_GG_EXCEL_TITLE_ENG = geom_sa_mok_jeok:won_su_jeong_su:gu_bun:name:addr:addr2:yong_do:jeop_su:keom_sa:tong_bo:pan_jeong:germ:tdaejang:daejang:ddaejang:dd:pd:f_:as_:sel_:hg:cn:cr6:amno:no3_n:cd:bo:penol:dia:pa:fen:car:tce111:pce:tce:dimt:ben:tol:etil:xlen:diet11:cach:dech:yugi:grad:ppc:smell:tast:copp:chro:dete:ph:zn:cl:evre:fe:mang:turb:so4:alum:bi_go 
+#WG_GG_EXCEL_TITLE_KOR  = \uac80\uc0ac/\ubaa9\uc801:\uc6d0\uc218/\uc815\uc218\uc5ec\ubd80:\uae30\ud0c0(\uc7ac\uac80\uc0ac\ub4f1):\uc0c1\ud638\ub610\ub294\uba85\uce6d:\uc18c\uc7ac\uc9c0\ub610\ub294\uc8fc\uc18c:\uc704\uce58:\uc6a9\ub3c4:\uc811\uc218:\uac80\uc0ac:\uacb0\uacfc\ud1b5\ubcf4:\ud310\uc815:\uc77c\ubc18\uc138\uade0:\ucd1d\ub300\uc7a5\uade0\uad70:\ub300\uc7a5\uade0\uad70\uc218:\ubd84\uc6d0\uc131\ub300\uc7a5\uade0:\ub300\uc7a5\uade0:\ub0a9:\ubd88\uc18c:\ube44\uc18c:\uc140\ub808\ub284:\uc218\uc740:\uc2dc\uc548:6\uac00\ud06c\ub86c:\uc554\ubaa8\ub2c8\uc544\uc131\uc9c8\uc18c:\uc9c8\uc0b0\uc131\uc9c8\uc18c:\uce74\ub4dc\ubbb4:\ubcf4\ub860:\ud398\ub180:\ub2e4\uc774\uc544\uc9c0\ub17c:\ud30c\ub77c\ud2f0\uc628:\ud398\ub2c8\ud2b8\ub85c\ud2f0\uc628:\uce74\ubc14\ub9b4:1,1,1-\ud2b8\ub9ac\ud074\ub85c\ub85c\uc5d0\ud0c4:\ud14c\ud2b8\ub77c\ud074\ub85c\ub85c\uc5d0\ud2f8\ub80c:\ud2b8\ub9ac\ud074\ub85c\ub85c\uc5d0\ud2f8\ub80c:\ub514\ud074\ub85c\ub85c\uba54\ud0c4:\ubca4\uc820:\ud1a8\ub8e8\uc5d4:\uc5d0\ud2f8\ubca4\uc820:\ud06c\uc2e4\ub80c:1,1-\ub514\ud074\ub85c\ub85c\uc5d0\ud2f8\ub80c:\uc0ac\uc5fc\ud654\ud0c4\uc18c:1,2-\ub514\ube0c\ub85c\ubaa8-3-\ud074\ub85c\ub85c\ud504\ub85c\ud310:\uc720\uae30\uc778:\uacbd\ub3c4:\uacfc\ub9dd\uac04\uc0b0\uce7c\ub968\uc18c\ube44\ub7c9:\ub0c4\uc0c8:\ub9db:\ub3d9:\uc0c9\ub3c4:\uc138\uc81c:\uc218\uc18c\uc774\uc628\ub18d\ub3c4:\uc544\uc5f0:\uc5fc\uc18c\uc774\uc628:\uc99d\ubc1c\uc794\ub958\ubb3c:\ucca0:\ub9dd\uac04:\ud0c1\ub3c4:\ud669\uc0b0\uc774\uc628:\uc54c\ub8e8\ubbf8\ub284:\ube44\uace0:
+
+#\uc9c0\ud558\uc218 \uc218\uc9c8\uac80\uc0ac \uc2dc\uc2a4\ud15c \uc5d1\uc140 \ud30c\uc77c(\ucd9c\ub825)
+WG_GG_EXCEL_TMP			= D:/eclipse_project/file/excel_template/template_gw_wg_gg_tmp.xls
+
+
+SO_SS_TMP			= D:/eclipse_project/file/sossInput/sossInput.zip
+
+#\uc9c0\ud558\uc218 \uc218\uc9c8\uac80\uc0ac \uc2dc\uc2a4\ud15c \uc5d1\uc140 \ud30c\uc77c(\uc591\uc2dd)
+WG_GG_EXCEL			= D:/eclipse_project/file/excel_template/template_gw_wg_gg01.xls
+
+#\uc9c0\ud558\uc218 \uc218\uc9c8\uac80\uc0ac \uc2dc\uc2a4\ud15c \uc5d1\uc140 \uc791\uc131\ubc29\ubc95 \ud30c\uc77c
+WG_GG_METHOD			= D:/eclipse_project/file/excel_template/template_gw_wg_gg30.hwp
+
+#\uc9c0\ud558\uc218 \uc218\uc9c8\uac80\uc0ac \uc2dc\uc2a4\ud15c \uc0ac\uc6a9\uc790 \uba54\ub274\uc5bc
+WG_GG_MANUAL			= D:/eclipse_project/file/excel_template/template_gw_wg_gg03.pdf
+#\uc9c0\ud558\uc218 \uc218\uc9c8\uac80\uc0ac \uc2dc\uc2a4\ud15c \uac80\uc0c9 \uac00\ub2a5 \ub144\ub3c4
+WG_GG_GWMYR			= 2015
+
+#\uc784\uc2dc\ube44\ubc00\ubc88\ud638
+TEMP_PASSWD			= 1111
+
+#\uc0c1\ud558\ubc18\uae30\uad6c\ubd84
+MOD_H1_START			= 4
+MOD_H1_END				= 10
+
+#\uc0c1\ud558\ubc18\uae30 \uc2dc\uc791\uc77c
+GWMOD_H1_START			= 3
+GWMOD_H2_START			= 11
+
+#PageUtil
+DEFAULT_PAGE_ROW_COUNT  = 10
+DEFAULT_PAGE_ROW_COUNT  = 10
+   

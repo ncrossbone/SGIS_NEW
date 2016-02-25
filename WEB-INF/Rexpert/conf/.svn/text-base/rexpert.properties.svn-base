@@ -1,0 +1,349 @@
+# -----------------------------------------
+# define db connection(design) - start
+# do not edit !!
+# -----------------------------------------
+rex.service.0 = 9
+rex.service.1 = ORACLE
+rex.service.2 = SQLSERVER
+rex.service.3 = SQLSERVER2005
+rex.service.4 = DB2
+rex.service.5 = JDBC
+rex.service.6 = JNDI
+rex.service.7 = ODBC
+rex.service.8 = SAP
+rex.service.9 = SYBASE
+
+rex.service.ORACLE.0 = 6
+rex.service.ORACLE.1.key = Driver
+rex.service.ORACLE.1.value = oracle.jdbc.driver.OracleDriver
+rex.service.ORACLE.2.key = Connection
+rex.service.ORACLE.2.value = jdbc:oracle:thin:@124.137.28.170:1521:orcl
+rex.service.ORACLE.3.key = User
+rex.service.ORACLE.3.value = scott
+rex.service.ORACLE.4.key = Password
+rex.service.ORACLE.4.value = tiger
+rex.service.ORACLE.5.key = DefaultSchema
+rex.service.ORACLE.5.value = 
+rex.service.ORACLE.6.key = NLS
+rex.service.ORACLE.6.value = 
+
+rex.service.SQLSERVER.0 = 6
+rex.service.SQLSERVER.1.key = Driver
+rex.service.SQLSERVER.1.value = com.microsoft.jdbc.sqlserver.SQLServerDriver
+rex.service.SQLSERVER.2.key = Connection
+rex.service.SQLSERVER.2.value = jdbc:microsoft:sqlserver://124.137.28.170:1433;DatabaseName=northwind
+rex.service.SQLSERVER.3.key = User
+rex.service.SQLSERVER.3.value = sa
+rex.service.SQLSERVER.4.key = Password
+rex.service.SQLSERVER.4.value = clip815mail
+rex.service.SQLSERVER.5.key = DefaultSchema
+rex.service.SQLSERVER.5.value = 
+rex.service.SQLSERVER.6.key = NLS
+rex.service.SQLSERVER.6.value = 
+
+rex.service.SQLSERVER2005.0 = 6
+rex.service.SQLSERVER2005.1.key = Driver
+rex.service.SQLSERVER2005.1.value = com.microsoft.sqlserver.jdbc.SQLServerDriver
+rex.service.SQLSERVER2005.2.key = Connection
+rex.service.SQLSERVER2005.2.value = jdbc:sqlserver://ipaddress:1433;DatabaseName=northwind
+rex.service.SQLSERVER2005.3.key = User
+rex.service.SQLSERVER2005.3.value = 
+rex.service.SQLSERVER2005.4.key = Password
+rex.service.SQLSERVER2005.4.value = 
+rex.service.SQLSERVER2005.5.key = DefaultSchema
+rex.service.SQLSERVER2005.5.value = 
+rex.service.SQLSERVER2005.6.key = NLS
+rex.service.SQLSERVER2005.6.value = 
+
+rex.service.DB2.0 = 6
+rex.service.DB2.1.key = Driver
+rex.service.DB2.1.value = com.ibm.db2.jcc.DB2Driver
+#rex.service.DB2.1.value = COM.ibm.db2.jdbc.app.DB2Driver
+#rex.service.DB2.1.value = com.ibm.db2.jcc.DB2Driver
+rex.service.DB2.2.key = Connection
+rex.service.DB2.2.value = jdbc:db2:sample
+# jdbc:db2:sample
+# jdbc:db2://localhost:50000/sample
+rex.service.DB2.3.key = User
+rex.service.DB2.3.value = db2admin
+rex.service.DB2.4.key = Password
+rex.service.DB2.4.value = db2admin
+rex.service.DB2.5.key = DefaultSchema
+rex.service.DB2.5.value = 
+rex.service.DB2.6.key = NLS
+rex.service.DB2.6.value = 
+
+rex.service.JDBC.0 = 6
+rex.service.JDBC.1.key = Driver
+rex.service.JDBC.1.value = mycompany.jdbc.driver.myDriver
+rex.service.JDBC.2.key = Connection
+rex.service.JDBC.2.value = jdbc:mydrivertype:@myserver
+rex.service.JDBC.3.key = User
+rex.service.JDBC.3.value = my user id
+rex.service.JDBC.4.key = Password
+rex.service.JDBC.4.value = my password
+rex.service.JDBC.5.key = DefaultSchema
+rex.service.JDBC.5.value = 
+rex.service.JDBC.6.key = NLS
+rex.service.JDBC.6.value = 
+
+rex.service.JNDI.0 = 5
+rex.service.JNDI.1.key = JNDI
+rex.service.JNDI.1.value = myjndi
+rex.service.JNDI.2.key = Prefix
+rex.service.JNDI.2.value = DB2
+rex.service.JNDI.3.key = DatabaseType
+rex.service.JNDI.3.value = DB2
+rex.service.JNDI.4.key = DefaultSchema
+rex.service.JNDI.4.value = 
+rex.service.JNDI.5.key = NLS
+rex.service.JNDI.5.value = 
+
+rex.service.ODBC.0 = 6
+rex.service.ODBC.1.key = Driver
+rex.service.ODBC.1.value = sun.jdbc.odbc.JdbcOdbcDriver
+rex.service.ODBC.2.key = Connection
+rex.service.ODBC.2.value = jdbc:odbc:mysystemdsn
+rex.service.ODBC.3.key = User
+rex.service.ODBC.3.value = 
+rex.service.ODBC.4.key = Password
+rex.service.ODBC.4.value = 
+rex.service.ODBC.5.key = DefaultSchema
+rex.service.ODBC.5.value = 
+rex.service.ODBC.6.key = NLS
+rex.service.ODBC.6.value = 
+
+rex.service.SAP.0 = 8
+rex.service.SAP.1.key = Client
+rex.service.SAP.1.value = 000
+rex.service.SAP.2.key = User
+rex.service.SAP.2.value = BCUSER
+rex.service.SAP.3.key = Password
+rex.service.SAP.3.value = minisap
+rex.service.SAP.4.key = Language
+rex.service.SAP.4.value = EN
+rex.service.SAP.5.key = HostName
+rex.service.SAP.5.value = 124.137.28.186
+rex.service.SAP.6.key = SystemNumber
+rex.service.SAP.6.value = 00
+rex.service.SAP.7.key = Group
+rex.service.SAP.7.value = 
+rex.service.SAP.8.key = NLS
+rex.service.SAP.8.value = 
+
+rex.service.SYBASE.0 = 6
+rex.service.SYBASE.1.key = Driver
+rex.service.SYBASE.1.value = com.sybase.jdbc3.jdbc.SybDriver
+rex.service.SYBASE.2.key = Connection
+rex.service.SYBASE.2.value = jdbc:sybase:Tds:10.182.54.23:5000
+rex.service.SYBASE.3.key = User
+rex.service.SYBASE.3.value = userid
+rex.service.SYBASE.4.key = Password
+rex.service.SYBASE.4.value = passwd
+rex.service.SYBASE.5.key = DefaultSchema
+rex.service.SYBASE.5.value = 
+rex.service.SYBASE.6.key = NLS
+rex.service.SYBASE.6.value = 
+
+# -----------------------------------------
+# define db connection(design) - end
+# -----------------------------------------
+
+# ------------------------------------------
+# defile db connection(running) - start
+# editable
+# ------------------------------------------
+rex.userservice.default = ora1
+
+rex.userservice.0 = 1
+rex.userservice.1 = ora1
+
+rex.userservice.ora1 = ORACLE
+rex.userservice.ora1.Driver = oracle.jdbc.driver.OracleDriver
+rex.userservice.ora1.Connection = jdbc:oracle:thin:@127.0.0.1:1521:orcl
+rex.userservice.ora1.User = scott
+rex.userservice.ora1.Password = tiger
+rex.userservice.ora1.DefaultSchema = 
+rex.userservice.ora1.NLS = utf8
+
+# --- sample
+rex.userservice.dpmsDS = JNDI
+rex.userservice.dpmsDS.JNDI = ORACLE
+rex.userservice.dpmsDS.Prefix = 
+#rex.userservice.dpmsDS.Prefix = java:comp/env/
+rex.userservice.dpmsDS.DatabaseType = ORACLE
+rex.userservice.dpmsDS.DefaultSchema = 
+rex.userservice.dpmsDS.NLS = euckr
+
+# ----------------------------------------
+# define db connection (running) - end
+# ----------------------------------------
+
+# -----------------------------------
+# define data type - start
+# editable
+# -----------------------------------
+#rex.datatype.direction = server
+#rex.datatype.direction = client
+
+#rex.datatype = XML
+rex.datatype = CSV
+rex.datatype.CSV.separator.dataset = |@|
+rex.datatype.CSV.separator.column = |*|
+rex.datatype.CSV.separator.row = |#|
+# -----------------------------------
+# define data type - end
+# -----------------------------------
+
+# -----------------------------------
+# define logger - start
+# editable
+# -----------------------------------
+# Log Configuration Information
+rex.logger.driver = RexService.CRexDefaultLoggerWriter
+rex.logger.autoflush = true
+
+# log file path
+#rex.logger.dir = /path/test
+rex.logger.dir = /logs
+
+# Logging Trace Level ( SYS, ERR, WARN, INFO, DEBUG, DBWRAP )
+rex.logger.sys.trace = false
+rex.logger.err.trace = false
+rex.logger.warn.trace = false
+rex.logger.info.trace = false
+rex.logger.debug.trace = false
+# -----------------------------------
+# define logger - end
+# -----------------------------------
+
+# -----------------------------------
+# define Flush - start
+# editable
+# -----------------------------------
+rex.data.flush = True
+#rex.data.flush = False
+rex.data.flush.rowcount = 10
+# -----------------------------------
+# define Flush - end
+# -----------------------------------
+
+# -------------------------------------------------------------
+# define CharacterSet, Content-Type, encoding/decoding - start
+# editable
+# -------------------------------------------------------------
+rex.nls.default = euckr
+
+rex.nls.0 = 4
+rex.nls.1 = euckr
+rex.nls.2 = iso8859
+rex.nls.3 = utf8
+rex.nls.4 = utf16
+
+# normal setting(EUC-KR)
+rex.nls.euckr.encoding.charset = EUC-KR
+rex.nls.euckr.encoding.xml = EUC-KR
+rex.nls.euckr.contenttype.xml = text/xml;charset=EUC-KR
+rex.nls.euckr.contenttype.csv = text/html;charset=EUC-KR
+rex.nls.euckr.encoding.data.from = 
+rex.nls.euckr.encoding.data.to = 
+rex.nls.euckr.decoding.data.from = 
+rex.nls.euckr.decoding.data.to = 
+#rex.nls.euckr.decoding.EscapeToUnicode = 10
+#rex.nls.euckr.decoding.EscapeToUnicode = 16
+#rex.nls.euckr.decoding.EscapeToUnicode.field = HANJA1,HANJA2,HANJA3 
+#rex.nls.euckr.decoding.EscapeToUnicode.field = nm
+#rex.nls.euckr.setCharacterEncoding = 
+
+# oracle charset(english) (ex, any site)
+rex.nls.iso8859.encoding.xml = 
+rex.nls.iso8859.contenttype.xml = text/xml;charset=UTF-8
+rex.nls.iso8859.contenttype.csv = text/html;charset=EUC-KR
+rex.nls.iso8859.encoding.data.from = EUC-KR
+rex.nls.iso8859.encoding.data.to = ISO-8859-1
+rex.nls.iso8859.decoding.data.from = ISO-8859-1
+rex.nls.iso8859.decoding.data.to = EUC-KR
+
+# normal setting(UTF-8)
+rex.nls.utf8.encoding.charset = UTF-8
+rex.nls.utf8.encoding.xml = UTF-8
+rex.nls.utf8.contenttype.xml = text/xml;charset=UTF-8
+rex.nls.utf8.contenttype.csv = text/html;charset=UTF-8
+rex.nls.utf8.encoding.data.from = 
+rex.nls.utf8.encoding.data.to = 
+rex.nls.utf8.decoding.data.from = 
+rex.nls.utf8.decoding.data.to = 
+#rex.nls.utf8.decoding.EscapeToUnicode = 10
+#rex.nls.utf8.decoding.EscapeToUnicode = 16
+#rex.nls.utf8.decoding.EscapeToUnicode.field = HANJA1,HANJA2,HANJA3 
+#rex.nls.utf8.decoding.EscapeToUnicode.field = nm
+
+# normal setting(UTF-16)
+rex.nls.utf16.encoding.xml = UTF-16
+rex.nls.utf16.contenttype.xml = text/xml;charset=UTF-16
+rex.nls.utf16.contenttype.csv = text/html;charset=UTF-16
+rex.nls.utf16.encoding.data.from = 
+rex.nls.utf16.encoding.data.to = 
+rex.nls.utf16.decoding.data.from = 
+rex.nls.utf16.decoding.data.to = 
+
+# -----------------------------------------------------------
+# define CharacterSet, Content-Type, encoding/decoding - end
+# -----------------------------------------------------------
+
+# -----------------------------------------
+# define DB field decrypt/encrypt - start
+# editable
+# -----------------------------------------
+#rex.crypto.dbfield.encode.factory = RexService.CUserCbCrypto
+#rex.crypto.dbfield.encode.field = CompanyName,City
+
+#rex.crypto.dbfield.decode.factory = RexService.CUserCbCrypto
+#rex.crypto.dbfield.decode.field = CompanyName,City
+# -----------------------------------------
+# define DB field decrypt/encrypt - end
+# -----------------------------------------
+
+# ------------------------------------
+# define Web decrypt/encrypt - start
+# editable
+# ------------------------------------
+#rex.crypto.web.factory = RexService.CUserXecureWebCrypto
+rex.crypto.web.factory = RexService.CRexWebCrypto
+rex.crypto.web.decode = true
+#rex.crypto.web.encode = true
+#rex.crypto.web.encodeperflush = true
+#rex.crypto.web.encodeperflush.separator = |!|
+# ------------------------------------
+# define Web decrypt/encrypt - end
+# ------------------------------------
+
+#-------------------------
+# admin console password
+#-------------------------
+ManagerPassword = rexpert
+
+#----------------
+# pre/post event
+#----------------
+#rex.connection.autocommit = false
+rex.connection.Ora2.autocommit = false
+
+#-----------------
+# export runner
+#-----------------
+rex.export.runner = C:\\Program Files\\Internet Explorer\\iexplore.exe
+# IE8.0
+#rex.export.runner.option = -nomerge
+# IE 6,7
+rex.export.runner.option = 
+
+#----------------------
+# encoding blob image 
+#----------------------
+#rex.image.type = base64
+
+#---------------------------
+# data output method (oc4j)
+#---------------------------
+#rex.printwriter.type = outputstream

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sgis_intranet/!svn/ver/3/trunk/WebContent/WEB-INF/Rexpert/conf
+END
+DataConnection.properties
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/sgis_intranet/!svn/ver/3/trunk/WebContent/WEB-INF/Rexpert/conf/DataConnection.properties
+END
+rexpert.properties
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/sgis_intranet/!svn/ver/3/trunk/WebContent/WEB-INF/Rexpert/conf/rexpert.properties
+END
+DataSource.properties
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/sgis_intranet/!svn/ver/3/trunk/WebContent/WEB-INF/Rexpert/conf/DataSource.properties
+END
+RexDataServer.properties
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/sgis_intranet/!svn/ver/3/trunk/WebContent/WEB-INF/Rexpert/conf/RexDataServer.properties
+END
+Crypto.properties
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/sgis_intranet/!svn/ver/3/trunk/WebContent/WEB-INF/Rexpert/conf/Crypto.properties
+END
+License.properties
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/sgis_intranet/!svn/ver/3/trunk/WebContent/WEB-INF/Rexpert/conf/License.properties
+END
