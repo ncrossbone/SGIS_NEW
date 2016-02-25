@@ -21,8 +21,8 @@ Ext.define('Sgis.view.north.North', {
 	
 	items: [{
 		xtype: 'image',
-		width: 300,
-		padding: '10 10 10 10',
+		width: 248,
+		padding: '12 10 12 10',
 		bind: {
 			src: '{brand_image}'
 		}

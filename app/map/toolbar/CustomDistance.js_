@@ -92,26 +92,17 @@ define(["dojo/_base/declare", "esri/toolbars/draw", "esri/geometry/geometryEngin
     		}
     		
     		var polyline = new esri.geometry.Polyline(me.map.spatialReference);
-    		//console.info(polyline);
-    		//polyline.addPath([me.points[me.points.length-2], me.points[me.points.length-1]]);
+    		polyline.addPath([me.points[me.points.length-2], me.points[me.points.length-1]]);
     		var graphic1 = new esri.Graphic(polyline, me.smpLineSymbol);
     		me.layer1.add(graphic1);
 		},
 		
 		_onMouseMoveHandler: function(event) {
-						
-			var trident = navigator.userAgent.match(/Trident\/(\d.\d)/i);
-			//console.info(trident);
-				if(trident != null && trident[1] != null && trident[1] == "4.0"){
-					return;
-				}
-			
 			var me = this;
 			me.inherited(arguments);	
 			var point = me.map.toMap(new ScreenPoint(event.layerX, event.layerY));
 			var currDistances = geometryEngine.distance(me.points[me.points.length-1], point, 9001);
 			var unit = "m";
-			//console.info(me.distances);
 			for(var i=0; i<me.distances.length; i++){
 				currDistances += me.distances[i];
 			}
@@ -126,12 +117,8 @@ define(["dojo/_base/declare", "esri/toolbars/draw", "esri/geometry/geometryEngin
 			var domNode = dojo.query('.tooltip')[0];
 			domNode.style.color = "#ff0000";
 			domNode.style.width = wid+"px";
-			domNode.style['border-color'] = "#ff0000";
-			//console.info(currDistances + unit);
-			//domNode.lastChild.textContent = currDistances + unit;
-			
-			
-			
+			domNode.style['border-color'] = "#ff0000"
+			domNode.lastChild.textContent = currDistances + unit;
 	    },
 	    
 	    labelFontSize:function(str){

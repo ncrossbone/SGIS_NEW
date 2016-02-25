@@ -1,4 +1,4 @@
-﻿[{
+[{
 	"id" : "p1",
     "text": "지하수", 
     "expanded": true,
@@ -32,8 +32,8 @@
         "checked": false,
         "iconCls": "layer4",
     },{
-		"id" : "5",
-		"layerId" : "5",
+		"id" : "42",
+		"layerId" : "42",
         "text": "지하수 관정정보",
         "leaf": true,
         "checked": false,
@@ -45,6 +45,13 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer7",
+    },{
+		"id" : "9",
+		"layerId" : "9",
+        "text": "가축매몰지",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer9",
     },{
 		"id" : "11",
 		"layerId" : "11",
@@ -219,5 +226,40 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer40",
+    }]
+},{
+	"id" : "p5",
+    "text": "행정경계구역",
+    "cls": "folder",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "44",
+		"layerId" : "44",
+        "text": "시도",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "symbol_15"
+    },{
+		"id" : "45",
+		"layerId" : "45",
+        "text": "시군구",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "symbol_16"
+    },{
+		"id" : "46",
+		"layerId" : "26",
+        "text": "읍면동",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "symbol_17"
+    },{
+		"id" : "47",
+		"layerId" : "47",
+        "text": "동리",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer47"
     }]
 }]

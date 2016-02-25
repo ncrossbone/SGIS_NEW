@@ -1,4 +1,4 @@
-﻿[{
+[{
 	"id" : "p1",
     "text": "지하수", 
     "expanded": true,
@@ -40,8 +40,8 @@
         "linkNum" : "GwCeBs.do?C=GwCeBs&A=3002",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer4.png"
     },{
-		"id" : "5",
-		"layerId" : "5",
+		"id" : "42",
+		"layerId" : "42",
         "text": "지하수 관정정보",
         "leaf": true,
         "checked": false,
@@ -55,6 +55,14 @@
         "checked": false,
         "iconCls": "layer7",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer7.png"
+    },{
+		"id" : "9",
+		"layerId" : "9",
+        "text": "가축매몰지",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer9",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer9.png"
     },{
 		"id" : "11",
 		"layerId" : "11",
@@ -239,7 +247,7 @@
         "checked": false,
         "iconCls": "layer37",
         "linkNum" : "GwBeBs.do?C=GwBeBs&A=3011",
-        "iconInfo": "resources/images/layerIcon/newIcon/Layer37.png"
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer37.png"
     },{
 		"id" : "38",
 		"layerId" : "38",

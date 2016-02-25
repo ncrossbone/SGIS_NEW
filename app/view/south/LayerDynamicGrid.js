@@ -51,14 +51,18 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 	},
 	
 	getPageSize : function() {
-		var toolbar = this.down(' toolbar');
+		var toolbar = this.down('toolbar');
 		var pageCountComp = toolbar.down('#btnCountPerPage');
 		return parseInt(pageCountComp ? pageCountComp.getText() : '15');
 	},
 	
 	bindPagingToolbar : function(store) {
-		var pagingtoolbar = this.down(' pagingtoolbar');
+		var pagingtoolbar = this.down('pagingtoolbar');
 		pagingtoolbar.bindStore(store);
+		
+		//최소 페이징처리시 total count 가 1로 나오는 현상 강제 처리
+		var afterTextItem = pagingtoolbar.getComponent('afterTextItem');
+		afterTextItem.text = "of "+pagingtoolbar.getPageData().pageCount;
 	},
 	
 	refreshGrid : function(result) {
@@ -72,7 +76,7 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 	reconfigureSearchForm : function(result) {
 
 		// remove previous items
-		var toolbar = this.down(' toolbar');
+		var toolbar = this.down('toolbar');
 		var isFirst = toolbar.items.length > 0 ? false : true;
 		var filters = result.filter;
 		

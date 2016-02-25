@@ -42,13 +42,11 @@ Ext.define('Sgis.map.CoreMap', {
         var customDraw = "";
         var customPrintTask = "";
         var customDistance = "";
-
-  				customDraw = "/GIS/app/map/toolbar/CustomDraw.js";
-        	customPrintTask = "/GIS/app/map/task/CustomPrintTask.js";
-        	customDistance = "/GIS/app/map/toolbar/CustomDistance.js";
-  
         
-        
+        	customDraw = "Sgis/map/toolbar/CustomDraw";
+        	customPrintTask = "Sgis/map/task/CustomPrintTask";
+        	customDistance = "Sgis/map/toolbar/CustomDistance";
+        	
         me.layerInfo = {'layer1Url':Sgis.app.arcServiceUrl2 + '/rest/services/Layer1_new/MapServer',
         				'layer2Url':Sgis.app.arcServiceUrl  + '/rest/services/Layer2_new/MapServer'};
         
@@ -95,7 +93,7 @@ Ext.define('Sgis.map.CoreMap', {
 			        	me.baseMapInit();
 			        	me.map.setLevel(1+6);
 			        	me.geometryService = new esri.tasks.GeometryService(Sgis.app.arcServiceUrl + "/rest/services/Utilities/Geometry/GeometryServer");
-			        	
+			
 			        	Ext.Loader.loadScript({url:'/GIS/app/map/toolbar/CustomDraw.js', onLoad:function(){
 			        		me.dynamicLayerAdmin = Ext.create('Sgis.map.DynamicLayerAdmin', me.map);
 			        		me.searchLayerAdmin = Ext.create('Sgis.map.SearchLayerAdmin', me.map, me.geometryService);
@@ -105,7 +103,7 @@ Ext.define('Sgis.map.CoreMap', {
 				    			me.measure(event);
 				    		});
 			        	}, onError:function(){}});
-			        	
+			
 			        	Ext.Loader.loadScript({url:'/GIS/app/map/task/CustomPrintTask.js', onLoad:function(){
 			        		me.printTask = new Sgis.map.task.CustomPrintTask(me.map, "_mapDiv_", Sgis.app.printUrl, Sgis.app.arcServiceUrl);
 			        		dojo.connect(me.printTask, "onComplete", function(event){	
@@ -199,8 +197,7 @@ Ext.define('Sgis.map.CoreMap', {
 		    getTileUrl: function(level, row, col) {
 		    	var newrow = row + (Math.pow(2, level) * 47);
       			var newcol = col + (Math.pow(2, level) * 107);
-		    	//return esri.config.defaults.io.proxyUrl + "?http://xdworld.vworld.kr:8080/2d/Base/201301/" + level + "/" + col + "/" + row + ".png";
-		    	return "http://112.218.1.243:20080/2d/Base/201411/" + level + "/" + level + "/" + col + "/" + row + ".png";
+		    	return esri.config.defaults.io.proxyUrl + "?http://xdworld.vworld.kr:8080/2d/Base/201301/" + level + "/" + col + "/" + row + ".png";
 		    }	
 		  });
 		var baseMap = new CustomMapsLayer();
@@ -267,7 +264,7 @@ Ext.define('Sgis.map.CoreMap', {
         	}
 		});
 		
-		var symbol = new esri.symbol.PictureMarkerSymbol('./GIS/resources/images/btn_close.png' , 16, 16);
+		var symbol = new esri.symbol.PictureMarkerSymbol('resources/images/btn_close.png' , 16, 16);
         var point = null;
         if(event.type=='polygon'){
         	var finalRing = event.rings[0][event.rings[0].length-1];

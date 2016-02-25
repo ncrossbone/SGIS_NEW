@@ -45,7 +45,6 @@
 			var memType = 7;
 			window.memType = memType;
 	    //});
-	    
 		
 	</script>
     <script type="text/javascript" src="http://js.arcgis.com/3.14/"></script>

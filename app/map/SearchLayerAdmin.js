@@ -83,6 +83,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		
 		me.toolbar = new Sgis.map.toolbar.CustomDraw(me.map, {showTooltips:false}, true, me.sourceGraphicLayer);
 		dojo.connect(me.toolbar, "onDrawEnd", function(event){
+			console.info(me.toolba);
 			me.map.setMapCursor("default");
 			me.addToMap(event);
 		});
@@ -174,9 +175,6 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
     	}
     	Ext.each(selectInfo, function(selectObj, index) {
     		
-    		
-    		
-    		
     		if(selectObj.data.layerId && !isNaN(selectObj.data.layerId)){
     			me.layers.push(selectObj);
     		}
@@ -232,7 +230,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
     
     getLayerDisplayFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/46");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/48");
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -257,7 +255,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerBranchFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/47");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/49");
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -283,7 +281,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerDetailFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/48");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/50");
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -309,7 +307,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerChartFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/49");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/51");
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -420,30 +418,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				}
 			}
 		}
-    		
-    		/*
-		if (me.geometry.rings.length != 1){
-			
-			for(var i = 0 ; i < me.layers.length ; i++){
-				
-				if(me.layers[i].id == 5){
-	    			var cmbArea2 = Ext.getCmp("cmbArea2");
-	    			if(cmbArea2.value == undefined){
-	    				var view = Ext.getCmp("layerTree2");
-	    				console.info(view.store.byIdMap[5].data.checked);
-	    				alert("데이터(지하수 관정정보)수가 많아 시군구 까지 선택 후 데이터를 확인할 수있습니다.");
-	    				
-	    				console.info(view);
-	    				
-	    				view.store.byIdMap[5].data.checked = false;
-	    				console.info(view.store.byIdMap[5].data.checked);
-	    				return;
-	    			}
-	    		}
-				
-			}
-		}
-    	*/
+    	
     	
     	
 		SGIS.loading.execute();
@@ -478,22 +453,6 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				resultData.filterCallback = me.spSearch;
 				resultData.filterCallbackScope = me;
 				
-				
-				//fiield에 filter넣는 구문 pdj
-				/*for(var i=0; i<resultData.filter.length; i++){
-					var filter = resultData.filter[i];
-					var notMatch = true;
-					for(var k=0; k<resultData.field.length; k++){
-						for(var key in filter){
-							if(key == resultData.field[k].fid){
-								notMatch = false;
-							}
-						}
-					}
-					if(notMatch){
-						resultData.field.push({fid:key, fnm:key})
-					}
-				}*/
 				
 				resultData.layerId = layer.layerId;
 				resultData.text = layer.text;
