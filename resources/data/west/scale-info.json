@@ -1,0 +1,43 @@
+[{
+	"id" : "101",
+	"category" : "지하수",
+	"measure_network" : "오염우려지역",
+	"special_area" : "1:1,100,000",
+	"etc_area" : "1:1,100,000"
+},{
+	"id" : "102",
+	"category" : "지하수",
+	"measure_network" : "일반지역",
+	"special_area" : "1:200,000",
+	"etc_area" : "1:1,000,000"
+},{
+	"id" : "103",
+	"category" : "지하수",
+	"measure_network" : "배경수질",
+	"special_area" : "전국축척",
+	"etc_area" : "전국축척"
+},{
+	"id" : "104",
+	"category" : "지하수",
+	"measure_network" : "오염원감시",
+	"special_area" : "전국축척",
+	"etc_area" : "전국축척"
+},{
+	"id" : "201",
+	"category" : "토양",
+	"measure_network" : "토양측정망",
+	"special_area" : "1:300,000",
+	"etc_area" : "1:300,000"
+},{
+	"id" : "202",
+	"category" : "토양",
+	"measure_network" : "골프장",
+	"special_area" : "전국축척",
+	"etc_area" : "전국축척"
+},{
+	"id" : "203",
+	"category" : "토양",
+	"measure_network" : "토양실태조사",
+	"special_area" : "1:300,000",
+	"etc_area" : "1:300,000"
+}]
