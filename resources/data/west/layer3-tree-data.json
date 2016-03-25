@@ -15,10 +15,20 @@
 		"id" : "2",
 		"layerId" : "2",
         "text": "지하수등수위선",
-        "leaf": true,
+        "leaf": false,
         "checked": false,
-         "linkNum" : "1002",
-         "iconCls": "symbol_2"
+        "linkNum" : "1002",
+        "iconCls": "symbol_2",
+        "expanded" : false,
+        "children": [{
+        	"text" : "1",
+        	"leaf": true,
+        	"iconCls": "ju1_2_1"
+        },{
+        	"text" : "2",
+        	"leaf": true,
+        	"iconCls": "ju1_2_2"
+        }]
     },{
 		"id" : "3",
 		"layerId" : "3",
@@ -38,18 +48,106 @@
 		"id" : "5",
 		"layerId" : "5",
         "text": "잠재오염원",
-        "leaf": true,
+        "leaf": false,
         "checked": false,
         "linkNum" : "2001",
-        "iconCls": "symbol_5"
+        "iconCls": "symbol_5",
+        "expanded" : false,
+        "children": [{
+        	"text" : "공동묘지",
+        	"leaf": true,
+        	"iconCls": "ju1_5_1"
+        },{
+        	"text" : "공업단지",
+        	"leaf": true,
+        	"iconCls": "ju1_5_2"
+        },{
+        	"text" : "광산",
+        	"leaf": true,
+        	"iconCls": "ju1_5_3"
+        },{
+        	"text" : "농업단지",
+        	"leaf": true,
+        	"iconCls": "ju1_5_4"
+        },{
+        	"text" : "일반매립지",
+        	"leaf": true,
+        	"iconCls": "ju1_5_5"
+        },{
+        	"text" : "생활하수; 생활하수 오염부하량",
+        	"leaf": true,
+        	"iconCls": "ju1_5_6"
+        },{
+        	"text" : "세차장",
+        	"leaf": true,
+        	"iconCls": "ju1_5_7"
+        },{
+        	"text" : "소각장",
+        	"leaf": true,
+        	"iconCls": "ju1_5_8"
+        },{
+        	"text" : "유루저장소",
+        	"leaf": true,
+        	"iconCls": "ju1_5_9"
+        },{
+        	"text" : "유해화학물질",
+        	"leaf": true,
+        	"iconCls": "ju1_5_10"
+        },{
+        	"text" : "특정수질유해물질",
+        	"leaf": true,
+        	"iconCls": "ju1_5_11"
+        },{
+        	"text" : "토양오염물질",
+        	"leaf": true,
+        	"iconCls": "ju1_5_12"
+        },{
+        	"text" : "주유소; 주유소및유류저장소",
+        	"leaf": true,
+        	"iconCls": "ju1_5_13"
+        },{
+        	"text" : "축산단지",
+        	"leaf": true,
+        	"iconCls": "ju1_5_14"
+        },{
+        	"text" : "특정매립지",
+        	"leaf": true,
+        	"iconCls": "ju1_5_15"
+        }]
     },{
 		"id" : "6",
 		"layerId" : "6",
         "text": "오염취약성",
-        "leaf": true,
+        "leaf": false,
         "checked": false,
         "linkNum" : "2002",
-        "iconCls": "symbol_6"
+        "iconCls": "symbol_6",
+        "expanded" : false,
+        "children": [{
+        	"text" : "취약성도 대단히 높음(A)",
+        	"leaf": true,
+        	"iconCls": "ju1_6_1"
+        },{
+        	"text" : "취약성도 높음(B)",
+        	"leaf": true,
+        	"iconCls": "ju1_6_2"
+        },{
+        	"text" : "취약성도 중간(C)",
+        	"leaf": true,
+        	"iconCls": "ju1_6_3"
+        },{
+        	"text" : "취약성도 낮음(D)",
+        	"leaf": true,
+        	"iconCls": "ju1_6_4"
+        },{
+        	"text" : "취약성도 대단히 낮음(E)",
+        	"leaf": true,
+        	"iconCls": "ju1_6_5"
+        },{
+        	"text" : "기타사항(F)",
+        	"leaf": true,
+        	"iconCls": "ju1_6_6"
+        }]
     }]
 },{
 	"id" : "b3",
@@ -61,26 +159,100 @@
 		"id" : "8",
 		"layerId" : "8",
         "text": "배수등급",
-        "leaf": true,
+        "leaf": false,
         "checked": false,
         "linkNum" : "3001",
-        "iconCls": "symbol_8"
+        "iconCls": "symbol_8",
+        "expanded" : false,
+        "children": [{
+        	"text" : "매우양호",
+        	"leaf": true,
+        	"iconCls": "ju1_8_1"
+        },{
+        	"text" : "양호",
+        	"leaf": true,
+        	"iconCls": "ju1_8_2"
+        },{
+        	"text" : "약간양호",
+        	"leaf": true,
+        	"iconCls": "ju1_8_3"
+        },{
+        	"text" : "약간불량",
+        	"leaf": true,
+        	"iconCls": "ju1_8_4"
+        },{
+        	"text" : "불량",
+        	"leaf": true,
+        	"iconCls": "ju1_8_5"
+        },{
+        	"text" : "매우불량",
+        	"leaf": true,
+        	"iconCls": "ju1_8_6"
+        }]
     },{
 		"id" : "9",
 		"layerId" : "9",
         "text": "심토의자갈함량",
-        "leaf": true,
+        "leaf": false,
         "checked": false,
         "linkNum" : "3002",
-        "iconCls": "symbol_9"
+        "iconCls": "symbol_9",
+        "expanded" : false,
+        "children": [{
+        	"text" : "<10",
+        	"leaf": true,
+        	"iconCls": "ju1_9_1"
+        },{
+        	"text" : "10-35",
+        	"leaf": true,
+        	"iconCls": "ju1_9_2"
+        },{
+        	"text" : ">35",
+        	"leaf": true,
+        	"iconCls": "ju1_9_3"
+        }]
     },{
 		"id" : "10",
 		"layerId" : "10",
         "text": "심토의토성",
-        "leaf": true,
+        "leaf": false,
         "checked": false,
         "linkNum" : "3003",
-        "iconCls": "symbol_10"
+        "iconCls": "symbol_10",
+        "expanded" : false,
+        "children": [{
+        	"text" : "사력질",
+        	"leaf": true,
+        	"iconCls": "ju1_10_1"
+        },{
+        	"text" : "사양질",
+        	"leaf": true,
+        	"iconCls": "ju1_10_2"
+        },{
+        	"text" : "미사사양질",
+        	"leaf": true,
+        	"iconCls": "ju1_10_3"
+        },{
+        	"text" : "사질",
+        	"leaf": true,
+        	"iconCls": "ju1_10_4"
+        },{
+        	"text" : "미사식양질",
+        	"leaf": true,
+        	"iconCls": "ju1_10_5"
+        },{
+        	"text" : "식양질",
+        	"leaf": true,
+        	"iconCls": "ju1_10_6"
+        },{
+        	"text" : "식질",
+        	"leaf": true,
+        	"iconCls": "ju1_10_7"
+        },{
+        	"text" : "역질",
+        	"leaf": true,
+        	"iconCls": "ju1_10_8"
+        }]
     },{
 		"id" : "11",
 		"layerId" : "11",

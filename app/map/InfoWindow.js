@@ -28,6 +28,8 @@ Ext.define('Sgis.map.InfoWindow', {
             }
         }
     },
+    
+    
     items: [{
     	id:'InfoWindowField1',
     	xtype: 'displayfield',
@@ -68,9 +70,10 @@ Ext.define('Sgis.map.InfoWindow', {
         fieldStyle:'padding-left:4px',
         hidden:true
     },{
-    	
+    		id: 'InfoWindowFieldButton',
+    		hidden:false,
 			xtype: 'toolbar',
-			style: 'margin-bottom: -1px; border-bottom: 0px; border-left: 0px; border-right: 0px', 
+			style: 'margin-bottom: -1px; border-bottom: 0px; border-left: 0px; border-right: 0px',
 			dock: 'bottom',
 			items: [
 				{ xtype: 'tbfill' },

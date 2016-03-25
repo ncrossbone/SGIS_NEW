@@ -249,7 +249,7 @@
         "iconCls": "symbol_16"
     },{
 		"id" : "46",
-		"layerId" : "26",
+		"layerId" : "46",
         "text": "읍면동",
         "leaf": true,
         "checked": false,
@@ -260,6 +260,7 @@
         "text": "동리",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer47"
+        "iconCls": "layer47",
+        "iconCls": "symbol_18"
     }]
 }]

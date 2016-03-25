@@ -199,8 +199,8 @@ Ext.define('Sgis.map.CoreMap', {
 		    getTileUrl: function(level, row, col) {
 		    	var newrow = row + (Math.pow(2, level) * 47);
       			var newcol = col + (Math.pow(2, level) * 107);
-		    	//return esri.config.defaults.io.proxyUrl + "?http://xdworld.vworld.kr:8080/2d/Base/201301/" + level + "/" + col + "/" + row + ".png";
-		    	return "http://112.218.1.243:20080/2d/Base/201411/" + level + "/" + level + "/" + col + "/" + row + ".png";
+		    	return esri.config.defaults.io.proxyUrl + "?http://xdworld.vworld.kr:8080/2d/Base/201301/" + level + "/" + col + "/" + row + ".png";
+		    	//return "http://112.218.1.243:20080/2d/Base/201411/" + level + "/" + level + "/" + col + "/" + row + ".png";
 		    }	
 		  });
 		var baseMap = new CustomMapsLayer();
@@ -267,7 +267,7 @@ Ext.define('Sgis.map.CoreMap', {
         	}
 		});
 		
-		var symbol = new esri.symbol.PictureMarkerSymbol('./GIS/resources/images/btn_close.png' , 16, 16);
+		var symbol = new esri.symbol.PictureMarkerSymbol('/GIS/resources/images/btn_close.png' , 16, 16);
         var point = null;
         if(event.type=='polygon'){
         	var finalRing = event.rings[0][event.rings[0].length-1];

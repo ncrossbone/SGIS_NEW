@@ -10,7 +10,6 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer1",
-        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3003",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer1.png"
     },{
 		"id" : "2",
@@ -19,7 +18,6 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer2",
-        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3004",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer2.png"
     },{
 		"id" : "3",
@@ -28,7 +26,6 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer3",
-        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3001",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer3.png"
     },{
 		"id" : "4",
@@ -37,7 +34,6 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer4",
-        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3002",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer4.png"
     },{
 		"id" : "42",
@@ -70,7 +66,6 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer11",
-        "linkNum" : "GwCeBs.do?C=GwCeBs&A=1004",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer11.png"
     }]
 },{
@@ -86,7 +81,6 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer13",
-        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3006",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer13.png"
     },{
 		"id" : "14",
@@ -95,7 +89,6 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer14",
-        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3007",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer14.png"
     },{
 		"id" : "15",
@@ -104,7 +97,6 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer15",
-        "linkNum" : "GwCeBs.do?C=GwCeBs&A=3008",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer15.png"
     }]
 },{
@@ -184,6 +176,7 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer27",
+	    "linkNum" : "GwBeBs.do?C=GwBeBs&A=3001",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer27.png"
     },{
 		"id" : "30",

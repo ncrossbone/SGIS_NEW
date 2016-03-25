@@ -4,7 +4,7 @@ Ext.define('Sgis.store.Area3Store', {
 
 	fields: ['id', 'name'],
 
-	autoLoad: true,
+	autoLoad: false,
 
 	remoteSort: true,
 	
@@ -12,7 +12,7 @@ Ext.define('Sgis.store.Area3Store', {
 		beforeload: function(store) {
 			Ext.defer(function() {
 				//var queryTask = new esri.tasks.QueryTask("http://cetech.iptime.org:6080/arcgis/rest/services/Layer2/MapServer/24"); //법정동
-				var queryTask = new esri.tasks.QueryTask("http://112.218.1.243:20002/arcgis/rest/services/Layer2_new/MapServer/17"); //법정동
+				var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2_new/MapServer/17"); //법정동
 				var query = new esri.tasks.Query();
 				query.returnGeometry = false;
 				query.where = '1=1';

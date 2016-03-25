@@ -52,29 +52,33 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		me.map.addLayer(me.targetGraphicLayer);
 		dojo.connect(me.targetGraphicLayer, "onClick", function(event){
 			
-			
-			var attributes = event.graphic.attributes;
-			var layerId = attributes._layerId_;
-			
-			var storeRecord = Ext.getCmp("layerTree2").store.findRecord('id', layerId);
-			//url이 없을시 return;
-			if(storeRecord.data.linkNum == undefined){
+			//내부망 환경일시 클릭 event적용
+			if(location.href.substr(7,3) == "10."){
+				var attributes = event.graphic.attributes;
+				var layerId = attributes._layerId_;
+				
+				var storeRecord = Ext.getCmp("layerTree2").store.findRecord('id', layerId);
+				//url이 없을시 return;
+				/*if(storeRecord.data.linkNum == undefined){
+					return;
+				}*/
+				
+				SGIS.popup('Sgis.map.InfoWindow');
+				Ext.getCmp('InfoWindowField1').setValue(attributes.PT_NM);
+				Ext.getCmp('InfoWindowField2').setValue(attributes.ADDR);
+				Ext.getCmp('InfoWindowField3').setValue(attributes.CODE);
+				Ext.getCmp('InfoWindowField4').setValue(storeRecord.data.linkNum);
+				
+				//lineNum가 없을시 이동버튼 hidden
+				if(Ext.getCmp('InfoWindowField4').value == undefined){
+					Ext.getCmp('InfoWindowFieldButton').setHidden(true);
+				}
+				Ext.getCmp('InfoWindowIns').setTitle(attributes._layerName_);
+			}else{
 				return;
 			}
 			
-			SGIS.popup('Sgis.map.InfoWindow');
-			Ext.getCmp('InfoWindowField1').setValue(attributes.PT_NM);
-			Ext.getCmp('InfoWindowField2').setValue(attributes.ADDR);
-			Ext.getCmp('InfoWindowField3').setValue(attributes.CODE);
-			Ext.getCmp('InfoWindowField4').setValue(storeRecord.data.linkNum);
-			Ext.getCmp('InfoWindowIns').setTitle(attributes._layerName_);
-			
-			
-			/*var properties = [];
-			for(var mem in attributes){
-				properties.push({id:mem, name:mem, value:attributes[mem]});
-			}
-			Sgis.getApplication().fireEvent('spotChanged', properties);*/
+
 		});
 		
 		me.highlightGraphicLayer = new esri.layers.GraphicsLayer();
@@ -83,7 +87,6 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		
 		me.toolbar = new Sgis.map.toolbar.CustomDraw(me.map, {showTooltips:false}, true, me.sourceGraphicLayer);
 		dojo.connect(me.toolbar, "onDrawEnd", function(event){
-			console.info(me.toolba);
 			me.map.setMapCursor("default");
 			me.addToMap(event);
 		});

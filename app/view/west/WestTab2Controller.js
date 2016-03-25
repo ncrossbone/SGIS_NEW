@@ -152,8 +152,13 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 		var children = node.childNodes;
 		
 		Ext.each(children, function(child, index) {
-			child.set('checked', checked);
-			me.searchLayerData(child, checked);
+			
+			
+			if(child.childNodes.length > 0){
+				for(var cNods = 0 ; cNods < child.childNodes.length ; cNods++ ){
+						child.childNodes[cNods].set('checked', checked);
+				}	
+			}
 			
 			if(index == children.length - 1) {
 				var view = Ext.getCmp("layerTree2");
@@ -190,17 +195,22 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 						//test.set('checked', true);
 							var layerAuth = Sgis.app.memType;
 							if(layerAuth==6 || layerAuth==7){
-								layerArr = [1,2,3,4,5,6,7,9,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40]
-							}else if(layerAuth==20){
-								layerArr = [18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40]
+								layerArr = [1,2,3,4,42,6,7,9,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40]
+							}else if(layerAuth=="20"){
+								layerArr = [18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39]
 							}else if(layerAuth==2 || layerAuth==5 || layerAuth==31 || layerAuth==40){
-								layerArr = [1,2,3,4,5,6,8,11,13,14,15]
+								layerArr = [1,2,3,4,42,6,8,9,11,13,14,15]
 							}else if(layerAuth==13){
-								layerArr = [1,2,3,4,5,11,13,14,15]
+								layerArr = [1,2,3,4,42,11,13,14,15]
 							}else if(layerAuth==3 || layerAuth==8 || layerAuth==32){
-								layerArr = [1,2,3,4,5,6,8,11,13,14,15,20]
+								layerArr = [1,2,3,4,42,6,8,9,11,13,14,15,20]
 							}else{
-								layerArr = []
+								if(location.href.substr(7,3) == "10."){
+									layerArr = []
+								}else{
+									layerArr = [1,2,3,4,11,13,14,15]
+								}
+								
 							}
 							for(var i=0; i<layerArr.length; i++){
 								var record = store.findRecord('id', layerArr[i]);
@@ -209,7 +219,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 								}
 							}
 							
-							for(var i=1; i<41; i++){
+							for(var i=1; i<43; i++){
 								var record = store.findRecord('id', i);
 								if(record && !record.get('extSel')){
 									record.drop();

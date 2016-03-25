@@ -4,15 +4,14 @@ Ext.define('Sgis.store.Area2Store', {
 
 	fields: ['id', 'name'],
 
-	autoLoad: true,
+	autoLoad: false,
 
 	remoteSort: true,
 	
 	listeners: {
 		beforeload: function(store) {
 			Ext.defer(function() {
-				//var queryTask = new esri.tasks.QueryTask("http://cetech.iptime.org:6080/arcgis/rest/services/Layer2/MapServer/23"); //시군구
-				var queryTask = new esri.tasks.QueryTask("http://112.218.1.243:20002/arcgis/rest/services/Layer2_new/MapServer/16"); //시군구
+				var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2_new/MapServer/16"); //시군구
 				var query = new esri.tasks.Query();
 				query.returnGeometry = false;
 				query.where = "1=1";

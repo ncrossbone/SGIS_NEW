@@ -104,12 +104,13 @@ Ext.define('Cmm.mixin.Menu', function() {
 		return current;
 	}
 	
+	//검색완료후 검색결과창 띄우기
 	function showSearchGrid(layerId, title) {
 		var current = findSearchGrid(layerId, title);
-//		if(current) {
-//			var south = Ext.getCmp('south');
-//			south.expand();
-//		}
+		if(current) {
+			var south = Ext.getCmp('south');
+			south.expand();
+		}
 
 		return current;
 	}
