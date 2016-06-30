@@ -262,19 +262,4 @@
         "linkNum" : "3004",
         "iconCls": "symbol_11"
     }]
-    },{
-	"id" : "b4",
-    "text": "배경도", 
-    "cls": "folder",
-    "expanded": true,
-    "checked": false,
-    "children": [{
-		"id" : "13",
-		"layerId" : "13",
-        "text": "행정경계도",
-        "leaf": true,
-        "checked": false,
-        "linkNum" : "3004",
-        "iconCls": "symbol_13"
-    }]
 }]

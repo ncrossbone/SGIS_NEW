@@ -35,8 +35,10 @@ Ext.define('Sgis.Application', {
 	excelDownUrl:'./sgis-war/WebContent/excelDownload.jsp',
 	//arcServiceUrl:'http://211.114.21.49/arcgis',
 	//arcServiceUrl2:'http://211.114.21.49/arcgis',
-	arcServiceUrl:'http://112.218.1.243:20002/arcgis',
-	arcServiceUrl2:'http://112.218.1.243:20002/arcgis',
+	//arcServiceUrl:'http://112.218.1.243:20002/arcgis',
+	//arcServiceUrl2:'http://112.218.1.243:20002/arcgis',
+	arcServiceUrl:'http://112.217.167.123:20002/arcgis',
+	arcServiceUrl2:'http://112.217.167.123:20002/arcgis',
 	
 
 	stores: [

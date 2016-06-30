@@ -90,10 +90,31 @@
 	"created_year" : "2013",
 	"update_cycle" : "비정기"
 },{
-	"id" : "801",
-	"category" : "배경도",
-	"name" : "행정경계도",
-	"source" : "전국통합수치지도관리시스템",
-	"created_year" : "2013",
-	"update_cycle" : "비정기"
+	"id" : "901",
+	"category" : "행정경계구역",
+	"name" : "시도",
+	"source" : "국토지리정보원",
+	"created_year" : "",
+	"update_cycle" : "매년"
+},{
+	"id" : "902",
+	"category" : "행정경계구역",
+	"name" : "시군구",
+	"source" : "국토지리정보원",
+	"created_year" : "",
+	"update_cycle" : "매년"
+},{
+	"id" : "903",
+	"category" : "행정경계구역",
+	"name" : "읍변동",
+	"source" : "국토지리정보원",
+	"created_year" : "",
+	"update_cycle" : "매년"
+},{
+	"id" : "904",
+	"category" : "행정경계구역",
+	"name" : "동리",
+	"source" : "국토지리정보원",
+	"created_year" : "",
+	"update_cycle" : "매년"
 }]
