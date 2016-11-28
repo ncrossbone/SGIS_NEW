@@ -184,3 +184,33 @@
 .popLoading p.dataStop {font-size:14px; color:#9c9a9c; font-weight:bold;}
 .popLoading p.stopBtn {padding-top:8px;}
 .popLoading a.btn {position:relative; display:inline-block; height:26px; font-size:12px; line-height:12px; border:1px solid #bbc1c7; padding:6px 10px 0 10px; color:#333; background:#fff; text-align:center; cursor:pointer; vertical-align:middle; letter-spacing:-1px;}
+
+.zoomPart div{
+	position: absolute;
+	width: 6px;
+	height: 1px;
+	background-color: darkgrey;
+	left: 37px;
+}
+
+.zoomPartClick div{
+	position: absolute;
+	width: 16px;
+	height: 10px;
+	left: 32px;
+}
+
+.zoomText {
+	margin: 20px 0px 0px -30px;
+	background-size: 515px 26px;
+	width: 30px;
+	height: 126px;
+}
+
+.zoomText div {
+	position: absolute;
+	width: 29px;
+	left: 0px;
+	height: 15px;
+	margin: -6px 0px 0px;
+}
