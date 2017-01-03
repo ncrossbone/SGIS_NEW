@@ -7,7 +7,50 @@ Ext.define('Sgis.map.CoreMap', {
 	],
 	
 	//html: "<div id='_mapDiv_' style='height:100%; width:100%;background-color: #ffffff;'></div>",
-	html: "<div id='_mapDiv_' style='height:100%; width:100%;background-color: #94b7d4;'></div>",
+	html: "<div id='_mapDiv_' style='position:relative; height:100%; width:100%;background-color: #94b7d4;'></div>" +
+		  "<div style='position:absolute; top:5%; left:93%; width:60px; height:200px;'>" +
+		  "<div class='zoomText'>" +
+		  	"<div style='top:75px; background: url(./resources/images/zoom.png) -216px 0px;'></div>" +
+		  	"<div style='top:95px; background: url(./resources/images/zoom.png) -245px 0px;'></div>" +
+		  	"<div style='top:115px; background: url(./resources/images/zoom.png) -274px 0px;'></div>" +
+		  	"<div style='top:135px; background: url(./resources/images/zoom.png) -303px 0px;'></div>" +
+		  "</div>" +
+		  "<div class='plus' style='position:absolute; top:0px; left:30px; width: 20px; height: 20px; background: url(./resources/images/zoom.png) -80px 0px no-repeat;'></div>" +
+		  "<div class='zoomBar' style='top:20px; left:30px; border: solid 1px; margin-left:1px; padding-top:1px; position: absolute; width: 18px; height: 121px; background: url(./resources/images/zoom.png) -140px 0px repeat-y; transition: height 0.1s;'></div>" +
+		  "<div class='zoomBar2' style='top:141px; left:30px; border: solid 1px; margin-left:1px; padding-top:1px; position: absolute; width: 18px; height: 11px; background: url(./resources/images/zoom.png) -122px 0px repeat-y; transition: height 0.1s;'></div>" +
+		  "<div class='zoomPart'>" +
+		  	"<div style='top: 25px;'></div>" +
+		  	"<div style='top: 35px;'></div>" +
+		  	"<div style='top: 45px;'></div>" +
+		  	"<div style='top: 55px;'></div>" +
+		  	"<div style='top: 65px;'></div>" +
+		  	"<div style='top: 75px;'></div>" +
+		  	"<div style='top: 85px;'></div>" +
+		  	"<div style='top: 95px;'></div>" +
+		  	"<div style='top: 105px;'></div>" +
+		  	"<div style='top: 115px;'></div>" +
+		  	"<div style='top: 125px;'></div>" +
+		  	"<div style='top: 135px;'></div>" +
+		  	"<div style='top: 145px;'></div>" +
+		  "</div>" +
+		  "<div class='zoomPartClick'>" +
+		  	"<div class='zoomPartClick_1' style='top: 21px;'></div>" +
+		  	"<div class='zoomPartClick_2' style='top: 31px;'></div>" +
+		  	"<div class='zoomPartClick_3' style='top: 41px;'></div>" +
+		  	"<div class='zoomPartClick_4' style='top: 51px;'></div>" +
+		  	"<div class='zoomPartClick_5' style='top: 61px;'></div>" +
+		  	"<div class='zoomPartClick_6'style='top: 71px;'></div>" +
+		  	"<div class='zoomPartClick_7' style='top: 81px;'></div>" +
+		  	"<div class='zoomPartClick_8' style='top: 91px;'></div>" +
+		  	"<div class='zoomPartClick_9' style='top: 101px;'></div>" +
+		  	"<div class='zoomPartClick_10' style='top: 111px;'></div>" +
+		  	"<div class='zoomPartClick_11' style='top: 121px;'></div>" +
+		  	"<div class='zoomPartClick_12' style='top: 131px;'></div>" +
+		  	"<div class='zoomPartClick_13' style='top: 141px;'></div>" +
+		  "</div>" +
+		  "<div class='zoomPointer' style='overflow: hidden; position: absolute; margin: -5px 0px 0px; width: 18px; height: 11px; background: url(./resources/images/zoom.png) -157px 0px; transition: top 0.1s; left: 31px; top: 135px;'></div>" +
+		  "<div class='minus' style='top:141px; left:30px; position: absolute; width: 20px; height: 20px; background: url(./resources/images/zoom.png) -100px 0px no-repeat;'></div>" +
+		  "</div>",
 	
 	map:null,
 	dynamicLayerAdmin:null,
@@ -89,13 +132,15 @@ Ext.define('Sgis.map.CoreMap', {
 			        		isDoubleClickZoom:false,
 			    	     	isPan:true,
 			    	 		logo:false,
-			    	 		slider: true,
+			    	 		//slider: true,
+			    	 		slider: false,
 			    	 		autoResize: true
+			    	 		
 			        	});
+
 			        	me.baseMapInit();
 			        	me.map.setLevel(1+6);
 			        	me.geometryService = new esri.tasks.GeometryService(Sgis.app.arcServiceUrl + "/rest/services/Utilities/Geometry/GeometryServer");
-			        	
 			        	Ext.Loader.loadScript({url:'/GIS/app/map/toolbar/CustomDraw.js', onLoad:function(){
 			        		me.dynamicLayerAdmin = Ext.create('Sgis.map.DynamicLayerAdmin', me.map);
 			        		me.searchLayerAdmin = Ext.create('Sgis.map.SearchLayerAdmin', me.map, me.geometryService);
@@ -125,20 +170,247 @@ Ext.define('Sgis.map.CoreMap', {
         });
     },
     
+    _zoomPointerTop:0,
+    _zoomBar:0,
+    _zoomBar2:0,
+    _maxTop : 0,
+    _minTop : 0,
+    _plusValue : 10,
+    _minusValue : 0,
+    preValue: 0,
+    
     mapEventDefine:function(){
     	var me = this;
+
+    	me._zoomPointerTop = parseInt($(".zoomPointer").css("top"));
+    	me._maxTop = me._zoomPointerTop;
+    	me._minTop = me._maxTop - 110;
+
+    	me._zoomBar = parseInt($(".zoomBar").height());
+    	me._zoomBar2 = parseInt($(".zoomBar2").height());
+
+    	$(".minus").click(function(){
+    		var topPx = $(".zoomPointer").css("top");
+    		var pxSplit = parseInt(topPx.split('px')[0]);
+    		var cnt = 0;
+    		var calc = pxSplit + 10;
+
+    		if(pxSplit < me._maxTop){
+    			$(".zoomPointer").css("top",calc);
+    			cnt++;
+    			me.topCalc(cnt);
+    			me.zoomEvent(calc);
+    		}
+    	});
+    	
+
+    	$(".plus").click(function(){
+
+    		var topPx = $(".zoomPointer").css("top");
+    		var pxSplit = parseInt(topPx.split('px')[0]);
+    		var cnt = 0;
+    		var calc = pxSplit - 10;
+
+    		if(pxSplit>me._minTop){
+    			$(".zoomPointer").css("top",calc);
+    			me.topCalc(cnt);
+    			me.zoomEvent(calc);
+    		}
+    	});
+    	
+    	$(".zoomPartClick div").click(function(){
+    		
+    		var className = $(this).context.className;
+    		var calc = 0;
+    		var val = 0;
+    		switch (className) {
+    		case "zoomPartClick_1":
+    			val = 100;
+    			calc = me._minTop;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_2":
+    			val = 80;
+    			calc = me._minTop + 10;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_3":
+    			val = 60;
+    			calc = me._minTop + 20;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_4":
+    			val = 40;
+    			calc = me._minTop + 30;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_5":
+    			val = 20;
+    			calc = me._minTop + 40;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_6":
+    			val = 0;
+    			calc = me._minTop + 50;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_7":
+    			val = -20;
+    			calc = me._minTop + 60;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_8":
+    			val = -40;
+    			calc = me._minTop + 70;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_9":
+    			val = -60;
+    			calc = me._minTop + 80;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_10":
+    			val = -80;
+    			calc = me._minTop + 90;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_11":
+    			val = -100;
+    			calc = me._minTop + 100;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_12":
+    			val = -120;
+    			calc = me._minTop + 110;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case "zoomPartClick_13":
+    			calc = me._minTop + 120;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+			default:
+				break;
+			}
+    		$(".zoomBar2").height(calc + val);
+			$(".zoomBar2").css("top",calc);
+    		me.zoomEvent(calc);
+    	});
+
+    	$(".minus").mouseover(function(){
+    		$('.minus').css( 'cursor', 'pointer' );
+    	});
+
+    	$(".plus").mouseover(function(){
+    		$('.plus').css( 'cursor', 'pointer' );
+    	});
+    	
+    	$(".zoomPartClick div").mouseover(function(){
+    		$(this).css( 'cursor', 'pointer' );
+    	});
+    	
+    	
+    	
+    	me.map.on("mouse-wheel", function(a){
+
+    		var currValue = Math.round(a.timeStamp)/1000;
+
+    		if(me.preValue!=currValue){
+    			var calcValue = currValue - me.preValue;
+    			var toFixedValue = parseFloat(calcValue.toFixed(1));
+    			if(toFixedValue >= 0.2){
+    				if(a.value == 1){
+    					$('.plus').trigger('click');
+    				}else{
+    					$(".minus").trigger('click');
+    				}
+    			};
+    		}
+
+    		me.preValue = currValue;
+    	});
+
     	dojo.connect(this.map, "onExtentChange", function(extent){
     		me.currUmdInfo();
     		if(me.extentRegAble){
     			if(me.extentReg.length>30){
-        			me.extentReg.splice(0, 1);
-        		}
-        		me.extentReg.push(extent);
-        		me.extentUnReIdx = me.extentReg.length-1;
+    				me.extentReg.splice(0, 1);
+    			}
+    			me.extentReg.push(extent);
+    			me.extentUnReIdx = me.extentReg.length-1;
     		}
     		me.extentRegAble = true;
     		Sgis.getApplication().fireEvent('mapExtentChange', event);
-		});
+    	});
+    },
+    
+    topCalc: function(cnt){
+    	var me = this;
+    	var topPx = $(".zoomPointer").css("top");
+    	var pxSplit = parseInt(topPx.split('px')[0]);
+    	var calc = me._zoomPointerTop - pxSplit;
+
+    		if(cnt!=0){
+    			var nowZoombar = $(".zoomBar2").css("top");
+    			var splitZoombar = parseInt(nowZoombar.split("px")[0]);
+    			me._minusValue = splitZoombar + 10;
+    			$(".zoomBar2").height(me._zoomBar2 + calc - 10);
+    			$(".zoomBar2").css("top",me._minusValue);
+    		}else{
+    			var nowZoombar = $(".zoomBar2").css("top");
+    			var splitZoombar = parseInt(nowZoombar.split("px")[0]);
+    			me._plusValue = splitZoombar - 10;
+    			$(".zoomBar2").height(me._zoomBar2 + calc + 10);
+    			$(".zoomBar2").css("top",me._plusValue);
+    		}
+
+    	
+    	
+    },
+    
+    zoomEvent: function(level){
+    	var me = this;
+    
+    	switch (level) {
+		case me._maxTop:
+			me.map.setLevel(7);
+			break;
+		case me._maxTop - 10:
+			me.map.setLevel(8);
+			break;
+		case me._maxTop - 20:
+			me.map.setLevel(9);
+			break;
+		case me._maxTop - 30:
+			me.map.setLevel(10);
+			break;
+		case me._maxTop - 40:
+			me.map.setLevel(11);
+			break;
+		case me._maxTop - 50:
+			me.map.setLevel(12);
+			break;
+		case me._maxTop - 60:
+			me.map.setLevel(13);
+			break;
+		case me._maxTop - 70:
+			me.map.setLevel(14);
+			break;
+		case me._maxTop - 80:
+			me.map.setLevel(15);
+			break;
+		case me._maxTop - 90:
+			me.map.setLevel(16);
+			break;
+		case me._maxTop - 100:
+			me.map.setLevel(17);
+			break;
+		case me._maxTop - 110:
+			me.map.setLevel(18);
+			break;
+
+		default:
+			break;
+		}
     },
     
     baseMapInit: function(){
@@ -170,11 +442,10 @@ Ext.define('Sgis.map.CoreMap', {
 						{level:15,resolution:4.77731426794937, scale:18055.954822},
 						{level:16,resolution:2.38865713397468, scale:9027.977411},
 						{level:17,resolution:1.19432856685505, scale:4513.988705},
-						{level:18,resolution:0.597164283559817,scale:2256.994353}, //end
-						{level:19,resolution:0.298582141647617,scale:1128.497176}
+						{level:18,resolution:0.597164283559817,scale:2256.994353}
+						//{level:19,resolution:0.298582141647617,scale:1128.497176}
 		          ]
 		      });
-		      
 		      me.fullExtent = this.fullExtent = new esri.geometry.Extent({
 		    	  xmin: 12728905.446270483,
 		    	  ymin: 3409091.461517964,
