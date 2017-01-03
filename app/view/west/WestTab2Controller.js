@@ -195,7 +195,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 						//test.set('checked', true);
 							var layerAuth = Sgis.app.memType;
 							if(layerAuth==6 || layerAuth==7){
-								layerArr = [1,2,3,4,42,6,7,9,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40]
+								layerArr = [1,2,3,4,42,6,7,9,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40,43]
 							}else if(layerAuth=="20"){
 								layerArr = [18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39]
 							}else if(layerAuth==2 || layerAuth==5 || layerAuth==31 || layerAuth==40){

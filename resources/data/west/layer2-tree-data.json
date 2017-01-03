@@ -67,6 +67,14 @@
         "checked": false,
         "iconCls": "layer11",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer11.png"
+    },{
+		"id" : "43",
+		"layerId" : "43",
+        "text": "축산단지",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer43",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer43.png"
     }]
 },{
 	"id" : "p2",

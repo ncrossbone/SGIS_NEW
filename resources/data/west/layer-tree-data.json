@@ -59,6 +59,13 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer11",
+    },{
+		"id" : "43",
+		"layerId" : "43",
+        "text": "축산단지",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer43",
     }]
 },{
 	"id" : "p2",
@@ -234,29 +241,29 @@
     "expanded": true,
     "checked": false,
     "children": [{
-		"id" : "44",
-		"layerId" : "44",
+		"id" : "45",
+		"layerId" : "45",
         "text": "시도",
         "leaf": true,
         "checked": false,
         "iconCls": "symbol_15"
     },{
-		"id" : "45",
-		"layerId" : "45",
+		"id" : "46",
+		"layerId" : "46",
         "text": "시군구",
         "leaf": true,
         "checked": false,
         "iconCls": "symbol_16"
     },{
-		"id" : "46",
-		"layerId" : "46",
+		"id" : "47",
+		"layerId" : "47",
         "text": "읍면동",
         "leaf": true,
         "checked": false,
         "iconCls": "symbol_17"
     },{
-		"id" : "47",
-		"layerId" : "47",
+		"id" : "48",
+		"layerId" : "48",
         "text": "동리",
         "leaf": true,
         "checked": false,
