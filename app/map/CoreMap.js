@@ -311,8 +311,7 @@ Ext.define('Sgis.map.CoreMap', {
     	});
     	
     	
-    	
-    	me.map.on("mouse-wheel", function(a){
+    	/*me.map.on("mouse-wheel", function(a){
 
     		var currValue = Math.round(a.timeStamp)/1000;
 
@@ -329,8 +328,80 @@ Ext.define('Sgis.map.CoreMap', {
     		}
 
     		me.preValue = currValue;
+    	});*/
+    	
+    	
+    	me.map.on("zoom-end", function(evt) {
+    		var calc = 0;
+    		var val = 0;
+    		switch (evt.level) {
+    		case 18:
+    			val = 100;
+    			calc = me._minTop;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 17:
+    			val = 80;
+    			calc = me._minTop + 10;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 16:
+    			val = 60;
+    			calc = me._minTop + 20;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 15:
+    			val = 40;
+    			calc = me._minTop + 30;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 14:
+    			val = 20;
+    			calc = me._minTop + 40;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 13:
+    			val = 0;
+    			calc = me._minTop + 50;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 12:
+    			val = -20;
+    			calc = me._minTop + 60;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 11:
+    			val = -40;
+    			calc = me._minTop + 70;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 10:
+    			val = -60;
+    			calc = me._minTop + 80;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 9:
+    			val = -80;
+    			calc = me._minTop + 90;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 8:
+    			val = -100;
+    			calc = me._minTop + 100;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		case 7:
+    			val = -120;
+    			calc = me._minTop + 110;
+    			$(".zoomPointer").css("top",calc);
+    			break;
+    		default:
+    			return;
+    		}
+    		$(".zoomBar2").height(calc + val);
+    		$(".zoomBar2").css("top",calc);
+    		//me.zoomEvent(calc);
     	});
-
     	dojo.connect(this.map, "onExtentChange", function(extent){
     		me.currUmdInfo();
     		if(me.extentRegAble){
