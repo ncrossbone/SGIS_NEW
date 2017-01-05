@@ -116,9 +116,9 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
         me.map.isPan = true;
         if(event.type=='extent'){
         	me.geometry = new esri.geometry.Extent(event);
-        	 me.addDrawGraphic(event)
         }else if(event.type=='point'){
         	symbol = new esri.symbol.SimpleMarkerSymbol();
+            console.info(symbol);
         	me.geometry = new esri.geometry.Point(event);
         	me.bufferDisplayAndXY();
         }else if(event.type=='polygon'){
@@ -439,6 +439,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		Ext.each(me.layers, function(layerInfo, index) {
 			if(layerInfo){
 				var layer = layerInfo.data
+				
 				var filterBool = false;
 				if(filterObject && filterObject.layerId==layer.layerId){
 					filterBool = true;
@@ -490,8 +491,35 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 					{
 						Ext.each(results.features, function(obj, index) {
 							var pictureMarkerSymbol;
-							if(layer=='5'){
+							if(layer.id=='5'){
 								pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/' + layer.iconInfo , 12, 12);
+							}else if(layer.id == '43'){
+								
+								if(0.5 >= obj.attributes.NO3N || obj.attributes.NO3N <= 2.0){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_1.png', 16, 16);
+								}else if(2.1 >= obj.attributes.NO3N || obj.attributes.NO3N <= 3.3){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_2.png', 16, 16);
+								}else if(3.4 >= obj.attributes.NO3N || obj.attributes.NO3N <= 4.1){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_3.png', 16, 16);
+								}else if(4.2 >= obj.attributes.NO3N || obj.attributes.NO3N <= 5.1){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_4.png', 16, 16);
+								}else if(5.2 >= obj.attributes.NO3N || obj.attributes.NO3N <= 6.2){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_5.png', 16, 16);
+								}else if(6.3 >= obj.attributes.NO3N || obj.attributes.NO3N <= 7.6){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_6.png', 16, 16);
+								}else if(7.7 >= obj.attributes.NO3N || obj.attributes.NO3N <= 9.4){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_7.png', 16, 16);
+								}else if(9.5 >= obj.attributes.NO3N || obj.attributes.NO3N <= 12.1){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_8.png', 16, 16);
+								}else if(12.2 >= obj.attributes.NO3N || obj.attributes.NO3N <= 16.2){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_9.png', 16, 16);
+								}else if(16.3 >= obj.attributes.NO3N || obj.attributes.NO3N <= 20.6){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_10.png', 16, 16);
+								}else if(20.7 >= obj.attributes.NO3N || obj.attributes.NO3N <= 31.8){
+									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_11.png', 16, 16);
+								}
+								
+								
 							}else{
 								pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/' + layer.iconInfo , 16, 16);
 							}

@@ -113,6 +113,7 @@ Ext.define('Sgis.map.CoreMap', {
   		         "esri/symbols/SimpleFillSymbol",
   		         "esri/symbols/PictureMarkerSymbol",
   		         "esri/symbols/Font",
+  		         "esri/Color",
   		         "esri/symbols/TextSymbol",
   		         "esri/tasks/AreasAndLengthsParameters",
   		         "esri/tasks/LengthsParameters",
@@ -137,6 +138,7 @@ Ext.define('Sgis.map.CoreMap', {
 			    	 		autoResize: true
 			    	 		
 			        	});
+	    				
 
 			        	me.baseMapInit();
 			        	me.map.setLevel(1+6);
