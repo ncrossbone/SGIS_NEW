@@ -233,7 +233,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
     
     getLayerDisplayFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/48");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/49");
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -258,7 +258,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerBranchFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/49");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/50");
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -284,7 +284,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerDetailFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/50");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/51");
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -310,7 +310,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerChartFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/51");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/52");
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";

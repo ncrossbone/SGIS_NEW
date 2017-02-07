@@ -38,7 +38,7 @@
     },{
 		"id" : "42",
 		"layerId" : "42",
-        "text": "지하수 관정정보",
+        "text": "국토부 지하수 관정정보",
         "leaf": true,
         "checked": false,
         "iconCls": "layer5",
@@ -59,6 +59,14 @@
         "checked": false,
         "iconCls": "layer9",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer9.png"
+    },{
+		"id" : "10",
+		"layerId" : "10",
+        "text": "가축매몰지 지하수 관정정보",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer10",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer10.png"
     },{
 		"id" : "11",
 		"layerId" : "11",

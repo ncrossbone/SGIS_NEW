@@ -123,7 +123,7 @@ Ext.define('Sgis.view.west.WestTab1Controller', {
 				var timerId = window.setInterval(function(){
 					var test = store.findRecord('id', '1'); //로딩되었는지 검사하려고
 					if(test){
-						window.clearInterval(timerId);
+						window.clearInterval(timerId); 
 						//test.set('checked', true);
 							
 							var layerAuth = Sgis.app.memType;
@@ -131,11 +131,13 @@ Ext.define('Sgis.view.west.WestTab1Controller', {
 							//관정 5가 아닌 42 레이어 표출을 후순위로 두었음
 							
 							if(layerAuth==6 || layerAuth==7){
-								layerArr = [1,2,3,4,42,6,7,9,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40,43,45,46,47,48]
+								layerArr = [1,2,3,4,42,6,7,9,10,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40,43,45,46,47,48]
 							}else if(layerAuth=="20"){
 								layerArr = [18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40,45,46,47,48]
-							}else if(layerAuth==2 || layerAuth==5 || layerAuth==31 || layerAuth==40){
+							}else if(layerAuth==2 || layerAuth==5 || layerAuth==40){
 								layerArr = [1,2,3,4,42,6,8,9,11,13,14,15,45,46,47,48]
+							}else if(layerAuth==31){
+								layerArr = [1,2,3,4,42,6,8,9,10,11,13,14,15,45,46,47,48]
 							}else if(layerAuth==13){
 								layerArr = [1,2,3,4,42,11,13,14,15,45,46,47,48]
 							}else if(layerAuth==3 || layerAuth==8 || layerAuth==32){

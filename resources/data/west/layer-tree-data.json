@@ -34,7 +34,7 @@
     },{
 		"id" : "42",
 		"layerId" : "42",
-        "text": "지하수 관정정보",
+        "text": "국토부 지하수 관정정보",
         "leaf": true,
         "checked": false,
         "iconCls": "layer5",
@@ -52,6 +52,13 @@
         "leaf": true,
         "checked": false,
         "iconCls": "layer9",
+    },{
+		"id" : "10",
+		"layerId" : "10",
+        "text": "가축매몰지 주변 지하수 관정",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer10",
     },{
 		"id" : "11",
 		"layerId" : "11",
