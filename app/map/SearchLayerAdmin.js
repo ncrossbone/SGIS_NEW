@@ -19,6 +19,8 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	geometryService:null,
 	buffRadus:null,
 	
+	jibunGraphicLayer:null,
+	
 	layerDisplayFiledInfo:{},
 	layerBranchFiledInfo:{},
 	layerDetailFiledInfo:{},
@@ -36,6 +38,10 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		
 		me.smpLineSymbol = new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([0,0,255,0.8]), 2);
 		me.simpleFillSymbol= new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, me.smpLineSymbol, new dojo.Color([0,0,255,0.1]));
+		
+		me.jibunGraphicLayer = new esri.layers.GraphicsLayer();
+		me.jibunGraphicLayer.id = "jibunGraphic";
+		me.map.addLayer(me.jibunGraphicLayer);
 		
 		me.sourceGraphicLayer = new esri.layers.GraphicsLayer();
 		me.sourceGraphicLayer.id="sourceGraphic";
@@ -96,6 +102,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		Sgis.getApplication().addListener('searchBtnClick', me.searchBtnClickfHandler, me);
 		Sgis.getApplication().addListener('leftTabChange', me.leftTabChangeHandler, me); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
 		Sgis.getApplication().addListener('areaSelect', me.areaSelectHandler, me); 
+		Sgis.getApplication().addListener('jibunSelect', me.jibunSelectHandler, me);
 		Sgis.getApplication().addListener('dataGridSelect', me.dataGridSelectHandler, me); 
 		Sgis.getApplication().addListener('searchParamChange', me.searchParamChangeHandler, me); 
 		
@@ -205,8 +212,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		me.targetGraphicLayer.clear();
 		me.highlightGraphicLayer.clear();
 		
-		//var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2/MapServer/" + info.layerId);
-		var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2_new/MapServer/" + info.layerId);
+		var queryTask = new esri.tasks.QueryTask(_API.layer2_new + "/" + info.layerId);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = true;
 		query.outSpatialReference = {"wkid":102100};
@@ -230,9 +236,32 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		});
     },
     
+    //지번검색 그래픽레이어 설정
+    jibunSelectHandler: function(info){
+    	var me = this;
+    	me.jibunGraphicLayer.clear();
+		var queryTask = new esri.tasks.QueryTask(_API.lsmdContLdreg + "/" + info.layerId);
+		var query = new esri.tasks.Query();
+		query.returnGeometry = true;
+		query.outSpatialReference = {"wkid":102100};
+		query.where = "PNU = '"+info.PNU+"'";
+		query.outFields = ["*"];
+		queryTask.execute(query,  function(results){
+			Ext.each(results.features, function(obj, index) {
+				obj.setSymbol(me.simpleFillSymbol);
+	    		me.jibunGraphicLayer.add(obj);
+	    		var center = esri.geometry.Polygon(obj.geometry).getExtent().getCenter();
+	    		me.map.centerAndZoom(center,16);
+	    		me.geometry = obj.geometry;
+			});
+		});
+		dojo.connect(queryTask, "onError", function(err) {
+		});
+    },
+    
     getLayerDisplayFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/46");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + _API.gridDef);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -257,7 +286,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerBranchFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/47");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + _API.infoDef);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -283,7 +312,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerDetailFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/48");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + _API.infoGridDef);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -309,7 +338,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerChartFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/49");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + _API.chartdef);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -500,7 +529,6 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				resultData.datas = datas;
 				resultData.clickCallback = me.highlightGraphic;
 				resultData.clickCallbackScope = me;
-				
 				var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + layer.layerId);
 				var query = new esri.tasks.Query();
 				query.returnGeometry = true;

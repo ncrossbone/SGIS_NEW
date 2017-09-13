@@ -61,8 +61,8 @@ Ext.define('Sgis.map.CoreMap', {
         	customPrintTask = "/GIS/app/map/task/CustomPrintTask.js";
         	customDistance = "/GIS/app/map/toolbar/CustomDistance.js";
         }
-        me.layerInfo = {'layer1Url':Sgis.app.arcServiceUrl2 + '/rest/services/Layer1_new/MapServer',
-        				'layer2Url':Sgis.app.arcServiceUrl  + '/rest/services/Layer2_new/MapServer'};
+        me.layerInfo = {'layer1Url':_API.arcServerceUrl2 + '/rest/services/Layer1_new/MapServer',
+        				'layer2Url':_API.arcServerceUrl  + '/rest/services/Layer2_new/MapServer'};
         
         require(["dojo/dom",
   		         "dojo/dom-attr",
@@ -93,7 +93,7 @@ Ext.define('Sgis.map.CoreMap', {
   		         customPrintTask,
   		         customDistance],  
   		         function() {
-		        	esri.config.defaults.io.proxyUrl = Sgis.app.proxyUrl;
+		        	esri.config.defaults.io.proxyUrl = _API.proxyUrl;
 		    		esri.config.defaults.io.alwaysUseProxy = true;
 		    		esri.config.defaults.io.postLength = 1;
 		    		Ext.defer(function() {
@@ -106,7 +106,7 @@ Ext.define('Sgis.map.CoreMap', {
 			        	});
 			        	me.baseMapInit();
 			        	me.map.setLevel(1+6);
-			        	me.geometryService = new esri.tasks.GeometryService(Sgis.app.arcServiceUrl + "/rest/services/Utilities/Geometry/GeometryServer");
+			        	me.geometryService = new esri.tasks.GeometryService(_API.arcServerceUrl + "/rest/services/Utilities/Geometry/GeometryServer");
 			        	
 			        	Ext.Loader.loadScript({url:'/GIS/app/map/toolbar/CustomDraw.js', onLoad:function(){
 			        		me.dynamicLayerAdmin = Ext.create('Sgis.map.DynamicLayerAdmin', me.map);
@@ -117,9 +117,8 @@ Ext.define('Sgis.map.CoreMap', {
 				    			me.measure(event);
 				    		});
 			        	}, onError:function(){}});
-			        	
 			        	Ext.Loader.loadScript({url:'/GIS/app/map/task/CustomPrintTask.js', onLoad:function(){
-			        		me.printTask = new Sgis.map.task.CustomPrintTask(me.map, "_mapDiv_", Sgis.app.printUrl, Sgis.app.arcServiceUrl);
+			        		me.printTask = new Sgis.map.task.CustomPrintTask(me.map, "_mapDiv_", _API.printUrl, _API.arcServerceUrl);
 			        		dojo.connect(me.printTask, "onComplete", function(event){	
 			        			SGIS.loading.finish();
 			        		});
@@ -477,8 +476,8 @@ Ext.define('Sgis.map.CoreMap', {
 		var y = (me.map.extent.ymin+me.map.extent.ymax)/2;
 		me.currUmdMarker = dojo.dojox.uuid.generateRandomUuid();
 		
-		//var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2/MapServer/24");
-		var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2_new/MapServer/17");
+		//var queryTask = new esri.tasks.QueryTask(_API.arcServerceUrl + "/rest/services/Layer2/MapServer/24");
+		var queryTask = new esri.tasks.QueryTask(_API.arcServerceUrl + "/rest/services/Layer2_new/MapServer/17");
 		var query = new esri.tasks.Query();
 		query.currUmdMarker = me.currUmdMarker;
 		query.returnGeometry = false;

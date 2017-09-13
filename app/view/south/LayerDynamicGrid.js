@@ -197,7 +197,6 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 	 */	
 	reconfigureGrid : function(result) {
 		var store = this.getStore();
-		
 		if(store == null || !store.fields) {
 			var data = this.getLayerDataAll(result);
 			if(data && data[0] && data[1]) {

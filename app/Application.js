@@ -30,11 +30,7 @@ Ext.define('Sgis.Application', {
 //	printUrl:'http://' + window.location.hostname + ':' + window.location.port + '/sgis-war/CustomPrintTask.jsp',
 //	proxyUrl:'http://' + window.location.hostname + ':' + window.location.port + '/sgis-war/proxy.jsp',
 //	excelDownUrl:'http://' + window.location.hostname + ':' + window.location.port + '/sgis-war/excelDownload.jsp',
-	printUrl:'./sgis-war/WebContent/CustomPrintTask.jsp',
-	proxyUrl:'./sgis-war/WebContent/proxy.jsp',
-	excelDownUrl:'./sgis-war/WebContent/excelDownload.jsp',
-	arcServiceUrl:'http://112.218.1.243:20002/arcgis',
-	arcServiceUrl2:'http://112.218.1.243:20002/arcgis',
+	
 
 	stores: [
 		'Sgis.store.LayerTreeStore',

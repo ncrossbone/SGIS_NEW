@@ -35,7 +35,7 @@ Ext.define('Sgis.map.DynamicLayerAdmin', {
 		
 		Sgis.getApplication().addListener('dynamicLayerOnOff', me.dynamicLayerOnOffHandler, me);
 		Sgis.getApplication().addListener('dynamicLayer2OnOff', me.dynamicLayer2OnOffHandler, me);
-		Sgis.getApplication().addListener('leftTabChange', me.leftTabChangeHandler, me); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
+		Sgis.getApplication().addListener('areaSelect', me.leftTabChangeHandler, me); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
     },
     
     dynamicLayerOnOffHandler: function(selectInfo){

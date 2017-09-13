@@ -5,7 +5,9 @@ Ext.define('Sgis.view.west.West', {
 	requires: [
 		'Sgis.view.west.WestController',
 		'Sgis.view.west.WestTab1',
-		'Sgis.view.west.WestTab2'
+		'Sgis.view.west.WestTab2',
+		'Sgis.view.west.WestTab3',
+		'Sgis.view.west.WestTab3Result'
 	],
 
 	xtype: 'app-west',
@@ -22,6 +24,8 @@ Ext.define('Sgis.view.west.West', {
 		xtype: 'app-west-tab1'
 	}, {
 		xtype: 'app-west-tab2'
+	}, {
+		xtype: 'app-west-tab3'
 	}],
 	
 	bbar: [{

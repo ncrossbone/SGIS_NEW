@@ -41,7 +41,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 			if(item.id=='_cancel_'){
 				return true;
 			}
-			return (item.id+"").substring(0,2) == record.data.id;
+			return (item.id+"").substring(0,2) == record.data.id.substring(0,2);
 		})		
 		view2.reset();
 		view2.setDisabled(false);
@@ -52,12 +52,13 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 		var view3 = Ext.getCmp('cmbArea3')
 		var store3 = view3.getStore();
 		var admCd = record.data.id;
+		console.info(admCd);
 		if(admCd!='_cancel_'){
-			Sgis.getApplication().fireEvent('areaSelect', {admCd:record.data.id, layerId:'16'});//시군구
+			Sgis.getApplication().fireEvent('areaSelect', {admCd:record.data.id, layerId:_API.admSggLayerId});//시군구
 			view3.setDisabled(false);
 		}else{
 			admCd = Ext.getCmp('cmbArea1').getSelection().data.id;
-			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:'15'});//시도
+			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:_API.admSidoLayerId});//시도
 			view3.setDisabled(true);
 		}
 		
@@ -80,10 +81,10 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 	onArea3Change: function(combo, record, eOpts) {
 		var admCd = record.data.id;
 		if(admCd!='_cancel_'){
-			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:'17'});//읍면동
+			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:_API.admDongLayerId});//읍면동
 		}else{
 			admCd = Ext.getCmp('cmbArea2').getSelection().data.id;
-			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:'16'});//시군구
+			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:_API.admSggLayerId});//시군구
 		}
 	},
 

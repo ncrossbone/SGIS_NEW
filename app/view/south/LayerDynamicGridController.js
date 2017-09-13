@@ -55,7 +55,7 @@ Ext.define('Sgis.view.south.LayerDynamicGridController', {
 			button.setText("액셀받기취소");	
 			
 			var obj = {'header':JSON.stringify(me.getView().gridFields), 'datas':JSON.stringify(me.getView().gridData)};
-			$.post(esri.config.defaults.io.proxyUrl+'?'+Sgis.app.excelDownUrl, obj, function(data){
+			$.post(esri.config.defaults.io.proxyUrl+'?'+_API.excelDownUrl, obj, function(data){
 				button.setText("액셀받기");
 				$('#__fileDownloadIframe__').remove();
 				$('body').append('<iframe src='+esri.config.defaults.io.proxyUrl+'?'+data.url+' id="__fileDownloadIframe__" name="__fileDownloadIframe__" width="0" height="0" style="display:none;"/>');
