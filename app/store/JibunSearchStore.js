@@ -24,8 +24,8 @@ Ext.define('Sgis.store.JibunSearchStore', {
 				if(layerNum == null){
 					return;
 				}
-				console.info(layerNum);
-				var queryTask = new esri.tasks.QueryTask(_API.lsmdContLdreg +"/"+layerNum); //시도
+				
+				var queryTask = new esri.tasks.QueryTask(_API.lsmdContLdreg +"/"+layerNum);
 				var query = new esri.tasks.Query();
 				
 				query.where = " PNU LIKE '" + store.admCd +"%'";
@@ -34,7 +34,6 @@ Ext.define('Sgis.store.JibunSearchStore', {
 				if(store.buCd != "0000"){
 					query.where += " AND BU = '" + store.buCd + "'";
 				}
-				
 				query.returnGeometry = false;
 				query.outFields = ["*"];
 				
@@ -53,6 +52,7 @@ Ext.define('Sgis.store.JibunSearchStore', {
 				queryTask.execute(query,  function(results){
 					
 					var data = results.features;
+					console.info(data);
 					Ext.each(data, function(media, index) {
 						//receiveData.push({id:media.attributes.PNU, name:media.attributes.JIBUN})
 						
@@ -60,7 +60,7 @@ Ext.define('Sgis.store.JibunSearchStore', {
 						//data.attributes.PNU
 						Ext.each(JibunList, function(a, b) {
 							if(a.data.id == media.attributes.PNU.substr(0,10)){
-								addr = a.data.doNm + a.data.ctyNm + a.data.dongNm + a.data.riNm ;
+								addr = a.data.doNm + " " + a.data.ctyNm + " " + a.data.dongNm + " " + a.data.riNm ;
 							}
 						});
 						var sanAddr = media.attributes.PNU.substr(10,1) == "2" ? "산" : "";
@@ -75,17 +75,20 @@ Ext.define('Sgis.store.JibunSearchStore', {
 						}else{
 							addrSub = bonAddr +"-"+ buAddr + "번지";
 						}
-						
+						//addr + sanAddr + addrSub
 						westTab3Resultlist.items.items[0].add({
 							xtype: 'label',
-							//html: addr + sanAddr + addrSub
-							html: "<table>" +
-								  "<tr>" +
-								  "<td>" +
-								  "<a href=\"#\" onclick= \"JibunMove('"+media.attributes.PNU+"','"+layerNum+"'); \"><span>"+addr + sanAddr + addrSub+"</span></a>" +
-								  "</td>" +
-								  "</tr>" +
-								  "</table>" 
+							cls: 'dj_result_info',
+							style: 'left: 13px !important;',
+							html: "<table class=\"dj_result\" border=\"0\" >										" +
+								"<tr>                                 " +
+								" <th rowspan=\"2\"><a href=\"#\" onclick= \"JibunMove('"+media.attributes.PNU+"','"+layerNum+"');\" >이동</a></th>                     " +
+								" <td> " + addr + "</td> " +
+								"</tr>                                " +
+								"<tr>                                 " +
+								" <td> " + sanAddr + addrSub + "</td> " +
+								"</tr>                                " +
+								"</table>                             " 
 								
 						})
 						

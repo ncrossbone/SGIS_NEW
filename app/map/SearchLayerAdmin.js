@@ -251,7 +251,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				obj.setSymbol(me.simpleFillSymbol);
 	    		me.jibunGraphicLayer.add(obj);
 	    		var center = esri.geometry.Polygon(obj.geometry).getExtent().getCenter();
-	    		me.map.centerAndZoom(center,16);
+	    		me.map.centerAndZoom(center,17);
 	    		me.geometry = obj.geometry;
 			});
 		});

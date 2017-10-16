@@ -35,7 +35,8 @@ Ext.define('Sgis.map.DynamicLayerAdmin', {
 		
 		Sgis.getApplication().addListener('dynamicLayerOnOff', me.dynamicLayerOnOffHandler, me);
 		Sgis.getApplication().addListener('dynamicLayer2OnOff', me.dynamicLayer2OnOffHandler, me);
-		Sgis.getApplication().addListener('areaSelect', me.leftTabChangeHandler, me); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
+        Sgis.getApplication().addListener('leftTabChange', me.leftTabChangeHandler, me); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
+//		Sgis.getApplication().addListener('areaSelect', me.leftTabChangeHandler, me); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
     },
     
     dynamicLayerOnOffHandler: function(selectInfo){
@@ -76,10 +77,11 @@ Ext.define('Sgis.map.DynamicLayerAdmin', {
     
     leftTabChangeHandler: function(tabXtype){
     	var me = this;
+    	console.info(me.layer);
     	if(tabXtype=='app-west-tab1'){
     		me.layer.setVisibility(true);
     		//me.layer2.setVisibility(true);
-    	}else{
+    	}else if(tabXtype=='app-west-tab2'){
     		me.layer.setVisibility(false);
     		//me.layer2.setVisibility(false);
     	}

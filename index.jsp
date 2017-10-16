@@ -52,5 +52,24 @@
     <script type="text/javascript" src="./resources/js/common.js"></script>
     <script id="microloader" type="text/javascript" src="libs/jquery/jquery-1.11.3.min.js"></script>
     <script id="microloader" type="text/javascript" src="bootstrap.js"></script>
+    <style type="text/css">
+    
+	/*20170919-지번검색*/
+        table.dj_result { width: 88%; border-bottom: 0px dashed #d5d5d5;  background-color: #D5D6FE;} 
+        table.dj_result> tbody> tr> th { width: 40px;} 
+		table.dj_result> tbody> tr> td { font-size: 12px; color: #555; text-indent: 5px; }
+		table.dj_result> tbody> tr> td span { font-size: 12px; color: #0066FF; text-indent: 5px; text-decoration:underline; } 
+		/* table.dj_result> tbody> tr> td span { font-weight: bold; color: #000; } */ 
+		
+		
+		.dj_result_info {
+			width: 290px;	
+			margin-top: 10px;
+			margin-left: 1px;
+		}
+		
+		
+
+    </style>
 </head>
 </html>

@@ -29,12 +29,18 @@ var store = Ext.create('Ext.data.Store', {
 	}
 });
 
-var proxy = './proxy/proxy.jsp?'
+store.load(function(a, b, c) {
+	
+	_API = a[0].data;
+	
+});
 
+var proxy = './proxy/proxy.jsp?';
+	
 //지번 레이어 레전드 json 전역변수 설정
 var _LCLlegend= null;
 Ext.Ajax.request({
-	url: proxy+"http://112.217.167.123:20002/arcgis/rest/services/LSMD_CONT_LDREG/MapServer/legend?f=pjson",
+	url: proxy+"http://112.217.167.123:23002/arcgis/rest/services/LSMD_CONT_LDREG/MapServer/legend?f=pjson",
 	async: true, 
 	success : function(response, opts) {
 		jsonData = Ext.util.JSON.decode( response.responseText );
@@ -45,11 +51,7 @@ Ext.Ajax.request({
 	}
 });
 
-store.load(function(a, b, c) {
-	
-	_API = a[0].data;
-	
-});
+
 
 Ext.application({
     name: 'Sgis',
