@@ -37,6 +37,11 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		me.smpLineSymbol = new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([0,0,255,0.8]), 2);
 		me.simpleFillSymbol= new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, me.smpLineSymbol, new dojo.Color([0,0,255,0.1]));
 		
+        me.jibunGraphicLayer = new esri.layers.GraphicsLayer();
+        me.jibunGraphicLayer.id = "jibunGraphic";
+        me.map.addLayer(me.jibunGraphicLayer);
+
+		
 		me.sourceGraphicLayer = new esri.layers.GraphicsLayer();
 		me.sourceGraphicLayer.id="sourceGraphic";
 		me.map.addLayer(me.sourceGraphicLayer);
@@ -99,7 +104,8 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		Sgis.getApplication().addListener('searchLayerOnOff', me.searchLayerOnOfffHandler, me);
 		Sgis.getApplication().addListener('searchBtnClick', me.searchBtnClickfHandler, me);
 		Sgis.getApplication().addListener('leftTabChange', me.leftTabChangeHandler, me); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
-		Sgis.getApplication().addListener('areaSelect', me.areaSelectHandler, me); 
+		Sgis.getApplication().addListener('areaSelect', me.areaSelectHandler, me);
+		Sgis.getApplication().addListener('jibunSelect', me.jibunSelectHandler, me);
 		Sgis.getApplication().addListener('dataGridSelect', me.dataGridSelectHandler, me); 
 		Sgis.getApplication().addListener('searchParamChange', me.searchParamChangeHandler, me); 
 		
@@ -191,10 +197,12 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
     	var me = this;
     	if(tabXtype=='app-west-tab2'){
     		me.sourceGraphicLayer.setVisibility(true);
+    		me.jibunGraphicLayer.setVisibility(true);
     		me.targetGraphicLayer.setVisibility(true);
     		me.highlightGraphicLayer.setVisibility(true);
     	}else{
     		me.sourceGraphicLayer.setVisibility(false);
+    		me.jibunGraphicLayer.setVisibility(false);
     		me.targetGraphicLayer.setVisibility(false);
     		me.highlightGraphicLayer.setVisibility(false);
     	}
@@ -207,7 +215,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		me.highlightGraphicLayer.clear();
 		
 		//var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2/MapServer/" + info.layerId);
-		var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2_new/MapServer/" + info.layerId);
+		var queryTask = new esri.tasks.QueryTask(_API.layer2_new + "/" + info.layerId);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = true;
 		query.outSpatialReference = {"wkid":102100};
@@ -230,10 +238,121 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		dojo.connect(queryTask, "onError", function(err) {
 		});
     },
+
+    /*showBuffer: function (bufferedGeometries) {
+    	//esri.symbol.SimpleFillSymbol
+    	
+    	var me = this;
+    	
+    	var symbol = new esri.symbol.SimpleFillSymbol(
+    			esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+                new esri.symbol.SimpleLineSymbol(
+                		esri.symbol.SimpleLineSymbol.STYLE_SOLID,
+                  new dojo.Color([255,0,0,0.65]), 2
+                ),
+                new dojo.Color([255,0,0,0.35])
+              );
+    	
+    	 var graphic = new esri.Graphic(bufferedGeometries[0], symbol);
+         //me.sourceGraphicLayer.clear();
+         me.sourceGraphicLayer.add(graphic);
+         me.spSearch();
+    	
+      },*/
+    //지번검색 그래픽레이어 설정
+    jibunSelectHandler: function(info){
+    	var me = this;
+    	me.sourceGraphicLayer.clear();
+		me.targetGraphicLayer.clear();
+		me.highlightGraphicLayer.clear();
+    	me.jibunGraphicLayer.clear();
+		var queryTask = new esri.tasks.QueryTask(_API.lsmdContLdreg + "/" + info.layerId);
+		var query = new esri.tasks.Query();
+		query.returnGeometry = true;
+		query.outSpatialReference = {"wkid":102100};
+		query.where = "PNU = '"+info.PNU+"'";
+		query.outFields = ["*"];
+		queryTask.execute(query,  function(results){
+			Ext.each(results.features, function(obj, index) {
+				
+				obj.setSymbol(me.simpleFillSymbol);
+	    		me.jibunGraphicLayer.add(obj);
+				
+	    		var btnDistances = "";
+	    		
+	    		var btnAr  = Ext.getCmp('btnSRHBox').items.items;
+	    		var sRradusForm = Ext.getCmp('sRradusVal').value;
+	    		Ext.each(btnAr, function(btn, index) {
+    				if(btn.pressed){
+    					if(index == 3){
+    						btnDistances = sRradusForm;
+    					}else{
+    						btnDistances = btn.value;
+    					}
+	    				 
+	    			}
+	    		});
+	    		
+				var center = esri.geometry.Polygon(obj.geometry).getExtent().getCenter();
+	    		me.map.centerAndZoom(center,17);
+				
+	    		var params = new esri.tasks.BufferParameters();
+	            params.distances = [ btnDistances ];
+	            params.outSpatialReference = new esri.SpatialReference({wkid:102100});
+	            params.unit = esri.tasks.GeometryService.UNIT_METER;
+	            
+	            require(["esri/geometry/normalizeUtils"], function(normalizeUtils) { 
+	            	
+	            	normalizeUtils.normalizeCentralMeridian([obj.geometry]).then(function(normalizedGeometries){
+		                var normalizedGeometry = normalizedGeometries[0];
+		                if (normalizedGeometry.type === "polygon") {	
+		                  me.geometryService.simplify([normalizedGeometry], function(geometries) {
+		                    params.geometries = geometries;
+		                    
+		                    me.geometryService.buffer(params, function(result){
+		                    	
+		                    	if(result.length>0){
+		            	    		me.geometry = result[0];
+		            	    		var symbol = new esri.symbol.SimpleFillSymbol(
+		            	    				esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+		            	    	            new esri.symbol.SimpleLineSymbol(
+		            	    	            		esri.symbol.SimpleLineSymbol.STYLE_SOLID,
+		            	    	              new dojo.Color([255,0,0,0.65]), 2
+		            	    	            ),
+		            	    	            new dojo.Color([255,0,0,0.35])
+		            	    	          );
+		            	    		
+		            	    		var graphic = new esri.Graphic(me.geometry, symbol);
+		            	            me.sourceGraphicLayer.clear();
+		            	            me.sourceGraphicLayer.add(graphic);
+		            	            me.spSearch();
+		            	            
+		            	    	}
+		                    	
+		                    })
+		                    
+		                  });
+		                } else {
+		                  params.geometries = [normalizedGeometry];
+		                  me.geometryService.buffer(params, showBuffer);
+		                }
+
+		              });
+	            	
+	            });
+	            
+	            
+	    		
+	    		
+			});
+		});
+		dojo.connect(queryTask, "onError", function(err) {
+		});
+    },
     
     getLayerDisplayFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/49");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + _API.gridDef);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -258,7 +377,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerBranchFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/50");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + _API.infoDef);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -284,7 +403,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerDetailFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/51");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + _API.infoGridDef);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -310,7 +429,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	
 	getLayerChartFiledInfo:function(callback, scope){
 		var me = this;
-		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/52");
+		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + _API.chartdef);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = false;
 		query.where = "1=1";
@@ -332,6 +451,14 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		dojo.connect(queryTask, "onError", function(err) {
 			SGIS.loading.finish();
 		});
+	},
+	
+	bufferDisplayAndPolygon: function(){
+		
+		var me = this;
+		
+		
+		
 	},
 	
 	bufferDisplayAndXY:function(){
@@ -452,6 +579,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				
 				var datas = [];
 				resultData.field = me.layerDisplayFiledInfo[layer.layerId];
+				console.info(resultData.field);
 				
 				resultData.filter = layer.filter;
 				resultData.filterCallback = me.spSearch;
@@ -474,6 +602,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				}
 				query.outFields = ["*"];
 				queryTask.execute(query,  function(results){
+					console.info(results);
 					receiveComplteCnt ++;
 					if(receiveComplteCnt == me.layers.length){
 						SGIS.loading.finish();
@@ -494,7 +623,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 							if(layer.id=='5'){
 								pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/' + layer.iconInfo , 12, 12);
 							}else if(layer.id == '43'){
-								
+								console.info(obj.attributes.NO3N);
 								if(0.5 >= obj.attributes.NO3N || obj.attributes.NO3N <= 2.0){
 									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_1.png', 16, 16);
 								}else if(2.1 >= obj.attributes.NO3N || obj.attributes.NO3N <= 3.3){
@@ -518,7 +647,6 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 								}else if(20.7 >= obj.attributes.NO3N || obj.attributes.NO3N <= 31.8){
 									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_11.png', 16, 16);
 								}
-								
 								
 							}else{
 								pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/' + layer.iconInfo , 16, 16);

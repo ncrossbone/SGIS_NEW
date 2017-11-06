@@ -10,6 +10,23 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 	alias: 'controller.app-west-tab2',
 	
 	control: {
+		
+		'#cmbJibun1': {
+			select: 'onJibun1Change'
+		},
+		'#cmbJibun2': {
+			select: 'onJibun2Change'
+		},
+		'#cmbJibun3': {
+			select: 'onJibun3Change'
+		},
+		'#cmbJibun4': {
+			select: 'onJibun4Change'
+		},
+		'#searchJibun':{
+			click: 'onJibunSearch'
+		},
+		
 		'#cmbArea1': {
 			select: 'onArea1Change'
 		},
@@ -30,6 +47,178 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 		me.callParent();
 		Sgis.getApplication().addListener('drawComplte', me.drawComplteHandler, me);
     },
+    
+    
+    
+    
+    
+    
+    onJibun1Change: function(combo, record, eOpts) {
+		var view2 = Ext.getCmp('cmbJibun2');
+		var view3 = Ext.getCmp('cmbJibun3')
+		var store2 = view2.getStore();
+		store2.clearFilter();
+		store2.filter(function(item){
+			if(item.id=='_cancel_'){
+				return true;
+			}
+			return (item.id+"").substring(0,2) == record.data.id.substring(0,2);
+		})		
+		view2.reset();
+		view2.setDisabled(false);
+		view3.setDisabled(true);
+	},
+	
+	onJibun2Change: function(combo, record, eOpts) {
+		var view3 = Ext.getCmp('cmbJibun3')
+		var store3 = view3.getStore();
+		var admCd = record.data.id;
+		
+		if(admCd!='_cancel_'){
+			view3.setDisabled(false);
+		}else{
+			admCd = Ext.getCmp('cmbJibun1').getSelection().data.id;
+			view3.setDisabled(true);
+		}
+		
+		store3.clearFilter();
+		store3.filter(function(item){
+			try{
+				if(item.id=='_cancel_'){
+					return true;
+				}
+				return (item.id+"").substring(0,4) == record.data.id.substring(0,4);
+			}catch(e){
+				return false;
+			}
+			
+		})
+		
+		view3.reset();
+	},
+	
+	onJibun3Change: function(combo, record, eOpts) {
+		/*var view4 = Ext.getCmp('cmbJibun4')
+		var store4 = view4.getStore();
+		var admCd = record.data.id;
+		if(admCd!='_cancel_'){
+			view4.setDisabled(false);
+		}else{
+			admCd = Ext.getCmp('cmbArea2').getSelection().data.id;
+			view4.setDisabled(true);
+		}
+		
+		store4.clearFilter();		
+		store4.filter(function(item){
+			try{
+				if(item.id=='_cancel_'){
+					return true;
+				}
+				return (item.id+"").substring(0,7) == record.data.id.substring(0,7);
+			}catch(e){
+				return false;
+			}
+			
+		})
+		
+		view4.reset();*/
+		
+	},
+	
+	onJibun4Change: function(combo, record, eOpts){
+		
+	},
+	
+	//지점검색으로 부터 반경검색 select 박스 클릭
+	bufferBtn: function(button,e){
+		
+		//반경입력창 hidden/hide
+		if(button.id == "inputBuffer" || button.id == "inputBufferCon"){
+			Ext.getCmp("sRradusForm").setHidden(false);
+			if(button.id == "inputBuffer"){
+				return;
+			}	
+		}else{
+			Ext.getCmp("sRradusForm").setHidden(true);
+		}
+		
+		
+		if(Ext.getCmp("SResultGrid").getSelectionModel().lastSelected != undefined){
+			JibunMove(Ext.getCmp("SResultGrid").getSelectionModel().lastSelected.data.id, Ext.getCmp("SResultGrid").getSelectionModel().lastSelected.data.layerNum);
+		}else{
+			return;
+		}
+		
+		
+	},
+	
+	onJibunSearch: function(a,b,c){
+		//시도 시군구 읍면동
+		if(Ext.getCmp('cmbArea3').getValue() == null){
+			alert("최소 읍면동 선택 필요");
+			return;
+		}else{
+			if(Ext.getCmp('ziBunCode').getValue() == ""){
+				alert("본번을 입력해 주시기 바랍니다");
+				return;
+			}
+		}
+		
+		var admCd = null;
+		if(Ext.getCmp('cmbArea3').getValue() != null){
+			admCd = Ext.getCmp('cmbArea3').getValue().toString().substring(0,8);	
+		}else{
+			return;
+		}
+		
+		//산
+		var sanCd = Ext.getCmp('mountCode').getValue() ? 2 : 1;		
+		
+		//ziBunCode
+		var ziBunCode = Ext.getCmp('ziBunCode').getValue();
+		
+		var inbu = false;
+		
+		if(ziBunCode.indexOf("-") > -1){
+			inbu = true;
+		}
+		
+		
+		var bonCd = null;  //본번
+		var buCd = null;   //부번
+		if(inbu){
+			//본번
+			bonCd = ziBunCode.substring(0,ziBunCode.indexOf("-"));
+			bonCd = bonCd + '';
+			bonCd = bonCd.length >= 4 ? bonCd : new Array(4 - bonCd.length + 1).join('0') + bonCd ;
+			//부번
+			buCd = ziBunCode.substring(ziBunCode.indexOf("-")+1,ziBunCode.length);
+			buCd = buCd + '';
+			buCd = buCd.length >= 4 ? buCd : new Array(4 - buCd.length + 1).join('0') + buCd ;
+		}else{
+			bonCd = ziBunCode;
+			bonCd = bonCd + '';
+			bonCd = bonCd.length >= 4 ? bonCd : new Array(4 - bonCd.length + 1).join('0') + bonCd ;
+		}
+		
+		var store = Ext.create('Sgis.store.JibunSearchStore');
+		store.admCd = admCd;	//지점코드
+		store.sanCd = sanCd;	//산
+		store.bonCd = bonCd;	//본번
+		store.buCd = buCd;	//부번
+		store.inbu = inbu;	//부번 체크
+		store.load();
+		
+		
+		Ext.defer(function(){
+			var SResultGrid = Ext.getCmp("SResultGrid");
+			console.info(store);
+			SResultGrid.setStore(store);
+		}, 100);
+		
+		
+	},
+    
 	
 	onArea1Change: function(combo, record, eOpts) {
 		Sgis.getApplication().fireEvent('areaSelect', {admCd:record.data.id, layerId:'15'});//시도
@@ -78,6 +267,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 	},
 	
 	onArea3Change: function(combo, record, eOpts) {
+		
 		var admCd = record.data.id;
 		if(admCd!='_cancel_'){
 			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:'17'});//읍면동
@@ -136,6 +326,8 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 	},
 	
 	onCheckChanged: function(node, checked, eOpts) {
+		console.info(node);
+		console.info(node.get('leaf'));
 		if(!node.get('leaf')) {
 			this.checkAllChildren(node, checked);
 		} else {
@@ -153,8 +345,18 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 		
 		Ext.each(children, function(child, index) {
 			
-			
+			//3dep 일시
 			if(child.childNodes.length > 0){
+				for(var cNods = 0 ; cNods < child.childNodes.length ; cNods++ ){
+						child.childNodes[cNods].set('checked', checked);
+				}	
+			}
+			child.set('checked', checked);
+			if(index==children.length-1){
+				var view = Ext.getCmp("layerTree2");
+				Sgis.getApplication().fireEvent('searchLayerOnOff', view.getChecked());
+			}
+			/*if(child.childNodes.length > 0){
 				for(var cNods = 0 ; cNods < child.childNodes.length ; cNods++ ){
 						child.childNodes[cNods].set('checked', checked);
 				}	
@@ -165,7 +367,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 				if(view.xtype == 'treepanel') {
 					Sgis.getApplication().fireEvent('searchLayerOnOff', view.getChecked());
 				}
-			}
+			}*/
 		});
 	},
 	

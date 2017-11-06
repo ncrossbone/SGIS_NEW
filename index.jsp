@@ -42,12 +42,13 @@
 					packages: [{name: "Sgis", location: baseUrl+"/app"}]
 			};
 			//var memType = <%=memType%>;
-			var memType = 31;
+			var memType = 7;
 			window.memType = memType;
 	    //});
 		
 	</script>
     <script type="text/javascript" src="http://js.arcgis.com/3.14/"></script>
+    <script type="text/javascript" src="./resources/js/common.js"></script>
     <script id="microloader" type="text/javascript" src="libs/jquery/jquery-1.11.3.min.js"></script>
     <script id="microloader" type="text/javascript" src="bootstrap.js"></script>
 </head>

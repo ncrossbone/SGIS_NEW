@@ -17,9 +17,10 @@ Ext.define('Sgis.view.west.WestTab1Controller', {
 	onCheckChanged: function(node, checked, eOpts) {
 		
 		// p = 레이어  / b = 주제도
-		
+		console.info(node);
+		console.info(node.get('leaf'));
 		if(node.data.parentId.substr(0,1) == "p"){
-			
+			console.info(node.get('leaf'));
 			if(!node.get('leaf')) {
 				this.checkAllChildren(node, checked);
 			}else{
@@ -45,7 +46,6 @@ Ext.define('Sgis.view.west.WestTab1Controller', {
 		}else{
 			
 			if(node.data.id.substr(0,1) == "p"){
-				
 				if(!node.get('leaf')) {
 					this.checkAllChildren(node, checked);
 				}else{
@@ -147,8 +147,7 @@ Ext.define('Sgis.view.west.WestTab1Controller', {
 									layerArr = []
 								}else{
 									layerArr = [1,2,3,4,11,13,14,15,45,46,47,48]
-								}
-								
+								}	
 							}
 							for(var i=0; i<layerArr.length; i++){
 								var record = store.findRecord('id', layerArr[i]);

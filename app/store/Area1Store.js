@@ -4,14 +4,16 @@ Ext.define('Sgis.store.Area1Store', {
 
 	fields: ['id', 'name'],
 
-	autoLoad: false,
+	autoLoad: true,
 
 	remoteSort: true,
 
 	listeners: {
 		beforeload: function(store) {
 			Ext.defer(function() { 
-				var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2_new/MapServer/15"); //시도
+				//var queryTask = new esri.tasks.QueryTask(_API.layer2_new +"/"+_API.admSidoLayerId); //시도
+				var queryTask = new esri.tasks.QueryTask(_API.layer1_new+"/"+_API.layer1Sido); //시도
+				//_API.layer1_new+"/"+_API.layer1Sido
 				var query = new esri.tasks.Query();
 				query.returnGeometry = false;
 				query.where = "1=1";
