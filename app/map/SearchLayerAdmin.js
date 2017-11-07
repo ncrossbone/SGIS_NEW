@@ -275,6 +275,8 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		queryTask.execute(query,  function(results){
 			Ext.each(results.features, function(obj, index) {
 				
+				console.log(obj);
+				
 				obj.setSymbol(me.simpleFillSymbol);
 	    		me.jibunGraphicLayer.add(obj);
 				
@@ -293,63 +295,133 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	    			}
 	    		});
 	    		
-				var center = esri.geometry.Polygon(obj.geometry).getExtent().getCenter();
+//	    		var jibunPolygon = esri.geometry.Polygon(obj.geometry);
+	    		var center = obj.geometry.getExtent().getCenter();
 	    		me.map.centerAndZoom(center,17);
-				
-	    		var params = new esri.tasks.BufferParameters();
-	            params.distances = [ btnDistances ];
-	            params.outSpatialReference = new esri.SpatialReference({wkid:102100});
-	            params.unit = esri.tasks.GeometryService.UNIT_METER;
-	            
-	            require(["esri/geometry/normalizeUtils"], function(normalizeUtils) { 
-	            	
-	            	normalizeUtils.normalizeCentralMeridian([obj.geometry]).then(function(normalizedGeometries){
-		                var normalizedGeometry = normalizedGeometries[0];
-		                if (normalizedGeometry.type === "polygon") {	
-		                  me.geometryService.simplify([normalizedGeometry], function(geometries) {
-		                    params.geometries = geometries;
-		                    
-		                    me.geometryService.buffer(params, function(result){
-		                    	
-		                    	if(result.length>0){
-		            	    		me.geometry = result[0];
-		            	    		var symbol = new esri.symbol.SimpleFillSymbol(
-		            	    				esri.symbol.SimpleFillSymbol.STYLE_SOLID,
-		            	    	            new esri.symbol.SimpleLineSymbol(
-		            	    	            		esri.symbol.SimpleLineSymbol.STYLE_SOLID,
-		            	    	              new dojo.Color([255,0,0,0.65]), 2
-		            	    	            ),
-		            	    	            new dojo.Color([255,0,0,0.35])
-		            	    	          );
-		            	    		
-		            	    		var graphic = new esri.Graphic(me.geometry, symbol);
-		            	            me.sourceGraphicLayer.clear();
-		            	            me.sourceGraphicLayer.add(graphic);
-		            	            me.spSearch();
-		            	            
-		            	    	}
-		                    	
-		                    })
-		                    
-		                  });
-		                } else {
-		                  params.geometries = [normalizedGeometry];
-		                  me.geometryService.buffer(params, showBuffer);
-		                }
-
-		              });
-	            	
-	            });
-	            
-	            
 	    		
-	    		
+	    		me.geometryService.simplify([obj.geometry], function(geometries){
+	    			if (geometries[0].rings.length > 0) {
+	    		        me.geometryService.labelPoints(geometries, function(centroid) { // callback
+	    		        	if(centroid.length > 0){
+	    		        		// 폴리곤의 포인트중에서 중심점에서 가장 먼 포인트를 구한다.
+		    		    		me.getTargetPoint(centroid[0], obj, function(desPoint, distance){
+		    		    			var radius = parseInt(btnDistances) + distance;
+		    		    			
+		    		    			var desPointCircle = new esri.geometry.Circle({
+		    		    				center:centroid[0],
+		    		    				radius: radius,
+		    		    				radiusUnit: esri.Units.METERS,
+		    		    				spatialReference:new esri.SpatialReference({ wkid: 102100 })
+		    		    			});
+		    	    	    		var symbol = new esri.symbol.SimpleFillSymbol(
+		    	    	    				esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+		    	    	    	            new esri.symbol.SimpleLineSymbol(
+		    	    	    	            		esri.symbol.SimpleLineSymbol.STYLE_SOLID,
+		    	    	    	              new dojo.Color([255,0,0,0.65]), 2
+		    	    	    	            ),
+		    	    	    	            new dojo.Color([255,0,0,0.35])
+		    	    	    	          );
+		    	    	    		
+		    	    	    		var graphic = new esri.Graphic(desPointCircle, symbol);
+		    	    	    		var graphicPoint = new esri.Graphic(centroid[0], new esri.symbol.SimpleMarkerSymbol().setStyle(esri.symbol.SimpleMarkerSymbol.STYLE_CROSS).setSize(10) );
+		    	    	    		var graphicPoint2 = new esri.Graphic(desPoint, new esri.symbol.SimpleMarkerSymbol().setStyle(esri.symbol.SimpleMarkerSymbol.STYLE_CROSS).setSize(5) );
+		    	    	    		
+		    	    	    		
+		    	    	            me.sourceGraphicLayer.clear();
+		    	    	            me.sourceGraphicLayer.add(graphic);
+		    	    	            me.sourceGraphicLayer.add(graphicPoint);
+		    	    	            me.sourceGraphicLayer.add(graphicPoint2);
+		    	    	            
+		    	    	            me.spSearch();
+		    		    		});
+	    		        	}
+	    		        });
+	    			} 
+	    		});
+//		    		var params = new esri.tasks.BufferParameters();
+//		            params.distances = [ btnDistances ];
+//		            params.outSpatialReference = new esri.SpatialReference({wkid:102100});
+//		            params.unit = esri.tasks.GeometryService.UNIT_METER;
+//		            
+//		            require(["esri/geometry/normalizeUtils"], function(normalizeUtils) { 
+//		            	
+//		            	normalizeUtils.normalizeCentralMeridian([desPoint]).then(function(normalizedGeometries){
+//			                var normalizedGeometry = normalizedGeometries[0];
+//			                if (normalizedGeometry.type === "polygon") {	
+//			                  me.geometryService.simplify([normalizedGeometry], function(geometries) {
+//			                    params.geometries = geometries;
+//			                    
+//			                    me.geometryService.buffer(params, function(result){
+//			                    	
+//			                    	if(result.length>0){
+//			            	    		me.geometry = result[0];
+//			            	    		var symbol = new esri.symbol.SimpleFillSymbol(
+//			            	    				esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+//			            	    	            new esri.symbol.SimpleLineSymbol(
+//			            	    	            		esri.symbol.SimpleLineSymbol.STYLE_SOLID,
+//			            	    	              new dojo.Color([255,0,0,0.65]), 2
+//			            	    	            ),
+//			            	    	            new dojo.Color([255,0,0,0.35])
+//			            	    	          );
+//			            	    		
+//			            	    		var graphic = new esri.Graphic(me.geometry, symbol);
+//			            	            me.sourceGraphicLayer.clear();
+//			            	            me.sourceGraphicLayer.add(graphic);
+//			            	            me.spSearch();
+//			            	            
+//			            	    	}
+//			                    	
+//			                    })
+//			                    
+//			                  });
+//			                } else {
+//			                  params.geometries = [normalizedGeometry];
+//			                  me.geometryService.buffer(params, showBuffer);
+//			                }
+//	    		});
 			});
 		});
 		dojo.connect(queryTask, "onError", function(err) {
 		});
     },
-    
+    getTargetPoint: function(jibunCenterPoint, jibunPolygon, callback){
+		var jibunRings = jibunPolygon.geometry.rings;
+		
+		var distanceForLong = 0;
+		var distParams = new esri.tasks.DistanceParameters();
+        distParams.distanceUnit = esri.tasks.GeometryService.UNIT_METER;
+        var disExeArr = [];
+        var disPointArr = [];
+        
+		for(var z=0; z<jibunRings.length; z++){
+			for(var zz=0; zz<jibunRings[z].length; zz++){
+				var desPoint = new esri.geometry.Point(jibunRings[z][zz], new esri.SpatialReference({ wkid: 102100 }));
+				
+				distParams.geometry1 = jibunCenterPoint;
+    	        distParams.geometry2 = desPoint;
+    	        distParams.geodesic = false;
+    	        
+    	        disExeArr.push(this.geometryService.distance(distParams));
+    	        disPointArr.push(desPoint);
+			}
+		}
+		var dl = new dojo.DeferredList(disExeArr);
+
+		var desPoint;
+		
+		dl.then(function(result){
+			console.log(result);
+			for(var z=0; z<result.length; z++){
+				if(parseInt(result[z][1]) > distanceForLong){
+					distanceForLong = parseInt(result[z][1]);
+					desPoint = disPointArr[z];
+				}
+			}
+			if(callback !=null){
+				callback.apply(this, [desPoint, distanceForLong]);
+			}
+        });
+    },
     getLayerDisplayFiledInfo:function(callback, scope){
 		var me = this;
 		var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + _API.gridDef);
