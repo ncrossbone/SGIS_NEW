@@ -124,7 +124,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
         	me.geometry = new esri.geometry.Extent(event);
         }else if(event.type=='point'){
         	symbol = new esri.symbol.SimpleMarkerSymbol();
-            console.info(symbol);
+            
         	me.geometry = new esri.geometry.Point(event);
         	me.bufferDisplayAndXY();
         }else if(event.type=='polygon'){
@@ -651,7 +651,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				
 				var datas = [];
 				resultData.field = me.layerDisplayFiledInfo[layer.layerId];
-				console.info(resultData.field);
+				
 				
 				resultData.filter = layer.filter;
 				resultData.filterCallback = me.spSearch;
@@ -674,7 +674,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				}
 				query.outFields = ["*"];
 				queryTask.execute(query,  function(results){
-					console.info(results);
+					
 					receiveComplteCnt ++;
 					if(receiveComplteCnt == me.layers.length){
 						SGIS.loading.finish();
@@ -695,7 +695,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 							if(layer.id=='5'){
 								pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/' + layer.iconInfo , 12, 12);
 							}else if(layer.id == '43'){
-								console.info(obj.attributes.NO3N);
+								
 								if(0.5 >= obj.attributes.NO3N || obj.attributes.NO3N <= 2.0){
 									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_1.png', 16, 16);
 								}else if(2.1 >= obj.attributes.NO3N || obj.attributes.NO3N <= 3.3){

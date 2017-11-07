@@ -212,7 +212,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 		
 		Ext.defer(function(){
 			var SResultGrid = Ext.getCmp("SResultGrid");
-			console.info(store);
+			
 			SResultGrid.setStore(store);
 		}, 100);
 		
@@ -326,8 +326,8 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 	},
 	
 	onCheckChanged: function(node, checked, eOpts) {
-		console.info(node);
-		console.info(node.get('leaf'));
+		
+		
 		if(!node.get('leaf')) {
 			this.checkAllChildren(node, checked);
 		} else {

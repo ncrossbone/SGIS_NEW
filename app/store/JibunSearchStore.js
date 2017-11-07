@@ -27,7 +27,7 @@ Ext.define('Sgis.store.JibunSearchStore', {
 				}
 				
 				var queryTask = new esri.tasks.QueryTask(_API.lsmdContLdreg +"/"+layerNum);
-				console.info(_API.lsmdContLdreg +"/"+layerNum);
+				
 				var query = new esri.tasks.Query();
 				
 				query.where = " PNU LIKE '" + store.admCd +"%'";
@@ -43,11 +43,11 @@ Ext.define('Sgis.store.JibunSearchStore', {
 				query.returnGeometry = false;
 				query.outFields = ["*"];
 				
-				console.info(query.where);
+				
 				var receiveData = [];
 				queryTask.execute(query,  function(results){
 					var data = results.features;
-					console.info(data);
+					
 					if(data.length < 1){
 						alert("해당지번검색결과가 없습니다.");
 						Ext.getCmp("btnSResult").setHidden(true);
