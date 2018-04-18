@@ -1,9 +1,9 @@
 [{
-	"arcServerceUrl" : "http://112.217.167.123:23002/arcgis",
-	"arcServerceUrl2" : "http://112.217.167.123:23002/arcgis",
-	"layer1_new" : "http://112.217.167.123:23002/arcgis/rest/services/Layer1_new/MapServer",
-	"layer2_new" : "http://112.217.167.123:23002/arcgis/rest/services/Layer2_new/MapServer",
-	"lsmdContLdreg" : "http://112.217.167.123:23002/arcgis/rest/services/LSMD_CONT_LDREG/MapServer",
+	"arcServerceUrl" : "http://112.217.167.123:43002/arcgis",
+	"arcServerceUrl2" : "http://112.217.167.123:43002/arcgis",
+	"layer1_new" : "http://112.217.167.123:43002/arcgis/rest/services/Layer1_new/MapServer",
+	"layer2_new" : "http://112.217.167.123:43002/arcgis/rest/services/Layer2_new/MapServer",
+	"lsmdContLdreg" : "http://112.217.167.123:43002/arcgis/rest/services/LSMD_CONT_LDREG/MapServer",
 	"_11" : "0",
 	"_26" : "1",
 	"_27" : "2",
@@ -32,7 +32,7 @@
 	"infoDef" : "50",
 	"infoGridDef" : "51",
 	"chartdef" : "52",
-	"printUrl" : "./sgis-war/WebContent/CustomPrintTask.jsp",
-	"proxyUrl" : "./sgis-war/WebContent/proxy.jsp",
-	"excelDownUrl" : "./sgis-war/WebContent/excelDownload.jsp"
+	"printUrl" : "/sgiswar/CustomPrintTask.jsp",
+	"proxyUrl" : "/sgiswar/proxy.jsp",
+	"excelDownUrl" : "/sgiswar/excelDownload.jsp"
 }]

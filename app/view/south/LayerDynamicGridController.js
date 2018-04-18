@@ -52,13 +52,13 @@ Ext.define('Sgis.view.south.LayerDynamicGridController', {
 		var me = this;
 		var layerId = this.getView().layerId;
 		if(button.text=='액셀받기'){
-			button.setText("액셀받기취소");	
-			
-			var obj = {'header':JSON.stringify(me.getView().gridFields), 'datas':JSON.stringify(me.getView().gridData)};
-			$.post(esri.config.defaults.io.proxyUrl+'?'+Sgis.app.excelDownUrl, obj, function(data){
+			button.setText("액셀받기취소");
+			console.info(me.getView());
+			var obj = {'header':JSON.stringify(me.getView().gridFields), 'headerNm':JSON.stringify(me.getView().gridFieldsKo), 'datas':JSON.stringify(me.getView().gridData)};
+			$.post(_API.excelDownUrl, obj, function(data){
 				button.setText("액셀받기");
 				$('#__fileDownloadIframe__').remove();
-				$('body').append('<iframe src='+esri.config.defaults.io.proxyUrl+'?'+data.url+' id="__fileDownloadIframe__" name="__fileDownloadIframe__" width="0" height="0" style="display:none;"/>');
+				$('body').append('<iframe src='+data.url+' id="__fileDownloadIframe__" name="__fileDownloadIframe__" width="0" height="0" style="display:none;"/>');
 	   		},"json").error(function(){
 	   			button.setText("액셀받기");
 	   		});

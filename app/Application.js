@@ -30,9 +30,9 @@ Ext.define('Sgis.Application', {
 //	printUrl:'http://' + window.location.hostname + ':' + window.location.port + '/sgis-war/CustomPrintTask.jsp',
 //	proxyUrl:'http://' + window.location.hostname + ':' + window.location.port + '/sgis-war/proxy.jsp',
 //	excelDownUrl:'http://' + window.location.hostname + ':' + window.location.port + '/sgis-war/excelDownload.jsp',
-	printUrl:'./sgis-war/WebContent/CustomPrintTask.jsp',
-	proxyUrl:'./sgis-war/WebContent/proxy.jsp',
-	excelDownUrl:'./sgis-war/WebContent/excelDownload.jsp',
+	printUrl:'/sgiswar/CustomPrintTask.jsp',
+	proxyUrl:'/sgiswar/proxy.jsp',
+	excelDownUrl:'/sgiswar/excelDownload.jsp',
 	
 
 	stores: [

@@ -144,9 +144,9 @@ Ext.define('Sgis.view.west.WestTab1Controller', {
 								layerArr = [1,2,3,4,42,6,8,9,11,13,14,15,20,45,46,47,48]
 							}else{
 								if(location.href.substr(7,3) == "10."){
-									layerArr = []
+									layerArr = [];
 								}else{
-									layerArr = [1,2,3,4,11,13,14,15,45,46,47,48]
+									layerArr = [1,2,3,4,11,13,15,45,46,47,48]
 								}	
 							}
 							for(var i=0; i<layerArr.length; i++){
@@ -157,7 +157,7 @@ Ext.define('Sgis.view.west.WestTab1Controller', {
 							}
 							
 							
-							for(var i=1; i<48; i++){
+							for(var i=1; i<49; i++){
 								var record = store.findRecord('id', i);
 								if(record && !record.get('extSel')){
 									record.drop();

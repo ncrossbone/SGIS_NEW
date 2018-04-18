@@ -11,18 +11,6 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 	
 	control: {
 		
-		'#cmbJibun1': {
-			select: 'onJibun1Change'
-		},
-		'#cmbJibun2': {
-			select: 'onJibun2Change'
-		},
-		'#cmbJibun3': {
-			select: 'onJibun3Change'
-		},
-		'#cmbJibun4': {
-			select: 'onJibun4Change'
-		},
 		'#searchJibun':{
 			click: 'onJibunSearch'
 		},
@@ -36,6 +24,10 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 		'#cmbArea3': {
 			select: 'onArea3Change'
 		},
+		'#cmbArea4': {
+			select: 'onArea4Change'
+		},
+		
 		'treepanel': {
 			checkchange: 'onCheckChanged',
 			afterrender: 'onAfterrender'
@@ -164,11 +156,19 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 			}
 		}
 		
+		
+		
+		
 		var admCd = null;
-		if(Ext.getCmp('cmbArea3').getValue() != null){
-			admCd = Ext.getCmp('cmbArea3').getValue().toString().substring(0,8);	
+		
+		if(Ext.getCmp('cmbArea3').getRawValue().substring(Ext.getCmp('cmbArea3').getRawValue().length , Ext.getCmp('cmbArea3').getRawValue().length -1) == "동"){
+			admCd = Ext.getCmp('cmbArea3').getValue();
 		}else{
-			return;
+			if(Ext.getCmp('cmbArea4').getValue() != null){
+				admCd = Ext.getCmp('cmbArea4').getValue().toString().substring(0,10);
+			}else{
+				admCd = Ext.getCmp('cmbArea3').getValue().toString().substring(0,8);
+			}
 		}
 		
 		//산
@@ -223,7 +223,8 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 	onArea1Change: function(combo, record, eOpts) {
 		Sgis.getApplication().fireEvent('areaSelect', {admCd:record.data.id, layerId:'15'});//시도
 		var view2 = Ext.getCmp('cmbArea2');
-		var view3 = Ext.getCmp('cmbArea3')
+		var view3 = Ext.getCmp('cmbArea3');
+		var view4 = Ext.getCmp('cmbArea4');
 		var store2 = view2.getStore();
 		store2.clearFilter();
 		store2.filter(function(item){
@@ -233,8 +234,11 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 			return (item.id+"").substring(0,2) == record.data.id;
 		})		
 		view2.reset();
+		view3.reset();
+		view4.reset();
 		view2.setDisabled(false);
 		view3.setDisabled(true);
+		view4.setDisabled(true);
 	},
 	
 	onArea2Change: function(combo, record, eOpts) {
@@ -267,14 +271,43 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 	},
 	
 	onArea3Change: function(combo, record, eOpts) {
-		
+		var view4 = Ext.getCmp('cmbArea4');
+		var store4 = view4.getStore();
 		var admCd = record.data.id;
 		if(admCd!='_cancel_'){
+			view4.setDisabled(false);
 			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:'17'});//읍면동
 		}else{
+			view4.setDisabled(true);
 			admCd = Ext.getCmp('cmbArea2').getSelection().data.id;
 			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:'16'});//시군구
 		}
+		
+		store4.clearFilter();
+		store4.filter(function(item){
+			try{
+				if(item.id=='_cancel_'){
+					return true;
+				}
+				return (item.id+"").substring(0,7) == record.data.id.substring(0,7);
+			}catch(e){
+				return false;
+			}
+			
+		})
+		
+		view4.reset();
+	},
+	
+	onArea4Change: function(combo, record, eOpts) {
+		var view4 = Ext.getCmp('cmbArea4');
+		var admCd = record.data.id;
+		
+		if(admCd!='_cancel_'){
+			console.info(admCd);
+			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:'48'});//시군구
+		}
+		
 	},
 
 	onAreaCircleClick: function(button, e) {
@@ -410,9 +443,9 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 								layerArr = [1,2,3,4,42,6,8,9,11,13,14,15,20]
 							}else{
 								if(location.href.substr(7,3) == "10."){
-									layerArr = []
+									layerArr = [];
 								}else{
-									layerArr = [1,2,3,4,11,13,14,15]
+									layerArr = [1,2,3,4,11,13,15]
 								}
 							}
 							for(var i=0; i<layerArr.length; i++){
@@ -422,7 +455,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 								}
 							}
 							
-							for(var i=1; i<43; i++){
+							for(var i=1; i<44; i++){
 								var record = store.findRecord('id', i);
 								if(record && !record.get('extSel')){
 									record.drop();

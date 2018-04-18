@@ -39,7 +39,7 @@ Ext.define('Sgis.store.JibunSearchStore', {
 					query.where += "	AND BON = '" + store.bonCd +"'";
 				}
 				
-				
+
 				query.returnGeometry = false;
 				query.outFields = ["*"];
 				
@@ -57,6 +57,7 @@ Ext.define('Sgis.store.JibunSearchStore', {
 						Ext.each(data, function(media, index) {
 							var addr = "";
 							Ext.each(JibunList, function(a, b) {
+								//console.info(a.data.id.toString().substr(0,10));
 								if(a.data.id.toString().substr(0,10) == media.attributes.PNU.substr(0,10)){
 									//addr = a.data.doNm + " " + a.data.ctyNm + " " + a.data.dongNm + " " + a.data.name ;
 									//주소 길이 문제로 시도 빠짐
@@ -80,7 +81,9 @@ Ext.define('Sgis.store.JibunSearchStore', {
 								id:media.attributes.PNU , addr:addr + " " + sanAddr + " " + addrSub, layerNum: layerNum
 							});
 							
+							
 						});
+						
 						store.setData(receiveData);
 						
 						Ext.getCmp("btnSResult").setHidden(false);

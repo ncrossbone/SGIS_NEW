@@ -92,6 +92,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		
 		me.toolbar = new Sgis.map.toolbar.CustomDraw(me.map, {showTooltips:false}, true, me.sourceGraphicLayer);
 		dojo.connect(me.toolbar, "onDrawEnd", function(event){
+			console.info(event);
 			me.map.setMapCursor("default");
 			me.addToMap(event);
 		});
@@ -122,14 +123,14 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
         me.map.isPan = true;
         if(event.type=='extent'){
         	me.geometry = new esri.geometry.Extent(event);
+        	me.addDrawGraphic(event);
         }else if(event.type=='point'){
         	symbol = new esri.symbol.SimpleMarkerSymbol();
-            
         	me.geometry = new esri.geometry.Point(event);
         	me.bufferDisplayAndXY();
         }else if(event.type=='polygon'){
         	me.geometry = new esri.geometry.Polygon(event);
-        	 me.addDrawGraphic(event)
+        	me.addDrawGraphic(event)
         }
 	},
 	
@@ -214,16 +215,20 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		me.targetGraphicLayer.clear();
 		me.highlightGraphicLayer.clear();
 		
+		var url = "";
+		
 		//var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2/MapServer/" + info.layerId);
-		var queryTask = new esri.tasks.QueryTask(_API.layer2_new + "/" + info.layerId);
+		if(info.layerId == "48" ){
+			url = _API.layer1_new + "/" + info.layerId;
+		}else{
+			url = _API.layer2_new + "/" + info.layerId;
+		}
+		
+		var queryTask = new esri.tasks.QueryTask(url);
 		var query = new esri.tasks.Query();
 		query.returnGeometry = true;
 		query.outSpatialReference = {"wkid":102100};
-		if(info.layerId!=17){
-			query.where = "ADM_CD = '" + info.admCd + "'";
-		}else{
-			query.where = "ADM_CD = " + info.admCd;
-		}
+		query.where = "ADM_CD = '" + info.admCd + "'";
 		query.outFields = ["*"];
 		queryTask.execute(query,  function(results){
 			Ext.each(results.features, function(obj, index) {
@@ -275,8 +280,6 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		queryTask.execute(query,  function(results){
 			Ext.each(results.features, function(obj, index) {
 				
-				console.log(obj);
-				
 				obj.setSymbol(me.simpleFillSymbol);
 	    		me.jibunGraphicLayer.add(obj);
 				
@@ -295,90 +298,57 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	    			}
 	    		});
 	    		
-//	    		var jibunPolygon = esri.geometry.Polygon(obj.geometry);
-	    		var center = obj.geometry.getExtent().getCenter();
+				var center = esri.geometry.Polygon(obj.geometry).getExtent().getCenter();
 	    		me.map.centerAndZoom(center,17);
+				
+	    		var params = new esri.tasks.BufferParameters();
+	            params.distances = [ btnDistances ];
+	            params.outSpatialReference = new esri.SpatialReference({wkid:102100});
+	            params.unit = esri.tasks.GeometryService.UNIT_METER;
+	            
+	            require(["esri/geometry/normalizeUtils"], function(normalizeUtils) { 
+	            	
+	            	normalizeUtils.normalizeCentralMeridian([obj.geometry]).then(function(normalizedGeometries){
+		                var normalizedGeometry = normalizedGeometries[0];
+		                if (normalizedGeometry.type === "polygon") {	
+		                  me.geometryService.simplify([normalizedGeometry], function(geometries) {
+		                    params.geometries = geometries;
+		                    
+		                    me.geometryService.buffer(params, function(result){
+		                    	
+		                    	if(result.length>0){
+		            	    		me.geometry = result[0];
+		            	    		var symbol = new esri.symbol.SimpleFillSymbol(
+		            	    				esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+		            	    	            new esri.symbol.SimpleLineSymbol(
+		            	    	            		esri.symbol.SimpleLineSymbol.STYLE_SOLID,
+		            	    	              new dojo.Color([255,0,0,0.65]), 2
+		            	    	            ),
+		            	    	            new dojo.Color([255,0,0,0.35])
+		            	    	          );
+		            	    		
+		            	    		var graphic = new esri.Graphic(me.geometry, symbol);
+		            	            me.sourceGraphicLayer.clear();
+		            	            me.sourceGraphicLayer.add(graphic);
+		            	            me.spSearch();
+		            	            
+		            	    	}
+		                    	
+		                    })
+		                    
+		                  });
+		                } else {
+		                  params.geometries = [normalizedGeometry];
+		                  me.geometryService.buffer(params, showBuffer);
+		                }
+
+		              });
+	            	
+	            });
+	            
+	            
 	    		
-	    		me.geometryService.simplify([obj.geometry], function(geometries){
-	    			if (geometries[0].rings.length > 0) {
-	    		        me.geometryService.labelPoints(geometries, function(centroid) { // callback
-	    		        	if(centroid.length > 0){
-	    		        		// 폴리곤의 포인트중에서 중심점에서 가장 먼 포인트를 구한다.
-		    		    		me.getTargetPoint(centroid[0], obj, function(desPoint, distance){
-		    		    			var radius = parseInt(btnDistances) + distance;
-		    		    			
-		    		    			var desPointCircle = new esri.geometry.Circle({
-		    		    				center:centroid[0],
-		    		    				radius: radius,
-		    		    				radiusUnit: esri.Units.METERS,
-		    		    				spatialReference:new esri.SpatialReference({ wkid: 102100 })
-		    		    			});
-		    	    	    		var symbol = new esri.symbol.SimpleFillSymbol(
-		    	    	    				esri.symbol.SimpleFillSymbol.STYLE_SOLID,
-		    	    	    	            new esri.symbol.SimpleLineSymbol(
-		    	    	    	            		esri.symbol.SimpleLineSymbol.STYLE_SOLID,
-		    	    	    	              new dojo.Color([255,0,0,0.65]), 2
-		    	    	    	            ),
-		    	    	    	            new dojo.Color([255,0,0,0.35])
-		    	    	    	          );
-		    	    	    		
-		    	    	    		var graphic = new esri.Graphic(desPointCircle, symbol);
-		    	    	    		var graphicPoint = new esri.Graphic(centroid[0], new esri.symbol.SimpleMarkerSymbol().setStyle(esri.symbol.SimpleMarkerSymbol.STYLE_CROSS).setSize(10) );
-		    	    	    		var graphicPoint2 = new esri.Graphic(desPoint, new esri.symbol.SimpleMarkerSymbol().setStyle(esri.symbol.SimpleMarkerSymbol.STYLE_CROSS).setSize(5) );
-		    	    	    		
-		    	    	    		
-		    	    	            me.sourceGraphicLayer.clear();
-		    	    	            me.sourceGraphicLayer.add(graphic);
-		    	    	            me.sourceGraphicLayer.add(graphicPoint);
-		    	    	            me.sourceGraphicLayer.add(graphicPoint2);
-		    	    	            
-		    	    	            me.spSearch();
-		    		    		});
-	    		        	}
-	    		        });
-	    			} 
-	    		});
-//		    		var params = new esri.tasks.BufferParameters();
-//		            params.distances = [ btnDistances ];
-//		            params.outSpatialReference = new esri.SpatialReference({wkid:102100});
-//		            params.unit = esri.tasks.GeometryService.UNIT_METER;
-//		            
-//		            require(["esri/geometry/normalizeUtils"], function(normalizeUtils) { 
-//		            	
-//		            	normalizeUtils.normalizeCentralMeridian([desPoint]).then(function(normalizedGeometries){
-//			                var normalizedGeometry = normalizedGeometries[0];
-//			                if (normalizedGeometry.type === "polygon") {	
-//			                  me.geometryService.simplify([normalizedGeometry], function(geometries) {
-//			                    params.geometries = geometries;
-//			                    
-//			                    me.geometryService.buffer(params, function(result){
-//			                    	
-//			                    	if(result.length>0){
-//			            	    		me.geometry = result[0];
-//			            	    		var symbol = new esri.symbol.SimpleFillSymbol(
-//			            	    				esri.symbol.SimpleFillSymbol.STYLE_SOLID,
-//			            	    	            new esri.symbol.SimpleLineSymbol(
-//			            	    	            		esri.symbol.SimpleLineSymbol.STYLE_SOLID,
-//			            	    	              new dojo.Color([255,0,0,0.65]), 2
-//			            	    	            ),
-//			            	    	            new dojo.Color([255,0,0,0.35])
-//			            	    	          );
-//			            	    		
-//			            	    		var graphic = new esri.Graphic(me.geometry, symbol);
-//			            	            me.sourceGraphicLayer.clear();
-//			            	            me.sourceGraphicLayer.add(graphic);
-//			            	            me.spSearch();
-//			            	            
-//			            	    	}
-//			                    	
-//			                    })
-//			                    
-//			                  });
-//			                } else {
-//			                  params.geometries = [normalizedGeometry];
-//			                  me.geometryService.buffer(params, showBuffer);
-//			                }
-//	    		});
+	    		
 			});
 		});
 		dojo.connect(queryTask, "onError", function(err) {
@@ -439,6 +409,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 					me.layerDisplayFiledInfo[attr.ServiceID].push({fnm:"OBJECTID", fid:"OBJECTID", flag:false})
 				}
 				me.layerDisplayFiledInfo[attr.ServiceID].push({fnm:attr.Grid_NM, fid:attr.Column_NM});
+				
 			});
 			SGIS.loading.finish();
 		});
@@ -663,7 +634,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				resultData.datas = datas;
 				resultData.clickCallback = me.highlightGraphic;
 				resultData.clickCallbackScope = me;
-				
+				console.info(me.layer1Url + "/" + layer.layerId);
 				var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + layer.layerId);
 				var query = new esri.tasks.Query();
 				query.returnGeometry = true;
@@ -674,6 +645,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				}
 				query.outFields = ["*"];
 				queryTask.execute(query,  function(results){
+					console.info(results);
 					
 					receiveComplteCnt ++;
 					if(receiveComplteCnt == me.layers.length){
@@ -692,39 +664,17 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 					{
 						Ext.each(results.features, function(obj, index) {
 							var pictureMarkerSymbol;
+							console.info(layer.id);
 							if(layer.id=='5'){
 								pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/' + layer.iconInfo , 12, 12);
-							}else if(layer.id == '43'){
-								
-								if(0.5 >= obj.attributes.NO3N || obj.attributes.NO3N <= 2.0){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_1.png', 16, 16);
-								}else if(2.1 >= obj.attributes.NO3N || obj.attributes.NO3N <= 3.3){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_2.png', 16, 16);
-								}else if(3.4 >= obj.attributes.NO3N || obj.attributes.NO3N <= 4.1){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_3.png', 16, 16);
-								}else if(4.2 >= obj.attributes.NO3N || obj.attributes.NO3N <= 5.1){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_4.png', 16, 16);
-								}else if(5.2 >= obj.attributes.NO3N || obj.attributes.NO3N <= 6.2){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_5.png', 16, 16);
-								}else if(6.3 >= obj.attributes.NO3N || obj.attributes.NO3N <= 7.6){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_6.png', 16, 16);
-								}else if(7.7 >= obj.attributes.NO3N || obj.attributes.NO3N <= 9.4){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_7.png', 16, 16);
-								}else if(9.5 >= obj.attributes.NO3N || obj.attributes.NO3N <= 12.1){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_8.png', 16, 16);
-								}else if(12.2 >= obj.attributes.NO3N || obj.attributes.NO3N <= 16.2){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_9.png', 16, 16);
-								}else if(16.3 >= obj.attributes.NO3N || obj.attributes.NO3N <= 20.6){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_10.png', 16, 16);
-								}else if(20.7 >= obj.attributes.NO3N || obj.attributes.NO3N <= 31.8){
-									pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/GIS/resources/images/layerIcon/43/43_11.png', 16, 16);
-								}
-								
 							}else{
 								pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/' + layer.iconInfo , 16, 16);
 							}
 							obj.setSymbol(pictureMarkerSymbol);
-				    		me.targetGraphicLayer.add(obj);
+							me.targetGraphicLayer.add(obj);
+							if(layer.layerId == '1' || layer.layerId == '2'){
+								obj.attributes.ADDR = obj.attributes.ADDR.replace(/[0-9]/g, "*");
+							}
 				    		datas.push(obj.attributes);
 				    		obj.attributes._layerName_ = layer.text;
 				    		obj.attributes._layerId_ = layer.layerId;

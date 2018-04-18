@@ -41,7 +41,7 @@ var proxy = './proxy/proxy.jsp?';
 //지번 레이어 레전드 json 전역변수 설정
 var _LCLlegend= null;
 Ext.Ajax.request({
-	url: proxy+"http://112.217.167.123:23002/arcgis/rest/services/LSMD_CONT_LDREG/MapServer/legend?f=pjson",
+	url: proxy+"http://112.217.167.123:43002/arcgis/rest/services/LSMD_CONT_LDREG/MapServer/legend?f=pjson",
 	async: true, 
 	success : function(response, opts) {
 		jsonData = Ext.util.JSON.decode( response.responseText );

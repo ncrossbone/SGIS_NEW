@@ -549,7 +549,7 @@ Ext.define('Sgis.map.CoreMap', {
 		    getTileUrl: function(level, row, col) {
 		    	var newrow = row + (Math.pow(2, level) * 47);
       			var newcol = col + (Math.pow(2, level) * 107);
-		    	return esri.config.defaults.io.proxyUrl + "?http://xdworld.vworld.kr:8080/2d/Base/201301/" + level + "/" + col + "/" + row + ".png";
+		    	return "http://xdworld.vworld.kr:8080/2d/Base/201301/" + level + "/" + col + "/" + row + ".png";
 		    	//return "http://112.218.1.243:20080/2d/Base/201411/" + level + "/" + level + "/" + col + "/" + row + ".png";
 		    }	
 		  });

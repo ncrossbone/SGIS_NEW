@@ -148,7 +148,7 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 			xtype : 'button',
 			text : '액셀받기',
 			handler : 'exportExcel',
-			hidden: true
+			hidden: false
 		});
 		
 		// add count per page label
@@ -307,9 +307,11 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 		
 		if(headers && (store == null || !store.fields)) {
 			this.gridFields = [];
+			this.gridFieldsKo = [];
 
 			for(var i = 0 ; i < headers.length ; i++) {
 				this.gridFields.push(headers[i].dataIndex);
+				this.gridFieldsKo.push(headers[i].text);
 			}
 		
 			store = Ext.create('Sgis.store.LayerDynamicStore', {

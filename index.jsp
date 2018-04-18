@@ -42,8 +42,8 @@
 					packages: [{name: "Sgis", location: baseUrl+"/app"}]
 			};
 			//var memType = <%=memType%>;
-			var memType = 7;
-			window.memType = memType;
+			 var memType = 7;
+			window.memType = memType; 
 	    //});
 		
 	</script>

@@ -56,7 +56,6 @@ Ext.define('Cmm.mixin.Menu', function() {
 	
 	function findLayerComponent(layoutItems, layerId) {
 		var component = null;
-		
 		for(var i = 0 ; i < layoutItems.length ; i++) {
 			var comp = layoutItems[i];
 			if(comp.layerId == layerId) {
@@ -70,7 +69,6 @@ Ext.define('Cmm.mixin.Menu', function() {
 	function addSearchGrid(view, params, config) {
 		var south = Ext.getCmp('south');
 		var current = findLayerComponent(south.getLayout().getLayoutItems(), config.layerId);
-		
 		if(!current) {
 			current = Ext.create(view, config);
 			south.add(current);

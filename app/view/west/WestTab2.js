@@ -68,7 +68,6 @@ Ext.define('Sgis.view.west.WestTab2', {
 				}, {
 					id: 'cmbArea4',
 					itemId: 'cmbArea4',
-					hidden: true,
 					xtype: 'combo',
 					fieldLabel: '동리',
 					store: Ext.create('Sgis.store.Jibun4Store'),
