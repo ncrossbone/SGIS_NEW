@@ -18,6 +18,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	simpleFillSymbol:null,
 	geometryService:null,
 	buffRadus:null,
+	testCenter:null,
 	
 	layerDisplayFiledInfo:{},
 	layerBranchFiledInfo:{},
@@ -234,7 +235,8 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 			Ext.each(results.features, function(obj, index) {
 				obj.setSymbol(me.simpleFillSymbol);
 	    		me.sourceGraphicLayer.add(obj);
-	    		var extent = esri.geometry.Polygon(obj.geometry).getExtent();
+				var extent = esri.geometry.Polygon(obj.geometry).getExtent();
+
 	    		me.map.setExtent(extent, true);
 	    		me.geometry = obj.geometry;
 	    		me.spSearch();
@@ -299,6 +301,8 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	    		});
 	    		
 				var center = esri.geometry.Polygon(obj.geometry).getExtent().getCenter();
+				
+				me.map.testCenter = esri.geometry.Polygon(obj.geometry).getExtent().getCenter();
 	    		me.map.centerAndZoom(center,17);
 				
 	    		var params = new esri.tasks.BufferParameters();
@@ -407,10 +411,11 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				if(!me.layerDisplayFiledInfo[attr.ServiceID]){
 					me.layerDisplayFiledInfo[attr.ServiceID] = [];
 					me.layerDisplayFiledInfo[attr.ServiceID].push({fnm:"OBJECTID", fid:"OBJECTID", flag:false})
-				}
+				}	
 				me.layerDisplayFiledInfo[attr.ServiceID].push({fnm:attr.Grid_NM, fid:attr.Column_NM});
 				
 			});
+			me.layerDisplayFiledInfo[42].push({fnm:"중심점거리", fid:"DISTANCE"});
 			SGIS.loading.finish();
 		});
 		dojo.connect(queryTask, "onError", function(err) {
@@ -634,7 +639,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				resultData.datas = datas;
 				resultData.clickCallback = me.highlightGraphic;
 				resultData.clickCallbackScope = me;
-				console.info(me.layer1Url + "/" + layer.layerId);
+
 				var queryTask = new esri.tasks.QueryTask(me.layer1Url + "/" + layer.layerId);
 				var query = new esri.tasks.Query();
 				query.returnGeometry = true;
@@ -644,9 +649,10 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 					query.where = filterObject.where;
 				}
 				query.outFields = ["*"];
+				me.map.centerCount = 0;
+				me.map.centerDatas = [];
 				queryTask.execute(query,  function(results){
-					console.info(results);
-					
+
 					receiveComplteCnt ++;
 					if(receiveComplteCnt == me.layers.length){
 						SGIS.loading.finish();
@@ -664,7 +670,6 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 					{
 						Ext.each(results.features, function(obj, index) {
 							var pictureMarkerSymbol;
-							console.info(layer.id);
 							if(layer.id=='5'){
 								pictureMarkerSymbol = new esri.symbol.PictureMarkerSymbol(Sgis.app.meUrl + '/' + layer.iconInfo , 12, 12);
 							}else{
@@ -672,21 +677,83 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 							}
 							obj.setSymbol(pictureMarkerSymbol);
 							me.targetGraphicLayer.add(obj);
+							
 							if(layer.layerId == '1' || layer.layerId == '2'){
 								obj.attributes.ADDR = obj.attributes.ADDR.replace(/[0-9]/g, "*");
+							}else if(layer.layerId == '42'){
+								if(me.map.testCenter == undefined || me.map.testCenter == null){
+									datas.push(obj.attributes);
+										obj.attributes._layerName_ = layer.text;
+										obj.attributes._layerId_ = layer.layerId;
+										if(results.features.length==index+1){
+											exeComplteCnt++;
+											if(resultData.field && resultData.field.length>0){
+												for(var a = 0 ; a < resultData.field.length;a++){
+													if(resultData.field[a].fid == "DISTANCE"){
+														resultData.field[a].flag = false;
+													}
+												}
+												complteData.push(resultData);
+											}
+											if(exeComplteCnt==me.layers.length){
+												console.info(complteData);
+												Sgis.getApplication().fireEvent('searchComplete', complteData);
+												
+											}
+										}
+								}else{
+									var distParams = new esri.tasks.DistanceParameters();  
+								 	distParams.distanceUnit = esri.tasks.GeometryService.UNIT_METER;      
+								 	distParams.geometry1 =  me.map.testCenter;     
+								 	distParams.geometry2 = obj.geometry;
+								 	distParams.geodesic = true;  
+
+									me.resultCenterDistance(distParams, function(distance){
+										var distance = Math.floor(distance);
+										obj.attributes.DISTANCE = distance + "M";
+										datas.push(obj.attributes);
+										obj.attributes._layerName_ = layer.text;
+										obj.attributes._layerId_ = layer.layerId;
+										if(results.features.length==index+1){
+											exeComplteCnt++;
+											if(resultData.field && resultData.field.length>0){
+												for(var a = 0 ; a < resultData.field.length;a++){
+													if(resultData.field[a].fid == "DISTANCE"){
+														delete resultData.field[a].flag;
+													}
+												}
+												complteData.push(resultData);
+											}
+											if(exeComplteCnt==me.layers.length){
+												Sgis.getApplication().fireEvent('searchComplete', complteData);
+												//센터 값 초기화
+												me.map.testCenter = null;	
+												console.info(complteData);
+											}
+										}
+									});
+								}
+								
+
 							}
-				    		datas.push(obj.attributes);
-				    		obj.attributes._layerName_ = layer.text;
-				    		obj.attributes._layerId_ = layer.layerId;
-				    		if(results.features.length==index+1){
-				    			exeComplteCnt++;
-				    			if(resultData.field && resultData.field.length>0){
-									complteData.push(resultData);
+
+							if(layer.layerId != '42'){
+								datas.push(obj.attributes);
+								obj.attributes._layerName_ = layer.text;
+								obj.attributes._layerId_ = layer.layerId;
+								if(results.features.length==index+1){
+									exeComplteCnt++;
+									if(resultData.field && resultData.field.length>0){
+										complteData.push(resultData);
+									}
+									if(exeComplteCnt==me.layers.length){
+										Sgis.getApplication().fireEvent('searchComplete', complteData);
+										console.info(complteData);
+									}
 								}
-								if(exeComplteCnt==me.layers.length){
-									Sgis.getApplication().fireEvent('searchComplete', complteData);
-								}
-				    		}
+							}
+							
+							
 						});
 					}
 					
@@ -697,7 +764,40 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 			}
 		});
 	},
+
+	resultCenterDistance : function(distParams, callback){
+		var geometryService = new esri.tasks.GeometryService("http://112.217.167.123:40002/arcgis/rest/services/Utilities/Geometry/GeometryServer");  
+		geometryService.distance(distParams,callback);
+	},
 	
+	//지번에서 센터점에서 지하수 관정간의 거리
+	resultCenterDistance_test : function(distParams , endCount, resultData){
+		var me = this;
+
+		var distanceField = [{"fid":"CODE","fnm":"허가신고번호"},{"fid":"DISTANCE","fnm":"거리"}]
+		
+		var geometryService;  
+			geometryService = new esri.tasks.GeometryService("http://112.217.167.123:40002/arcgis/rest/services/Utilities/Geometry/GeometryServer");  
+			geometryService.distance(distParams,function(distance){  
+				console.info(distParams);
+				console.info(distance);
+				//me.map.centerDatas
+				me.map.centerDatas.push({"CODE":distParams.parameter.attributes.CODE, "DISTANCE":distance});
+				me.map.centerCount++;
+				console.info(me.map.centerCount);
+				if(me.map.centerCount == endCount){
+					console.info(resultData);
+					resultData.title = "지하수 관정 거리";
+					resultData.layerId = "42_1";
+					resultData.text = "지하수 관정 거리";
+					resultData.field = distanceField;
+					resultData.datas = me.map.centerDatas;
+					console.info(resultData);
+					Sgis.getApplication().fireEvent('searchComplete', [resultData]);
+				}
+		});
+	},
+
 	dataGridSelectHandler:function(layerId, record){
 		var me = this;
 		me.highlightGraphicLayer.clear();

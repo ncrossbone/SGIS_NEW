@@ -242,18 +242,8 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 			
 			// 마지막 컬럼에 버튼 두 개 추가
 			if(i == headerConut - 1) {
-//				columns.push({
-//					text: 'test',
-//					align: 'center',
-//					xtype: 'widgetcolumn',
-//					dataIndex: '',
-//					flex : 1,
-//					widget: {
-//						xtype: 'button',
-//						text: '지점상세',
-//						handler: 'onBranchDetail'
-//					}
-//				})
+
+
 				columns.push({
 					text: '지점상세',
 					align: 'center',
@@ -286,6 +276,7 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 						}
 					}
 				})
+				
 			}
 		}
 		

@@ -86,7 +86,7 @@ Ext.define('Sgis.map.CoreMap', {
         var customPrintTask = "";
         var customDistance = "";
 
-  				customDraw = "/GIS/app/map/toolbar/CustomDraw.js";
+  			customDraw = "/GIS/app/map/toolbar/CustomDraw.js";
         	customPrintTask = "/GIS/app/map/task/CustomPrintTask.js";
         	customDistance = "/GIS/app/map/toolbar/CustomDistance.js";
   
