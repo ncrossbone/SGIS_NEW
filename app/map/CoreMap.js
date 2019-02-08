@@ -157,10 +157,10 @@ Ext.define('Sgis.map.CoreMap', {
 				    			me.map.setMapCursor("default");
 				    			me.measure(event);
 				    		});
-			        	}, onError:function(){}});
+			        	}, onError:function(){}}); 
 			        	
 			        	Ext.Loader.loadScript({url:'/GIS/app/map/task/CustomPrintTask.js', onLoad:function(){
-			        		me.printTask = new Sgis.map.task.CustomPrintTask(me.map, "_mapDiv_", _API.printUrl, _API.arcServerceUrl);
+			        		me.printTask = new Sgis.map.task.CustomPrintTask(me.map, "_mapDiv_", _API.printUrl, _API.arcServerceUrl, "/resources/saveImgTemp/capture");
 			        		dojo.connect(me.printTask, "onComplete", function(event){	
 			        			SGIS.loading.finish();
 			        		});
@@ -418,7 +418,7 @@ Ext.define('Sgis.map.CoreMap', {
     			me.extentUnReIdx = me.extentReg.length-1;
     		}
     		me.extentRegAble = true;
-    		Sgis.getApplication().fireEvent('mapExtentChange', event);
+    		//Sgis.getApplication().fireEvent('mapExtentChange', event);
     	});
     },
     

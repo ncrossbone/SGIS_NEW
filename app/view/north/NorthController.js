@@ -51,6 +51,7 @@ Ext.define('Sgis.view.north.NorthController', {
 	
 	onClickPrint: function () {
 		Sgis.getApplication().coreMap.print();
+		//window.print();
 	},
 	
 	onClickSave: function () {

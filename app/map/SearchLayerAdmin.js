@@ -93,7 +93,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		
 		me.toolbar = new Sgis.map.toolbar.CustomDraw(me.map, {showTooltips:false}, true, me.sourceGraphicLayer);
 		dojo.connect(me.toolbar, "onDrawEnd", function(event){
-			console.info(event);
+			
 			me.map.setMapCursor("default");
 			me.addToMap(event);
 		});
@@ -696,7 +696,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 												complteData.push(resultData);
 											}
 											if(exeComplteCnt==me.layers.length){
-												console.info(complteData);
+												
 												Sgis.getApplication().fireEvent('searchComplete', complteData);
 												
 											}
@@ -709,8 +709,9 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 								 	distParams.geodesic = true;  
 
 									me.resultCenterDistance(distParams, function(distance){
-										var distance = Math.floor(distance);
-										obj.attributes.DISTANCE = distance + "M";
+										//var distance = Math.floor(distance);
+										var distance = distance.toFixed(2);
+										obj.attributes.DISTANCE = distance + "(m)";
 										datas.push(obj.attributes);
 										obj.attributes._layerName_ = layer.text;
 										obj.attributes._layerId_ = layer.layerId;
@@ -728,7 +729,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 												Sgis.getApplication().fireEvent('searchComplete', complteData);
 												//센터 값 초기화
 												me.map.testCenter = null;	
-												console.info(complteData);
+												
 											}
 										}
 									});
@@ -748,7 +749,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 									}
 									if(exeComplteCnt==me.layers.length){
 										Sgis.getApplication().fireEvent('searchComplete', complteData);
-										console.info(complteData);
+										
 									}
 								}
 							}
@@ -766,7 +767,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 	},
 
 	resultCenterDistance : function(distParams, callback){
-		var geometryService = new esri.tasks.GeometryService("http://112.217.167.123:40002/arcgis/rest/services/Utilities/Geometry/GeometryServer");  
+		var geometryService = new esri.tasks.GeometryService(_API.arcServerceUrl + "/rest/services/Utilities/Geometry/GeometryServer");  
 		geometryService.distance(distParams,callback);
 	},
 	
@@ -777,22 +778,19 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		var distanceField = [{"fid":"CODE","fnm":"허가신고번호"},{"fid":"DISTANCE","fnm":"거리"}]
 		
 		var geometryService;  
-			geometryService = new esri.tasks.GeometryService("http://112.217.167.123:40002/arcgis/rest/services/Utilities/Geometry/GeometryServer");  
+			geometryService = new esri.tasks.GeometryService(_API.arcServerceUrl + "/rest/services/Utilities/Geometry/GeometryServer");  
 			geometryService.distance(distParams,function(distance){  
-				console.info(distParams);
-				console.info(distance);
+				
 				//me.map.centerDatas
 				me.map.centerDatas.push({"CODE":distParams.parameter.attributes.CODE, "DISTANCE":distance});
 				me.map.centerCount++;
-				console.info(me.map.centerCount);
 				if(me.map.centerCount == endCount){
-					console.info(resultData);
+					
 					resultData.title = "지하수 관정 거리";
 					resultData.layerId = "42_1";
 					resultData.text = "지하수 관정 거리";
 					resultData.field = distanceField;
 					resultData.datas = me.map.centerDatas;
-					console.info(resultData);
 					Sgis.getApplication().fireEvent('searchComplete', [resultData]);
 				}
 		});

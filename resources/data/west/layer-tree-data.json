@@ -9,70 +9,70 @@
         "text": "지역지하수 오염우려지역",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer1",
+        "iconCls": "layer1"
     },{
 		"id" : "2",
 		"layerId" : "2",
         "text": "지역지하수 일반지역",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer2",
+        "iconCls": "layer2"
     },{
 		"id" : "3",
 		"layerId" : "3",
         "text": "국가지하수 배경수질",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer3",
+        "iconCls": "layer3"
     },{
 		"id" : "4",
 		"layerId" : "4",
         "text": "국가지하수 오염감시",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer4",
+        "iconCls": "layer4"
     },{
 		"id" : "42",
 		"layerId" : "42",
-        "text": "국토부 지하수 관정정보",
+        "text": "지하수 관정정보",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer5",
+        "iconCls": "layer5"
     },{
 		"id" : "7",
 		"layerId" : "7",
         "text": "자연방사선 실태조사",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer7",
+        "iconCls": "layer7"
     },{
 		"id" : "9",
 		"layerId" : "9",
         "text": "가축매몰지",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer9",
+        "iconCls": "layer9"
     },{
 		"id" : "10",
 		"layerId" : "10",
         "text": "가축매몰지 주변 지하수 관정",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer10",
+        "iconCls": "layer10"
     },{
 		"id" : "11",
 		"layerId" : "11",
         "text": "먹는물 공동시설",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer11",
+        "iconCls": "layer11"
     },{
 		"id" : "43",
 		"layerId" : "43",
         "text": "축산단지",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer43",
+        "iconCls": "layer43"
     }]
 },{
 	"id" : "p2",
@@ -86,23 +86,23 @@
         "text": "토양측정망",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer13",
+        "iconCls": "layer13"
     },{
 		"id" : "14",
 		"layerId" : "14",
         "text": "토양오염실태조사",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer14",
+        "iconCls": "layer14"
     },{
 		"id" : "15",
 		"layerId" : "15",
         "text": "골프장",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer15",
+        "iconCls": "layer15"
     }]
-},{
+},{ 
 	"id" : "p3",
     "text": "토양환경지도",
     "cls": "folder",
@@ -114,21 +114,21 @@
         "text": "하천수질",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer18",
+        "iconCls": "layer18"
     },{
 		"id" : "19",
 		"layerId" : "19",
         "text": "하천퇴적물",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer19",
+        "iconCls": "layer19"
     },{
 		"id" : "20",
 		"layerId" : "20",
         "text": "토양",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer20",
+        "iconCls": "layer20"
     }]
 },{
 	"id" : "p4",
@@ -147,21 +147,21 @@
 	        "text": "위험물시설",
 	        "leaf": true,
 	        "checked": false,
-	        "iconCls": "layer23",
+	        "iconCls": "layer23"
 	    },{
 			"id" : "24",
 			"layerId" : "24",
 	        "text": "유독물시설",
 	        "leaf": true,
 	        "checked": false,
-	        "iconCls": "layer24",
+	        "iconCls": "layer24"
 	    },{
 			"id" : "25",
 			"layerId" : "25",
 	        "text": "송유관시설",
 	        "leaf": true,
 	        "checked": false,
-	        "iconCls": "layer25",
+	        "iconCls": "layer25"
 	    }]
 	},{
 		"id" : "27",
@@ -169,77 +169,77 @@
         "text": "특정토양오염관리대상시설",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer27",
+        "iconCls": "layer27"
     },{
 		"id" : "30",
 		"layerId" : "30",
         "text": "폐기물처리시설",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer30",
+        "iconCls": "layer30"
     },{
 		"id" : "31",
 		"layerId" : "31",
         "text": "원광석고철보관소",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer31",
+        "iconCls": "layer31"
     },{
 		"id" : "32",
 		"layerId" : "32",
         "text": "교통관련시설",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer32",
+        "iconCls": "layer32"
     },{
 		"id" : "33",
 		"layerId" : "33",
         "text": "철도관련시설",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer33",
+        "iconCls": "layer33"
     },{
 		"id" : "35",
 		"layerId" : "35",
         "text": "주거지역정밀대상지역",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer35",
+        "iconCls": "layer35"
     },{
 		"id" : "36",
 		"layerId" : "36",
         "text": "폐기물매립지주변지역",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer36",
+        "iconCls": "layer36"
     },{
 		"id" : "37",
 		"layerId" : "37",
         "text": "폐금속광산",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer37",
+        "iconCls": "layer37"
     },{
 		"id" : "38",
 		"layerId" : "38",
         "text": "폐석면광산",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer38",
+        "iconCls": "layer38"
     },{
 		"id" : "39",
 		"layerId" : "39",
         "text": "폐석탄광산",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer39",
+        "iconCls": "layer39"
     },{
 		"id" : "40",
 		"layerId" : "40",
         "text": "산업단지",
         "leaf": true,
         "checked": false,
-        "iconCls": "layer40",
+        "iconCls": "layer40"
     }]
 },{
 	"id" : "p5",

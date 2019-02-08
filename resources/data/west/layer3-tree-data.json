@@ -1,4 +1,4 @@
-[{
+[{ 
 	"id" : "b1",
     "text": "수문지질도", 
     "expanded": true,
@@ -261,5 +261,53 @@
         "checked": false,
         "linkNum" : "3004",
         "iconCls": "symbol_11"
+    }]
+},{
+	"id" : "b4",
+    "text": "질산성질소 함량지도",
+    "cls": "folder",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "20",
+		"layerId" : "20",
+		"text": "질산성질소 배경농도_90",
+		"iconCls": "ju20_1",
+        "leaf": false,
+        "checked": false,
+		"expanded" : false,
+		"children": [{
+			"text" : "0.0 - 3.2",
+			"leaf": true,
+			"iconCls": "ju20_1"
+		},{
+			"text" : "3.3 - 8.0",
+			"leaf": true,
+			"iconCls": "ju20_2"
+		},{
+			"text" : "8.1 - 12.0",
+			"leaf": true,
+			"iconCls": "ju20_3"
+		},{
+			"text" : "12.1 - 16.4",
+			"leaf": true,
+			"iconCls": "ju20_4"
+		},{
+			"text" : "16.5 - 24.0",
+			"leaf": true,
+			"iconCls": "ju20_5"
+		},{
+			"text" : "24.1 - 34.3",
+			"leaf": true,
+			"iconCls": "ju20_6"
+		},{
+			"text" : "34.4 - 100.0",
+			"leaf": true,
+			"iconCls": "ju20_7"
+		},{
+			"text" : "100.1 - 9999.0",
+			"leaf": true,
+			"iconCls": "ju20_8"
+		}]
     }]
 }]

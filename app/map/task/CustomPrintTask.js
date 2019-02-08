@@ -70,9 +70,11 @@ dojo.declare("Sgis.map.task.CustomPrintTask", null, {
 		
 		me.convertImgToBase64Exe(imageInfos, function(){
 			var obj = {imageInfos:JSON.stringify(imageInfos), svgInfo:svgInfo, width:$('#'+me.mapDivId).width(), height:$('#'+me.mapDivId).height(), arcServiceUrl:me.arcServiceUrl, mode:mode};
-			$.post(esri.config.defaults.io.proxyUrl+'?'+me.printUrl, obj, function(data){
+			$.post(me.printUrl, obj, function(data){
+				console.info(data)
 				if(mode=="print"){
-					var popup = window.open(esri.config.defaults.io.proxyUrl+'?'+data.url, 'newWindow', "width=1000,height=700");
+					//var popup = window.open(esri.config.defaults.io.proxyUrl+'?'+data.url, 'newWindow', "width=1000,height=700");
+					var popup = window.open(data.url, 'newWindow', "width=1000,height=700");
 					popup.focus(); //required for IE
 					popup.print();
 				}else if(mode=="capture"){

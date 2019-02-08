@@ -1,4 +1,4 @@
-[{
+[{ 
 	"id" : "p1",
     "text": "지하수", 
     "expanded": true,
@@ -38,7 +38,7 @@
     },{
 		"id" : "42",
 		"layerId" : "42",
-        "text": "국토부 지하수 관정정보",
+        "text": "지하수 관정정보",
         "leaf": true,
         "checked": false,
         "iconCls": "layer5",
