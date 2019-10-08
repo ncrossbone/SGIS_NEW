@@ -44,13 +44,54 @@
         "iconCls": "layer5",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer5.png"
     },{
-		"id" : "7",
-		"layerId" : "7",
-        "text": "자연방사선 실태조사",
-        "leaf": true,
+
+        "id" : "p1_2",
+        "text": "자연방사성 실태조사",
+        "cls": "folder",
+        "expanded": true,
         "checked": false,
-        "iconCls": "layer7",
-        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer7.png"
+        "children": [{
+            "id" : "7",
+            "layerId" : "7",
+            "text": "자연방사성 실태조사",
+            "leaf": true,
+            "checked": false,
+            "iconCls": "layer7",
+            "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer7.png"
+        },{
+            "id" : "44",
+            "layerId" : "44",
+            "text": "실태조사 라돈",
+            "leaf": true,
+            "checked": false,
+            "iconCls": "layer7",
+            "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer7.png"
+        },{
+            "id" : "45",
+            "layerId" : "45",
+            "text": "정밀조사 라돈",
+            "leaf": true,
+            "checked": false,
+            "iconCls": "layer7",
+            "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer7.png"
+        },{
+            "id" : "46",
+            "layerId" : "46",
+            "text": "실태조사 우라늄",
+            "leaf": true,
+            "checked": false,
+            "iconCls": "layer7",
+            "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer7.png"
+        },{
+            "id" : "47",
+            "layerId" : "47",
+            "text": "정밀조사 우라늄",
+            "leaf": true,
+            "checked": false,
+            "iconCls": "layer7",
+            "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer7.png"
+        }]
+		
     },{
 		"id" : "9",
 		"layerId" : "9",

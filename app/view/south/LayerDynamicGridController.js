@@ -40,7 +40,7 @@ Ext.define('Sgis.view.south.LayerDynamicGridController', {
 			});
 
 			var layerId = this.getView().layerId;
-			Sgis.getApplication().fireEvent('searchParamChange', layerId, params);
+			Sgis.getApplication().fireEvent('searchParamChange', layerId, params); 
 		}
 	},
 	
@@ -57,8 +57,18 @@ Ext.define('Sgis.view.south.LayerDynamicGridController', {
 			var obj = {'header':JSON.stringify(me.getView().gridFields), 'headerNm':JSON.stringify(me.getView().gridFieldsKo), 'datas':JSON.stringify(me.getView().gridData)};
 			$.post(_API.excelDownUrl, obj, function(data){
 				button.setText("액셀받기");
+				
+				var downloadUrl = data.url;
+				var a = document.createElement("a");
+				a.href = downloadUrl;
+				$(a).attr('download', 'excel');
+				document.body.appendChild(a);
+				a.click();
+				
+				/*
 				$('#__fileDownloadIframe__').remove();
 				$('body').append('<iframe src='+data.url+' id="__fileDownloadIframe__" name="__fileDownloadIframe__" width="0" height="0" style="display:none;"/>');
+				*/
 	   		},"json").error(function(){
 	   			button.setText("액셀받기");
 	   		});

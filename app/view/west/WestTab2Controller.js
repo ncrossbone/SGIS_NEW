@@ -305,7 +305,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 		
 		if(admCd!='_cancel_'){
 			console.info(admCd);
-			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:'48'});//시군구
+			Sgis.getApplication().fireEvent('areaSelect', {admCd:admCd, layerId:_API.layer1Re});//동리
 		}
 		
 	},
@@ -431,7 +431,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 							var layerAuth = Sgis.app.memType;
 							//if(layerAuth==6 || layerAuth==7){
 							if(layerAuth=="0000" || layerAuth=="0501"){
-								layerArr = [1,2,3,4,42,6,7,9,10,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40,43]
+								layerArr = [1,2,3,4,42,6,7,9,10,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40,43,44,45,46,47]
 							// }else if(layerAuth=="20"){
 							// 	layerArr = [18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39]
 							//}else if(layerAuth==31){
@@ -447,7 +447,7 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 							}else if(layerAuth=="0102" || layerAuth=="0202"){
 								layerArr = [1,2,3,4,42,6,8,9,11,13,14,15,20]
 							}else{
-								if(location.href.substr(7,3) == "10."){
+								if(location.href.substr(7,7) == "/sgisin"){
 									layerArr = [];
 								}else{
 									layerArr = [1,2,3,4,11,13,15]
@@ -460,7 +460,8 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 								}
 							}
 							
-							for(var i=1; i<44; i++){
+							//for(var i=1; i<44; i++){
+							for(var i=1; i<48; i++){
 								var record = store.findRecord('id', i);
 								if(record && !record.get('extSel')){
 									record.drop();

@@ -219,7 +219,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		var url = "";
 		
 		//var queryTask = new esri.tasks.QueryTask(Sgis.app.arcServiceUrl + "/rest/services/Layer2/MapServer/" + info.layerId);
-		if(info.layerId == "48" ){
+		if(info.layerId == _API.layer1Re ){
 			url = _API.layer1_new + "/" + info.layerId;
 		}else{
 			url = _API.layer2_new + "/" + info.layerId;

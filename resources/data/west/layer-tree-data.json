@@ -39,12 +39,133 @@
         "checked": false,
         "iconCls": "layer5"
     },{
-		"id" : "7",
-		"layerId" : "7",
-        "text": "자연방사선 실태조사",
-        "leaf": true,
-        "checked": false,
-        "iconCls": "layer7"
+        "id": "p1_2",
+        "text": "자연방사성 실태조사",
+	    "cls": "folder",
+	    "expanded": true,
+	    "checked": false,
+	    "children": [{
+            "id" : "7",
+            "layerId" : "7",
+            "text": "자연방사성 실태조사",
+            "leaf": true,
+            "checked": false,
+            "iconCls": "layer7"
+        },{
+            "id" : "44",
+            "layerId" : "44",
+            "text": "실태조사 라돈",
+            "leaf": false,
+            "checked": false,
+            "expanded" : false,
+            "iconCls": "",
+            "children": [{
+                "text" : "< 37",
+                "leaf": true,
+                "iconCls": "J_1"
+            },{
+                "text" : "37 - 74",
+                "leaf": true,
+                "iconCls": "J_2"
+            },{
+                "text" : "74 - 148",
+                "leaf": true,
+                "iconCls": "J_3"
+            },{
+                "text" : "148 - 296",
+                "leaf": true,
+                "iconCls": "J_4"
+            },{
+                "text" : "> 296",
+                "leaf": true,
+                "iconCls": "J_5"
+            }]
+        },{
+            "id" : "45",
+            "layerId" : "45",
+            "text": "정밀조사 라돈",
+            "leaf": false,
+            "checked": false,
+            "iconCls": "",
+            "children": [{
+                "text" : "< 37",
+                "leaf": true,
+                "iconCls": "J_1"
+            },{
+                "text" : "37 - 74",
+                "leaf": true,
+                "iconCls": "J_2"
+            },{
+                "text" : "74 - 148",
+                "leaf": true,
+                "iconCls": "J_3"
+            },{
+                "text" : "148 - 296",
+                "leaf": true,
+                "iconCls": "J_4"
+            },{
+                "text" : "> 296",
+                "leaf": true,
+                "iconCls": "J_5"
+            }]
+        },{
+            "id" : "46",
+            "layerId" : "46",
+            "text": "실태조사 우라늄",
+            "leaf": false,
+            "checked": false,
+            "iconCls": "",
+            "children": [{
+                "text" : "0.000000 - 7.999999",
+                "leaf": true,
+                "iconCls": "J_1"
+            },{
+                "text" : "8.000000 - 14.999999",
+                "leaf": true,
+                "iconCls": "J_2"
+            },{
+                "text" : "15.000000 - 29.999999",
+                "leaf": true,
+                "iconCls": "J_3"
+            },{
+                "text" : "30.000000 - 59.999999",
+                "leaf": true,
+                "iconCls": "J_4"
+            },{
+                "text" : "60.000000 - 3000.000000",
+                "leaf": true,
+                "iconCls": "J_5"
+            }]
+        },{
+            "id" : "47",
+            "layerId" : "47",
+            "text": "정밀조사 우라늄",
+            "leaf": false,
+            "checked": false,
+            "iconCls": "",
+            "children": [{
+                "text" : "0.000000 - 7.999999",
+                "leaf": true,
+                "iconCls": "J_1"
+            },{
+                "text" : "8.000000 - 14.999999",
+                "leaf": true,
+                "iconCls": "J_2"
+            },{
+                "text" : "15.000000 - 29.999999",
+                "leaf": true,
+                "iconCls": "J_3"
+            },{
+                "text" : "30.000000 - 59.999999",
+                "leaf": true,
+                "iconCls": "J_4"
+            },{
+                "text" : "60.000000 - 3000.000000",
+                "leaf": true,
+                "iconCls": "J_5"
+            }]
+        }]
+		
     },{
 		"id" : "9",
 		"layerId" : "9",
@@ -248,29 +369,29 @@
     "expanded": true,
     "checked": false,
     "children": [{
-		"id" : "45",
-		"layerId" : "45",
+		"id" : "49",
+		"layerId" : "49",
         "text": "시도",
         "leaf": true,
         "checked": false,
         "iconCls": "symbol_15"
     },{
-		"id" : "46",
-		"layerId" : "46",
+		"id" : "50",
+		"layerId" : "50",
         "text": "시군구",
         "leaf": true,
         "checked": false,
         "iconCls": "symbol_16"
     },{
-		"id" : "47",
-		"layerId" : "47",
+		"id" : "51",
+		"layerId" : "51",
         "text": "읍면동",
         "leaf": true,
         "checked": false,
         "iconCls": "symbol_17"
     },{
-		"id" : "48",
-		"layerId" : "48",
+		"id" : "52",
+		"layerId" : "52",
         "text": "동리",
         "leaf": true,
         "checked": false,
