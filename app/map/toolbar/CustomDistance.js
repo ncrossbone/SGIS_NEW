@@ -1,6 +1,6 @@
 define(["dojo/_base/declare", "esri/toolbars/draw", "esri/geometry/geometryEngine", 
         "esri/geometry/ScreenPoint", "esri/layers/GraphicsLayer"], function(declare, Draw, geometryEngine, ScreenPoint, GraphicsLayer) {
-	return declare("Sgis.map.toolbar.CustomDistance", [Draw], {
+	return declare("Sgis.map.toolbar.CustomDistance", [Draw], { 
 		map:null,
 		points:null,
 		distances:null,

@@ -287,7 +287,7 @@
 		},{
 			"text" : "8.1 - 12.0",
 			"leaf": true,
-			"iconCls": "ju20_3"
+			"iconCls": "ju20_3" 
 		},{
 			"text" : "12.1 - 16.4",
 			"leaf": true,
@@ -301,11 +301,11 @@
 			"leaf": true,
 			"iconCls": "ju20_6"
 		},{
-			"text" : "34.4 - 100.0",
+			"text" : "34.4 <",
 			"leaf": true,
 			"iconCls": "ju20_7"
 		},{
-			"text" : "100.1 - 9999.0",
+			"text" : "측정값 없음",
 			"leaf": true,
 			"iconCls": "ju20_8"
 		}]

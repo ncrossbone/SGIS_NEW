@@ -32,9 +32,16 @@
         "checked": false,
         "iconCls": "layer4"
     },{
+		"id" : "5",
+		"layerId" : "5",
+        "text": "지하수 관정정보(2017)",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer5"
+    },{
 		"id" : "42",
 		"layerId" : "42",
-        "text": "지하수 관정정보",
+        "text": "지하수 관정정보(2018)",
         "leaf": true,
         "checked": false,
         "iconCls": "layer5"

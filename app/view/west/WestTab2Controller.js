@@ -424,28 +424,28 @@ Ext.define('Sgis.view.west.WestTab2Controller', {
 				//var store = view.getStore();
 				var store = Ext.create('Sgis.store.Layer2TreeStore');
 				var timerId = window.setInterval(function(){
-					var test = store.findRecord('id', '1'); //로딩되었는지 검사하려고
+					var test = store.findRecord('id', '1'); //로딩되었는지 검사하려고-
 					if(test){
 						window.clearInterval(timerId);
 						//test.set('checked', true);
 							var layerAuth = Sgis.app.memType;
 							//if(layerAuth==6 || layerAuth==7){
 							if(layerAuth=="0000" || layerAuth=="0501"){
-								layerArr = [1,2,3,4,42,6,7,9,10,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40,43,44,45,46,47]
+								layerArr = [1,2,3,4,5,42,6,7,9,10,11,13,14,15,16,18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39,40,43,44,45,46,47]
 							// }else if(layerAuth=="20"){
 							// 	layerArr = [18,19,20,23,24,25,27,30,31,32,33,34,35,36,37,38,39]
 							//}else if(layerAuth==31){
 							}else if(layerAuth=="0404"){
-								layerArr = [1,2,3,4,42,6,8,9,10,11,13,14,15]
+								layerArr = [1,2,3,4,5,42,6,8,9,10,11,13,14,15]
 							//}else if(layerAuth==2 || layerAuth==5 || layerAuth==40){
 							}else if(layerAuth=="0104" || layerAuth=="0103" || layerAuth=="0303"){
-								layerArr = [1,2,3,4,42,6,8,9,11,13,14,15]
+								layerArr = [1,2,3,4,5,42,6,8,9,11,13,14,15]
 							//}else if(layerAuth==13){
 							}else if(layerAuth=="0504"){
-								layerArr = [1,2,3,4,42,11,13,14,15]
+								layerArr = [1,2,3,4,5,42,11,13,14,15]
 							//}else if(layerAuth==3 || layerAuth==8 || layerAuth==32){
 							}else if(layerAuth=="0102" || layerAuth=="0202"){
-								layerArr = [1,2,3,4,42,6,8,9,11,13,14,15,20]
+								layerArr = [1,2,3,4,5,42,6,8,9,11,13,14,15,20]
 							}else{
 								if(location.href.substr(7,7) == "/sgisin"){
 									layerArr = [];

@@ -22,7 +22,7 @@ Ext.define('Sgis.view.north.MeasureWindowController', {
 		var me = this;
 		var areaUnit = Ext.getCmp('areaUnit');
 		Ext.getCmp('areaResult').setText('');
-		Sgis.getApplication().coreMap.areaMeasureReady(areaUnit.selection.data.value, me.areaMeasureCallback, me);
+		Sgis.getApplication().coreMap.areaMeasureReady(areaUnit.selection.data.value, me.areaMeasureCallback, me);  
 	},
 	
 	areaMeasureCallback:function(result){
@@ -43,7 +43,7 @@ Ext.define('Sgis.view.north.MeasureWindowController', {
         	console.info(lengthUnit.selection);
         	Sgis.getApplication().coreMap.lengthMeasureReady(lengthUnit.selection.data.value, me.lengthMeasureCallback, me);
         }*/
-		Sgis.getApplication().coreMap.lengthMeasureReady(lengthUnit.selection.data.value, me.lengthMeasureCallback, me);
+		Sgis.getApplication().coreMap.lengthMeasureReady(lengthUnit.selection.data.value, me.lengthMeasureCallback, me); 
 		if(!Sgis.app.customDistance){
 			Sgis.app.customDistance = new Sgis.map.toolbar.CustomDistance(Sgis.app.coreMap.map);
 		}

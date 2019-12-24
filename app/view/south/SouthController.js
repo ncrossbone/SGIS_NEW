@@ -6,6 +6,8 @@ Ext.define('Sgis.view.south.SouthController', {
 
 	alias: 'controller.app-south',
 
+	
+
 	constructor: function() {
 		this.callParent();
 		Sgis.getApplication().addListener('searchComplete', this.searchGrid, this);
@@ -33,4 +35,5 @@ Ext.define('Sgis.view.south.SouthController', {
     		me.getView().hide();
     	}
 	}
+		//Sgis.getApplication().fireEvent('tabChange', newCard.xtype); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
 });

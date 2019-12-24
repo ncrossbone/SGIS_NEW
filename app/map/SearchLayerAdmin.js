@@ -103,6 +103,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		me.getLayerDetailFiledInfo();
 		me.getLayerChartFiledInfo();
 		
+		
 		Sgis.getApplication().addListener('searchLayerOnOff', me.searchLayerOnOfffHandler, me);
 		Sgis.getApplication().addListener('searchBtnClick', me.searchBtnClickfHandler, me);
 		Sgis.getApplication().addListener('leftTabChange', me.leftTabChangeHandler, me); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
@@ -416,6 +417,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				
 			});
 			me.layerDisplayFiledInfo[42].push({fnm:"중심점거리", fid:"DISTANCE"});
+			me.layerDisplayFiledInfo[5].push({fnm:"중심점거리", fid:"DISTANCE"});
 			SGIS.loading.finish();
 		});
 		dojo.connect(queryTask, "onError", function(err) {
@@ -568,6 +570,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 
 		var checkedNodes = view.getView().getChecked();
 		
+		/*
 		if(checkedNodes.length > 0){
 			
 			for(var i = 0; i < checkedNodes.length; i++){
@@ -596,6 +599,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 				}
 			}
 		}
+		*/
     	
     	
     	
@@ -680,7 +684,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 							
 							if(layer.layerId == '1' || layer.layerId == '2'){
 								obj.attributes.ADDR = obj.attributes.ADDR.replace(/[0-9]/g, "*");
-							}else if(layer.layerId == '42'){
+							}else if(layer.layerId == '42' || layer.layerId == '5' ){
 								if(me.map.testCenter == undefined || me.map.testCenter == null){
 									datas.push(obj.attributes);
 										obj.attributes._layerName_ = layer.text;
@@ -738,7 +742,7 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 
 							}
 
-							if(layer.layerId != '42'){
+							if(layer.layerId != '42' && layer.layerId != '5' ){
 								datas.push(obj.attributes);
 								obj.attributes._layerName_ = layer.text;
 								obj.attributes._layerId_ = layer.layerId;

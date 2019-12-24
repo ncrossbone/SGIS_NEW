@@ -47,6 +47,10 @@ Ext.define('Sgis.view.south.LayerDynamicGridController', {
 	dataGridSelect: function(grid, record, item, index, e, eOpts) {
 		Sgis.getApplication().fireEvent('dataGridSelect', this.getView().layerId, record);
 	},
+
+	setYear: function(a,b,c,d){
+		
+	},
 	
 	exportExcel: function(button, event, eOpts) {
 		var me = this;

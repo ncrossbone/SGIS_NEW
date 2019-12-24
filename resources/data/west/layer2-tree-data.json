@@ -36,9 +36,17 @@
         "iconCls": "layer4",
         "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer4.png"
     },{
+		"id" : "5",
+		"layerId" : "5",
+        "text": "지하수 관정정보(2017)",
+        "leaf": true,
+        "checked": false,
+        "iconCls": "layer5",
+        "iconInfo": "./GIS/resources/images/layerIcon/newIcon/Layer5.png"
+    },{
 		"id" : "42",
 		"layerId" : "42",
-        "text": "지하수 관정정보",
+        "text": "지하수 관정정보(2018)",
         "leaf": true,
         "checked": false,
         "iconCls": "layer5",

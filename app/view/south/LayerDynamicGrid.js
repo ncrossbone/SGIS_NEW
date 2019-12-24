@@ -68,8 +68,39 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 	refreshGrid : function(result) {
 		this.reconfigureSearchForm(result);
 		this.reconfigureGrid(result);
+		this.reconfigureYear(result);
 	},
 	
+	reconfigureYear: function(result){
+		//yearSelect_
+		//this.layerId
+		var years = [['전체','전체']];
+		var includesYear = ['전체'];
+
+		result.datas.map(function(resultObj){
+			if(resultObj.YEAR != undefined){
+				var includes = includesYear.includes(resultObj.YEAR);
+				if(!includes){
+					includesYear.push(resultObj.YEAR);
+					years.push([resultObj.YEAR,resultObj.YEAR]);	
+				}
+			}
+		});
+		
+		var store = new Ext.data.SimpleStore({
+			data: years,
+			fields: ['value', 'text']
+		});
+
+		
+		var yaerCombo = Ext.getCmp('yearSelect_'+this.layerId);
+		yaerCombo.setStore(store);
+		
+		
+		
+		//return years;
+	},
+
 	/**
 	 * Reconfigure search form
 	 */
@@ -139,9 +170,29 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 	},
 	
 	addDefaultToolbarItem : function(toolbar) {
-		// add separator
-		toolbar.add('->');	
 		
+		toolbar.add('->');	
+		toolbar.add({
+			id: 'yearSelect_'+this.layerId,
+			gridId: this.id,
+			itemId : 'yearSelect',
+			value: '전체',
+			xtype : 'combo',
+			hidden: false,
+			listeners:{
+				select: function(a,b,c){
+
+					var paramter = {};
+					if(a.value != "전체"){
+						paramter = {'YEAR':a.value};
+					}
+
+					Sgis.getApplication().fireEvent('searchParamChange',a.id.split('_')[1],paramter);
+					
+				}
+			}
+		});
+
 		// excel export 버튼 
 		toolbar.add({
 			itemId : 'export',
@@ -200,6 +251,11 @@ Ext.define('Sgis.view.south.LayerDynamicGrid', {
 	 * Reconfigure grid
 	 */	
 	reconfigureGrid : function(result) {
+
+
+		// var years = this.reconfigureYear(result);
+		// this.years = years;
+		
 		var store = this.getStore();
 		
 		if(store == null || !store.fields) {
