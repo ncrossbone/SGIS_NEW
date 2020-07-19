@@ -1,0 +1,72 @@
+[{
+    "text": "주요 축제",
+    "cls": "folder",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+        "text": "부산국제록페스티벌",
+        "leaf": true,
+        "checked": false
+    },{
+        "text": "부산바다축제",
+        "leaf": true,
+        "checked": false
+    },{
+        "text": "부산항 축제",
+        "leaf": true,
+        "checked": false
+    },{
+        "text": "LPGA 정규투어",
+        "leaf": true,
+        "checked": false
+    },{
+        "text": "지스타",
+        "leaf": true,
+        "checked": false
+    },{
+        "text": "부산불꽃축제",
+        "leaf": true,
+        "checked": false
+    }]
+},{
+	"id" : "p1",
+    "text": "주요 관광지", 
+    "expanded": true,
+    "children": [{
+        "text": "BIFF광장-용두산공원",
+        "leaf": true,
+        "checked": false
+        },{
+            "text": "감천문화마을",
+            "leaf": true,
+            "checked": false
+        },{
+            "text": "광안리해수욕장",
+            "leaf": true,
+            "checked": false
+        },{
+            "text": "부산서면",
+            "leaf": true,
+            "checked": false
+        },{
+            "text": "송도해수욕장",
+            "leaf": true,
+            "checked": false
+        },{
+            "text": "해운대해수욕장",
+            "leaf": true,
+            "checked": false
+        },{
+            "text": "달맞이고개",
+            "leaf": true,
+            "checked": false
+        },{
+            "text": "범어사",
+            "leaf": true,
+            "checked": false
+        },{
+            "text": "무산시민공원",
+            "leaf": true,
+            "checked": false
+        }]
+    }]

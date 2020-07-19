@@ -33,7 +33,7 @@ Ext.define('Sgis.view.north.North', {
 		xtype: 'container',
 		flex: 1,
 		layout: {
-			type: 'vbox',
+			type: 'hbox',
 			align: 'stretch'
 		},
 		defaults: {
@@ -41,6 +41,22 @@ Ext.define('Sgis.view.north.North', {
 			style: 'background-color:white;background-image:none;'
 		},		
 		items: [{
+			xtype: 'container',
+			width: '50%'
+		},{
+			xtype: 'combobox',
+			id: 'b4Combo',
+			hidden:  true,
+			fieldLabel: '년도 선택 :',
+			displayField: 'name',
+			valueField: 'id',
+			listeners: {
+				change : function(obj){
+					console.info(obj.value);
+					Sgis.getApplication().fireEvent('dynamicLayer2OnOff2', obj.value);
+				}
+			}
+		},{
 			xtype: 'toolbar',
 			border: 0,
 			flex: 1,
@@ -105,6 +121,7 @@ Ext.define('Sgis.view.north.North', {
 				hidden: true
 			}, '->', {
 				xtype: 'label',
+				hidden: true,
 				id:'currUmdLabel',
 				text:''
 			}]

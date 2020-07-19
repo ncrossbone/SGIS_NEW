@@ -65,6 +65,7 @@ Ext.define('Sgis.view.west.WestTab2', {
 					displayField: 'name',
 					valueField: 'id',
 					disabled: true
+					
 				}, {
 					id: 'cmbArea4',
 					itemId: 'cmbArea4',
@@ -73,7 +74,15 @@ Ext.define('Sgis.view.west.WestTab2', {
 					store: Ext.create('Sgis.store.Jibun4Store'),
 					displayField: 'name',
 					valueField: 'id',
-					disabled: true
+					disabled: true,
+					listeners : {
+						afterrender : function(){
+							console.info();
+							if(location.href == "http://localhost:8080/GIS/index.jsp"){
+								this.setHidden(true);
+							}
+						}
+					}
 				}, {
 					xtype: 'form',
 					layout: {
@@ -97,12 +106,30 @@ Ext.define('Sgis.view.west.WestTab2', {
 						xtype: 'textfield',
 						id: 'ziBunCode',
 						width: '133px'
-					}]
+					}],
+					listeners : {
+						afterrender : function(){
+							console.info();
+							//if(location.href == "http://localhost:8080/GIS/index.jsp"){
+							if(location.href.substr(7,7) != "/sgisin"){
+								this.setHidden(true);
+							}
+						}
+					}
 				}, {
 					xtype: 'button',
 					id: 'searchJibun',
 					itemId: 'searchJibun',
-					text: '지번검색'
+					text: '지번검색',
+					listeners : {
+						afterrender : function(){
+							console.info();
+							//if(location.href == "http://localhost:8080/GIS/index.jsp"){
+							if(location.href.substr(7,7) != "/sgisin"){
+								this.setHidden(true);
+							}
+						}
+					}
 				}]
 				/*items: [{
 					id: 'cmbJibun1',

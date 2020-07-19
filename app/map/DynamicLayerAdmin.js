@@ -35,6 +35,7 @@ Ext.define('Sgis.map.DynamicLayerAdmin', {
 		
 		Sgis.getApplication().addListener('dynamicLayerOnOff', me.dynamicLayerOnOffHandler, me);
 		Sgis.getApplication().addListener('dynamicLayer2OnOff', me.dynamicLayer2OnOffHandler, me);
+		Sgis.getApplication().addListener('dynamicLayer2OnOff2', me.dynamicLayer2OnOffHandler2, me);
 		Sgis.getApplication().addListener('leftTabChange', me.leftTabChangeHandler, me); //레이어탭 app-west-tab1 //자료검색탭활 app-west-tab2
     },
     
@@ -64,7 +65,7 @@ Ext.define('Sgis.map.DynamicLayerAdmin', {
     		return;
     	}
     	var layers2 = [];
-    	Ext.each(selectInfo, function(selectObj, index) {
+		Ext.each(selectInfo, function(selectObj, index) {
     		if(selectObj.data.layerId && !isNaN(selectObj.data.layerId)){
     			layers2.push(selectObj.data.layerId);
     		}
@@ -72,6 +73,27 @@ Ext.define('Sgis.map.DynamicLayerAdmin', {
 				me.layer2.setVisibleLayers(layers2);
 			}
 		});
+	},
+
+	dynamicLayer2OnOffHandler2: function(selectLayer){
+    	//console.info(selectInfo);
+		var me = this;
+		me.layer2.setVisibleLayers([]);
+		var layers2 = [];
+		if(selectLayer != null){
+			layers2.push([selectLayer]);
+		}
+		me.layer2.setVisibleLayers(layers2);
+		/*
+		Ext.each(selectInfo, function(selectObj, index) {
+    		if(selectObj.data.layerId && !isNaN(selectObj.data.layerId)){
+    			layers2.push(selectObj.data.layerId);
+    		}
+			if(index==selectInfo.length-1){
+				me.layer2.setVisibleLayers(layers2);
+			}
+		});
+		*/
     },
     
     leftTabChangeHandler: function(tabXtype){

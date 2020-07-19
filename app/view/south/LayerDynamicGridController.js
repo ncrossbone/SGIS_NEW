@@ -59,7 +59,7 @@ Ext.define('Sgis.view.south.LayerDynamicGridController', {
 			button.setText("액셀받기취소");
 			console.info(me.getView());
 			var obj = {'header':JSON.stringify(me.getView().gridFields), 'headerNm':JSON.stringify(me.getView().gridFieldsKo), 'datas':JSON.stringify(me.getView().gridData)};
-			$.post(_API.excelDownUrl, obj, function(data){
+			$.post(esri.config.defaults.io.proxyUrl + '?' + _API.excelDownUrl, obj, function(data){
 				button.setText("액셀받기");
 				
 				var downloadUrl = data.url;

@@ -59,7 +59,8 @@ Ext.define('Sgis.map.SearchLayerAdmin', {
 		dojo.connect(me.targetGraphicLayer, "onClick", function(event){
 			
 			//내부망 환경일시 클릭 event적용
-			if(location.href.substr(7,3) == "10."){
+			//if(location.href.substr(7,3) == "10."){
+				if(location.href.substr(7,7) == "/sgisin"){
 				var attributes = event.graphic.attributes;
 				var layerId = attributes._layerId_;
 				

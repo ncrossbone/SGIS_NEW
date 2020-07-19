@@ -32,7 +32,7 @@
 	"infoDef" : "54",
 	"infoGridDef" : "55",
 	"chartdef" : "56",
-	"printUrl" : "/sgiswar/CustomPrintTask.jsp",
-	"proxyUrl" : "/sgiswar/proxy.jsp",
-	"excelDownUrl" : "/sgiswar/excelDownload.jsp"
+	"printUrl" : "http://112.217.167.123:17389/sgiswar/CustomPrintTask.jsp",
+	"proxyUrl" : "http://112.217.167.123:17389/sgiswar/proxy.jsp",
+	"excelDownUrl" : "http://112.217.167.123:17389/sgiswar/excelDownload.jsp"
 }]

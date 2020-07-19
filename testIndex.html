@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html manifest="">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+
+    <title>SGIS</title>
+
+	<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/claro/claro.css">
+	<link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
+	
+    <!-- The line below must be kept intact for Sencha Cmd to build your application -->
+    <script>
+		
+		
+	</script>
+    <script type="text/javascript" src="http://js.arcgis.com/3.14/"></script>
+	<script id="microloader" type="text/javascript" src="libs/jquery/jquery-1.11.3.min.js"></script>
+	
+	
+    
+</head>
+<body>
+	<div id="map" class="map" style="width:1800px; height:1000px;"></div>
+</body>
+<script>
+
+	
+$(function(){
+
+	var coreMap;
+
+	require(["dojo/dom",
+  		         "esri/config",
+  		         "esri/map",
+  		         "esri/graphic",
+  		         "esri/tasks/GeometryService",
+  		         "dojo/DeferredList", 
+  		         "dojo/_base/Deferred",],  
+  		         function() {
+
+					coreMap = new esri.Map('map', {
+						isDoubleClickZoom:false,
+						 isPan:true,
+						 logo:false,
+						 slider: false,
+						 autoResize: true
+					});
+
+					//맵 설정
+					baseMapInit(coreMap);
+
+					var graphicLayer = new esri.layers.GraphicsLayer();
+					graphicLayer.id = "graphicLayer";
+					coreMap.addLayer(graphicLayer);
+
+					//drawFeatureLayer(coreMap);
+
+					//var a = [1,2,3,4,5]; // 수질측정망
+					//var a = [10]; // 자동측정망
+					//var a = [13,14]; // 퇴적물
+					var a = [40,41]; // 방사성
+					//var a = [24,25]; // 생물
+					//var a = [96] //총량
+
+					a.map(function(obj){
+						drawFeatureLayer(coreMap,obj);
+					})
+
+
+				});
+
+});
+
+
+var baseMapInit = function(coreMap){
+		
+		var me = this;
+
+		dojo.declare('CustomMapsLayer', esri.layers.TiledMapServiceLayer, {
+		    constructor: function(opts) {
+		      opts = opts || {};
+		      this.spatialReference = new esri.SpatialReference({wkid: 102100});
+		      this.tileInfo = new esri.layers.TileInfo({
+		        rows: 256, cols: 256, dpi: 96,
+		        origin: {x: -20037508.342787, y: 20037508.342787},
+		        spatialReference: {wkid: 102100},
+		        lods: [
+						{level:0, resolution:156543.033928,    scale:591657527.591555},
+						{level:1, resolution:78271.5169639999, scale:295828763.795777},
+						{level:2, resolution:39135.7584820001, scale:147914381.897889},
+						{level:3, resolution:19567.8792409999, scale:73957190.948944},
+						{level:4, resolution:9783.93962049996, scale:36978595.474472},
+						{level:5, resolution:4891.96981024998, scale:18489297.737236},
+						{level:6, resolution:2445.98490512499, scale:9244648.868618},
+						{level:7, resolution:1222.99245256249, scale:4622324.434309},
+						{level:8, resolution:611.49622628138,  scale:2311162.217155},
+						{level:9, resolution:305.748113140558, scale:1155581.108577},
+						{level:10,resolution:152.874056570411, scale:577790.554289},
+						{level:11,resolution:76.4370282850732, scale:288895.277144},
+						{level:12,resolution:38.2185141425366, scale:144447.638572},
+						{level:13,resolution:19.1092570712683, scale:72223.819286},
+						{level:14,resolution:9.55462853563415, scale:36111.909643},
+						{level:15,resolution:4.77731426794937, scale:18055.954822},
+						{level:16,resolution:2.38865713397468, scale:9027.977411},
+						{level:17,resolution:1.19432856685505, scale:4513.988705},
+						{level:18,resolution:0.597164283559817,scale:2256.994353}
+		          ]
+		      });
+		      me.fullExtent = this.fullExtent = new esri.geometry.Extent({
+		    	  xmin: 12728905.446270483,
+		    	  ymin: 3409091.461517964,
+		    	  xmax: 15766818.698435722,
+		    	  ymax: 5441704.9176768325,
+		          spatialReference: {
+		        	  wkid: 102100
+		          }
+			  });
+			  
+			  // 맵 init extent 설정
+		      this.initialExtent = new esri.geometry.Extent({
+		    	  xmin: 12728905.446270483,
+		    	  ymin: 3409091.461517964,
+		    	  xmax: 15766818.698435722,
+		    	  ymax: 5441704.9176768325,
+		          spatialReference: {
+		        	  wkid: 102100
+		          }
+		      });
+		      this.loaded = true;
+		      this.onLoad(this);
+			},
+
+			//vworld 맵 url
+		    getTileUrl: function(level, row, col) {
+		    	var newrow = row + (Math.pow(2, level) * 47);
+      			var newcol = col + (Math.pow(2, level) * 107);
+				  return "http://xdworld.vworld.kr:8080/2d/Base/201301/" + level + "/" + col + "/" + row + ".png";
+		    }	
+		  });
+		var baseMap = new CustomMapsLayer();
+		coreMap.addLayer(baseMap); // vworld 맵 레이어 추가
+	}
+
+
+	var drawFeatureLayer = function(coreMap,id){
+
+		var symbol = new esri.symbol.PictureMarkerSymbol({
+						"angle": 0,
+						"type": "esriPMS",
+						"url": "./resources/images/layerIcon/Layer10.png",
+						"contentType": "image/png",
+						"width": 9,
+						"height": 9
+					});
+
+		esriConfig.defaults.io.corsEnabledServers.push("http://211.114.21.35:8080");
+
+		var queryTask = new esri.tasks.QueryTask("http://211.114.21.35:8080/arcgis/rest/services/reach_V3/MapServer/"+id);
+		var query = new esri.tasks.Query();
+		query.returnGeometry = true;
+		query.outFields = ["*"];
+		query.where = "1=1";
+		//query.where = "JIJUM_CODE IN ('1013A90', '2010A15', '3009A80', '1016A45', '1016A32', '1016A37', '1016A35', '1016A75', '1016A55', '1016A57', '1016A65', '1016A52', '3302A52', '3101A60', '1001A30', '1019A60', '1019A47', '1019A52', '1019A57', '1019A59', '2003A43', '1019A40', '1019A32', '1019A37', '3001A10', '3002A40', '3001A05', '3001A30', '3004A05', '3003A30', '3004A40', '3006A05', '3008A52', '3008A02', '3008A05', '3010A20', '3010A15', '3008A55', '3010A30', '3012A05', '3012A19', '3012A08', '3012A37', '3012A53', '3012A52', '3014A10', '3012A73', '3014A50', '2004A93', '2004A92', '2012A25', '2012A15', '2012A22', '2012A38', '2012A29', '2012A27', '2012A70', '2012A35', '2012A55', '3014A45', '2002A36', '2002A35', '2001A35', '2001A50', '2001A38', '2001A39', '2003A45', '2003A42', '2009A10', '2007A40', '2011A20', '2011A15', '2011A18', '2011A52', '2011A23', '2011A49', '2014A50', '2011A53', '2017A60', '2020A37', '2020A23', '2020A55', '2020A48', '2020A39', '2022A10', '2022A30', '2022A38', '2022A80', '2018A35', '2018A27', '2018A29', '2018A45', '2018A39', '2018A36', '2018A38', '2019A05', '2018A60', '2019A35', '2019A15', '2019A80', '3101A70', '2004A40', '2004A05', '2004A90', '2004A48', '2004A47', '3013A50', '3013A05', '3013A15', '3013A17', '1004A45', '1004A70', '3012A17', '4007A30', '4007A20', '4007A25', '3302A40', '3301A20', '3301A55', '5004A27', '3011A65', '3011A53', '1023A50', '1023A27', '5004A32', '2003A20', '2003A15', '3011A40', '3011A15', '3011A17', '3011A84', '3011A43', '3011A48', '3011A79', '3011A68', '3011A97', '3011A87', '2021A25', '2021A18', '2021A12', '2021A16', '2021A14', '2021A05', '2021A60', '2021A27', '2021A35', '2002A15', '2002A50', '2002A33', '2002A25', '2006A20', '3011A78', '4007A07', '4007A05', '4008A05', '3007A40', '1007A57', '1007A45', '1007A52', '1009A10', '1010A35', '1013A60', '1015A10', '3014A15', '5006A55', '3012A77', '1006A45', '1006A80', '1006A75', '1006A63', '4001A10', '4002A20', '4004A15', '4002A25', '4004A05', '4004A13', '4009A20', '4009A45', '1012A20', '1012A40', '2003A12', '1022A55', '1022A42', '1022A51', '1022A53', '1018A82', '1018A74', '1018A78', '1018A58', '1018A62', '1018A68', '1018A80', '1018A64', '1007A44', '1007A41', '1007A43', '2005A30', '5001A20', '5001A15', '5004A10', '5001A23', '5001A26', '5001A28', '5004A40', '5003A40', '5004A15') AND LAYER_CODE = 'A001' ";
+		queryTask.execute(query, function (results) {
+			console.info(results);
+			results.features.map(function(obj){
+				//graphicsLayerIds
+				obj.setSymbol(symbol);
+				coreMap.getLayer('graphicLayer').add(obj);
+
+			})
+		})
+
+
+
+	}
+
+
+</script>
+
+</html>
+
+

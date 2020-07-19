@@ -230,3 +230,12 @@
 	height: 15px;
 	margin: -6px 0px 0px;
 }
+
+#b4Combo-labelEl {
+    padding-right: 0px !important;
+    padding-top: 16px !important;
+}
+
+#b4Combo-triggerWrap {
+    height: 33px !important;
+}

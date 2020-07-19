@@ -17,8 +17,6 @@ Ext.define('Sgis.view.west.WestTab1Controller', {
 	onCheckChanged: function(node, checked, eOpts) {
 		
 		// p = 레이어  / b = 주제도
-		console.info(node);
-		console.info(node.get('leaf'));
 		if(node.data.parentId.substr(0,1) == "p"){
 			if(!node.get('leaf')) {
 				if(node.data.parentId.substr(0,3) == "p1_"){
@@ -43,19 +41,111 @@ Ext.define('Sgis.view.west.WestTab1Controller', {
 			
 		}else if(node.data.parentId.substr(0,1) == "b"){
 			
+
+			//
+			if(node.data.parentId == 'b4' || node.data.parentId == 'b6'){
+
+				var nodeCheck = false;
+
+				if(checked == true){
+
+					console.info(node);
+
+					node.parentNode.parentNode.childNodes.map(function(treeObj){
+						if(treeObj.data.id == 'b4' || treeObj.data.id == 'b6'){
+							treeObj.childNodes.map(function(childObj){
+								if(childObj.id != node.data.id){
+									if(childObj.data.checked == true){
+										nodeCheck = true;
+										node.set('checked', false);
+									}
+								}
+							})
+						}
+					})
+
+				}
+
+				if(nodeCheck){
+					alert('질산성 질소 데이터는 하나만 표출 가능합니다.')
+					return;
+				}
+
+				var b4Combo = Ext.getCmp('b4Combo');
+
+				var store;
+				if(node.data.parentId == 'b4'){
+					store = Ext.create('Ext.data.Store', {
+						data: [
+							{ name:'2011', id:'20'},
+							{ name:'2012', id:'21'},
+							{ name:'2013', id:'22'},
+							{ name:'2014', id:'23'},
+							{ name:'2015', id:'24'},
+							{ name:'2016', id:'25'},
+							{ name:'2017', id:'26'},
+							{ name:'2018', id:'27'}
+						],
+						fields: ['name', 'id']
+					});
+				}else if(node.data.parentId == 'b6'){
+
+					if(node.data.id == 'avg'){
+						store = Ext.create('Ext.data.Store', {
+							data: [
+								{ name:'2012', id:'34'},
+								{ name:'2013', id:'35'},
+								{ name:'2014', id:'36'},
+								{ name:'2015', id:'37'},
+								{ name:'2016', id:'38'},
+								{ name:'2017', id:'39'}
+							],
+							fields: ['name', 'id']
+						});
+					}else if(node.data.id == 'tile'){
+						store = Ext.create('Ext.data.Store', {
+							data: [
+								{ name:'2012', id:'41'},
+								{ name:'2013', id:'42'},
+								{ name:'2014', id:'43'},
+								{ name:'2015', id:'44'},
+								{ name:'2016', id:'45'},
+								{ name:'2017', id:'46'}
+							],
+							fields: ['name', 'id']
+						});
+					}
+
+					
+				}
+
+				b4Combo.setStore(store);
+
 				//범례
-				console.info(node);
 				if(node.data.children != null){
 					if(checked == true){
 						node.expand();
+						b4Combo.setHidden(false);
 					}else{
 						node.collapse();
+						b4Combo.setHidden(true);
+						b4Combo.setValue('');
+						Sgis.getApplication().fireEvent('dynamicLayer2OnOff2', null);
 					}
 					
 				}
-				
-			
+			}else{
+
 				Sgis.getApplication().fireEvent('dynamicLayer2OnOff', Ext.getCmp("layerTree3").getChecked());
+
+			}
+
+
+				
+				
+				
+				
+				//
 				
 		}else{
 			

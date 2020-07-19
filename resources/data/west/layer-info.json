@@ -3,35 +3,56 @@
 	"category" : "지하수",
 	"name" : "지역지하수오염우려지역",
 	"source" : "환경부",
-	"created_year" : "2014",
+	"created_year" : "2017",
 	"update_cycle" : "1년"
 },{
 	"id" : "102",
 	"category" : "지하수",
 	"name" : "지역지하수일반지역",
 	"source" : "환경부",
-	"created_year" : "2014",
+	"created_year" : "2017",
 	"update_cycle" : "1년"
 },{
 	"id" : "103",
 	"category" : "지하수",
 	"name" : "국가지하수배경수질",
 	"source" : "환경부",
-	"created_year" : "2013",
+	"created_year" : "2017",
 	"update_cycle" : "1년"
 },{
 	"id" : "104",
 	"category" : "지하수",
 	"name" : "국가지하수오염감시",
 	"source" : "환경부",
-	"created_year" : "2013",
+	"created_year" : "2017",
 	"update_cycle" : "1년"
 },{
 	"id" : "108",
 	"category" : "지하수",
 	"name" : "먹는물 공동시설",
 	"source" : "환경부",
-	"created_year" : "2014",
+	"created_year" : "2017",
+	"update_cycle" : "1년"
+},{
+	"id" : "201",
+	"category" : "토양",
+	"name" : "토양측정망",
+	"source" : "환경부",
+	"created_year" : "2017",
+	"update_cycle" : "1년"
+},{
+	"id" : "202",
+	"category" : "토양",
+	"name" : "토양오염실태조사",
+	"source" : "환경부",
+	"created_year" : "2017",
+	"update_cycle" : "1년"
+},{
+	"id" : "203",
+	"category" : "토양",
+	"name" : "골프장",
+	"source" : "환경부",
+	"created_year" : "2017",
 	"update_cycle" : "1년"
 },{
 	"id" : "502",
@@ -94,27 +115,27 @@
 	"category" : "행정경계구역",
 	"name" : "시도",
 	"source" : "국토지리정보원",
-	"created_year" : "",
+	"created_year" : "2016",
 	"update_cycle" : "매년"
 },{
 	"id" : "902",
 	"category" : "행정경계구역",
 	"name" : "시군구",
 	"source" : "국토지리정보원",
-	"created_year" : "",
+	"created_year" : "2016",
 	"update_cycle" : "매년"
 },{
 	"id" : "903",
 	"category" : "행정경계구역",
 	"name" : "읍변동",
 	"source" : "국토지리정보원",
-	"created_year" : "",
+	"created_year" : "2016",
 	"update_cycle" : "매년"
 },{
 	"id" : "904",
 	"category" : "행정경계구역",
 	"name" : "동리",
 	"source" : "국토지리정보원",
-	"created_year" : "",
+	"created_year" : "2016",
 	"update_cycle" : "매년"
 }]
